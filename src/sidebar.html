@@ -1,11 +1,30 @@
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Keycrab</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <title>Keycrab</title>
 </head>
+
 <body>
-    <h1>keycrab 입니다.</h1>
+  <div class="title-area">
+    <h1 class="title"><strong>key</strong>crab</h1>
+  </div>
+  <div class="content-area">
+    <div>
+      <input placeholder="검색할 키워드를 입력해주세요." class="search-input" type="text">
+    </div>
+    <div class="sort-button-area">
+      <button class="sort-button selected">최신순</button>
+      <button class="sort-button">이름순</button>
+    </div>
+    <ul class="keyword-items"></ul>
+  </div>
+
+  <script src="js/main.js"></script>
 </body>
+
 </html>
