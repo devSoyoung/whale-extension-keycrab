@@ -74,8 +74,33 @@ ul {
 .keyword-item-title {
   display: flex;
 }
+
+.keyword-item-content {
+  display: initial;
+}
+.keyword-item-content-hidden {
+  display: none;
+}
 .keyword-item-delete {
   margin-left: auto;
+  margin-top: 5px;
+}
+.keyword-item-show-more {
+  /*margin-top: 5px;*/
+  margin-left: 7px;
+}
+.keyword-item-show-more svg {
+  width: 12px;
+  height: 20px;
+}
+.keyword-item-show-more svg:hover {
+  fill: dodgerblue;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.keyword-item-delete svg {
+  width: 10px;
+  height: 10px;
 }
 .keyword-item-search {
   width: 20px;
@@ -117,4 +142,21 @@ ul {
 .link-item {
   margin-bottom: 3px;
   position: relative;
+}
+
+svg {
+  width: 15px;
+  height: 15px;
+  fill: lightgray;
+}
+.link-item-delete-button svg:hover, .keyword-item-delete svg:hover {
+  fill: #f94e3f;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.link-item-favorite-button svg:hover {
+  fill: yellow;
+  cursor: pointer;
+  transition: 0.3s;
 }
