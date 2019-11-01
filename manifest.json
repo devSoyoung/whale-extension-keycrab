@@ -22,6 +22,16 @@
     "page": "src/background/background.html"
   },
 
-  "content_scripts": [],
-  "permissions": []
+  "content_scripts": [
+    {
+      "matches": [
+        "https://search.naver.com/search.naver?where=post*"
+      ],
+      "css": ["src/content-script/button.css"],
+      "js": ["src/content-script/button.js", "src/content-script/naver/naver-blog.js"]
+    }
+  ],
+  "permissions": [
+    "storage"
+  ]
 }
