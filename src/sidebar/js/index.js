@@ -21,5 +21,10 @@
     [...Object.keys(keywords)].forEach(keywordName => {
       ulEl.appendChild(window.getKeywordItemHTML(keywordName, keywords[keywordName]));
     });
+
+    // TODO: 이벤트 리스너 달기
   });
+
+  // 검색창 onchange 핸들러 추가
+  document.querySelector('.search-input').addEventListener('keypress', window.handleSearchKeyword);
 })();

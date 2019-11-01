@@ -17,9 +17,9 @@
   // 검색 결과에 이벤트 리스너 달기
   const searchResultEls = document.querySelectorAll('#elThumbnailResultArea li');
   searchResultEls.forEach(searchResultEl => {
-    const { title } = searchResultEl.querySelector('.sh_blog_title');
+    const title = searchResultEl.querySelector('.sh_cafe_title').innerText;
     const { href } = searchResultEl.querySelector('.url');
-    const result = { favorite: false, origin: 'blog', title: title, url: href };
+    const result = { favorite: false, origin: 'cafe', title: title, url: href };
 
     function onClickItem() {
       if (!window.isTracking) return;
