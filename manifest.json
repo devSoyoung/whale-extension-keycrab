@@ -1,27 +1,27 @@
 {
-    "manifest_version": 2,
-    "name": "Keycrab",
-    "version": "1.0.0",
+  "manifest_version": 2,
+  "name": "Keycrab",
+  "version": "1.0.0",
 
-    "description": "키워드 스크랩으로 더 나은 웹서핑을 경험 할 수 있게 도와주는 웨일 확장앱입니다.",
-    "icons": {
-        "64": "images/icon16.png"
-    },
+  "description": "키워드 스크랩으로 더 나은 웹서핑을 경험 할 수 있게 도와주는 웨일 확장앱입니다.",
+  "icons": {
+    "64": "images/icon16.png"
+  },
 
-    "sidebar_action": {
-        "default_page": "src/sidebar.html",
-        "default_icon": {       
-            "64": "images/icon16.png"
-        },
-        "default_title": "Keycrab",   
-        "use_navigation_bar": false
+  "sidebar_action": {
+    "default_page": "src/sidebar/sidebar.html",
+    "default_icon": {
+      "64": "images/icon16.png"
     },
+    "default_title": "Keycrab",
+    "use_navigation_bar": false
+  },
 
-    "background": {
-        "scripts": [],
-        "page": "src/background.html"
-    },
-    
-    "content_scripts": [],
-    "permissions": []
+  "background": {
+    "scripts": [],
+    "page": "src/background/background.html"
+  },
+
+  "content_scripts": [],
+  "permissions": []
 }
