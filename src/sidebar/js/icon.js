@@ -286,24 +286,31 @@ window.getKeywordItemHTML = (keywordName, keyword) => {
          <i class="fas fa-chevron-down grey" style="margin-left: 5px;"></i>
        </div>
        <ul class="search-platform">
-         <li class="naver-search">
-           <img src="../../images/naver.png" alt="네이버로고">
-           네이버
-         </li>
-         <li class="google-search">
-           <img src="../../images/google.png" alt="구글로고">
-           구글
-         </li>
-         <li class="youtube-search">
-           <img src="../../images/youtube.png" alt="구글로고">
-           유튜브
-         </li>
+         <a href="https://search.naver.com/search.naver?query=${keywordName}" target="_blank">
+           <li class="naver-search">
+             <img src="../../images/naver.png" alt="네이버로고">
+             <span>네이버</span>
+           </li>
+         </a>
+         <a href="https://www.google.com/search?q=${keywordName}" target="_blank">
+           <li class="google-search">
+             <img src="../../images/google.png" alt="구글로고">
+             구글
+           </li>
+         </a>
+         <a href="https://www.youtube.com/results?search_query=${keywordName}" target="_blank">
+           <li class="youtube-search">
+             <img src="../../images/youtube.png" alt="유튜로고">
+             유튜브
+           </li>
+         </a>
+         
        </ul>
        <ul class="link-list">
          ${keyword.link.map(item => (
             `<li>
               <div class="link-origin">${getOriginName(item.origin)}</div>
-              <a href=${item.url}>${item.title}</a>
+              <a target="_blank" href=${item.url}>${item.title}</a>
             </li>`  
          )).join('')}
        </ul>

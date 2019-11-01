@@ -103,7 +103,9 @@ ul {
 
 .keyword-items-list .keyword-item .keyword-title {
   font-weight: bold;
-  font-size: 22px;
+  font-size: 20px;
+  letter-spacing: -1px;
+  margin-bottom: 5px;
 }
 
 .keyword-items-list .keyword-item .util-icon {
@@ -122,12 +124,16 @@ ul {
 .keyword-items-list .keyword-item .search-platform li{
     border-radius: 3px;
     padding: 3px;
+    padding-right: 5px;
+    padding-left: 5px;
     margin-right: 8px;
-
+    margin-bottom: 5px;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    letter-spacing: -0.5px;
+    font-size: 11px;
 }
 
 .keyword-items-list .keyword-item .search-platform li img{
@@ -155,6 +161,8 @@ ul {
 .keyword-items-list .keyword-item .link-list li{
   display: flex;
   flex-direction: row;
+  margin-bottom: 5px;
+  letter-spacing: -0.5px;
 }
 
 .keyword-items-list .keyword-item .link-list li .link-origin{

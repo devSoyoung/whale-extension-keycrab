@@ -13,7 +13,10 @@
 
 (function () {
   whale.storage.sync.get(['keywords'], ({ keywords }) => {
-    console.log(keywords);
+    if (!keywords) {
+      // 스토리지 초기화 하기
+      return;
+    }
     const ulEl = document.querySelector('.keyword-items-list');
     [...Object.keys(keywords)].forEach(keywordName => {
       ulEl.appendChild(window.getKeywordItemHTML(keywordName, keywords[keywordName]));
