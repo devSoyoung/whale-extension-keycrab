@@ -22,6 +22,8 @@
     "page": "src/background/background.html"
   },
 
+  "content_security_policy": "script-src 'self' https://kit.fontawesome.com/4fcb81092f.js; object-src 'self'",
+
   "content_scripts": [],
   "permissions": []
 }
