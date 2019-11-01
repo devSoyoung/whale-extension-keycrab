@@ -1,0 +1,96 @@
+
+.link-items {
+    margin-top: 5px;
+    padding-left: 20px;
+    font-size: 13px;
+}
+
+.keyword-item-title {
+    display: flex;
+}
+
+.keyword-item-content {
+    display: initial;
+}
+.keyword-item-content-hidden {
+    display: none;
+}
+.keyword-item-delete {
+    margin-left: auto;
+    margin-top: 5px;
+}
+.keyword-item-show-more {
+    /*margin-top: 5px;*/
+    margin-left: 7px;
+}
+.keyword-item-show-more svg {
+    width: 12px;
+    height: 20px;
+}
+.keyword-item-show-more svg:hover {
+    fill: dodgerblue;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.keyword-item-delete svg {
+    width: 10px;
+    height: 10px;
+}
+.keyword-item-search {
+    width: 20px;
+    margin-left: 5px;
+}
+
+.link-item {
+    position: relative;
+}
+.link-item-title {
+    width: 80%;
+}
+.link-item-button {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.link-type-info {
+    font-size: 13px;
+    color: gray;
+    letter-spacing: -1px;
+    font-weight: 500;
+    margin: 10px;
+}
+
+.keyword-item {
+    margin: 15px;
+    margin-bottom: 30px;
+}
+
+.link-item-title {
+    font-size: 13px;
+    text-decoration: none;
+    color: black;
+    letter-spacing: -0.8px;
+}
+
+.link-item {
+    margin-bottom: 3px;
+    position: relative;
+}
+
+svg {
+    width: 15px;
+    height: 15px;
+    fill: lightgray;
+}
+.link-item-delete-button svg:hover, .keyword-item-delete svg:hover {
+    fill: #f94e3f;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.link-item-favorite-button svg:hover {
+    fill: yellow;
+    cursor: pointer;
+    transition: 0.3s;
+}
