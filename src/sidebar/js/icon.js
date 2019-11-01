@@ -259,29 +259,56 @@ window.getRecentLinkHTML = (title, link) => {
   `;
 };
 
-window.getKeywordItemHTML = (keyword) => {
+function getOriginName(type) {
+  switch(type) {
+    case 'total':
+      return '통합검색';
+    case 'blog':
+      return '블로그';
+    case 'cafe':
+      return '카페';
+    case 'google':
+      return '구글';
+    default:
+      return '네이버';
+  }
+}
+
+window.getKeywordItemHTML = (keywordName, keyword) => {
   const liEl = document.createElement('li');
   liEl.className = 'keyword-item';
   liEl.innerHTML = `
-       <div class="keyword-item-title">
-         <span>${keyword.keyword}</span>
-         <img alt="naver-icon" class="keyword-item-search" src="../images/naver.png">
-         <img alt="google-icon" class="keyword-item-search" src="../images/google.png">
-         <img alt="youtube-icon" class="keyword-item-search" src="../images/youtube.png">
-         <span class="keyword-item-delete">${getCrossRemoveSVG()}</span>
-         <span class="keyword-item-show-more">${getDownArrowSVG()}</span>
+     <i class="fas fa-star star-icon yellow"></i>
+     <div class="keyword-item-content">
+       <div class="keyword-title">${keywordName}</div>
+       <div class="util-icon">
+         <i class="far fa-trash-alt grey"></i>
+         <i class="fas fa-chevron-down grey" style="margin-left: 5px;"></i>
        </div>
-       <div class="keyword-item-content-hidden">
-          <h4 class="link-type-info">즐겨찾는 검색결과</h4>
-         <ul class="link-favorite-items">
-           ${keyword.favoriteLink.map(link => window.getRecentLinkHTML(link.title, link.link)).join('')}
-         </ul>
-         <h4 class="link-type-info" style="margin-top: 20px;">최근 방문한 검색결과</h4>
-         <ul class="link-recent-items">
-           ${keyword.recentLink.map(link => window.getRecentLinkHTML(link.title, link.link)).join('')}
-         </ul>
-      </div>
-     `;
+       <ul class="search-platform">
+         <li class="naver-search">
+           <img src="../../images/naver.png" alt="네이버로고">
+           네이버
+         </li>
+         <li class="google-search">
+           <img src="../../images/google.png" alt="구글로고">
+           구글
+         </li>
+         <li class="youtube-search">
+           <img src="../../images/youtube.png" alt="구글로고">
+           유튜브
+         </li>
+       </ul>
+       <ul class="link-list">
+         ${keyword.link.map(item => (
+            `<li>
+              <div class="link-origin">${getOriginName(item.origin)}</div>
+              <a href=${item.url}>${item.title}</a>
+            </li>`  
+         )).join('')}
+       </ul>
+     </div>
+  `;
   return liEl;
 };
 
