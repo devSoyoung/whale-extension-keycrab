@@ -1,0 +1,17 @@
+.tracking-btn {
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 10000;
+  color: red;
+}
+
+.tracking-btn:hover {
+  cursor: pointer;
+  color: gray;
+  transition: 0.2s;
+}
+
+.tracking-btn-active {
+  color: black;
+}
