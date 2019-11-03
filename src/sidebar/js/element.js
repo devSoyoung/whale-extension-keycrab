@@ -164,5 +164,16 @@ function addKeywordLiToList(newKeyword) {
 }
 
 function addLinkLiElToList(keywordContent) {
+    const keywordListEl = document.body.querySelector('#keyword-items-list');
+    const keywordEl = keywordListEl.querySelector(`#${keywordContent.keyword}`);
 
+    const linkLiEl = document.createElement('li');
+    linkLiEl.innerHTML = `
+        <div class="link-origin">${getOriginName(keywordContent.link.origin)}</div>
+        <div class="link-url">
+            <a target="_blank" href=${keywordContent.link.url}>${keywordContent.link.title}</a>
+        </div>
+    `;
+
+    keywordEl.querySelector('.link-list').appendChild(linkLiEl);
 }
