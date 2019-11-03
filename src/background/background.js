@@ -6,7 +6,7 @@ whale.runtime.onMessage.addListener((msg, sender, sendRes) => {
     const { keyword, link } = msg.payload;
     whale.storage.sync.get(['keywords'], ({ keywords }) => {
       // TODO: 중복검사
-
+      if (!keywords) keywords = {};
       // 저장
       whale.storage.sync.set({
         keywords: {
