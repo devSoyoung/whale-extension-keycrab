@@ -85,7 +85,7 @@ ul {
   display: flex;
   flex-direction: row;
   position: relative;
-  margin: 10px;
+  margin: 10px 10px 15px 10px;
 }
 
 .keyword-items-area .keyword-items-list .keyword-item .star-icon{
@@ -125,14 +125,14 @@ ul {
 }
 
 .keyword-items-list .keyword-item .util-icon .fold-icon{
-    margin-left: 8px;
+    margin-left: 10px;
     cursor: pointer;
 }
 
 .keyword-items-list .keyword-item .search-platform {
   display: flex;
   flex-direction: row;
-  margin-bottom: 5px;
+  margin: 5px 0;
 }
 
 .keyword-items-list .keyword-item .search-platform li{

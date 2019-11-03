@@ -13,31 +13,6 @@ function getOriginName(type) {
   }
 }
 
-function getSearchButton(keywordName) {
-  return `
-    <ul class="search-platform">
-      <a href="https://search.naver.com/search.naver?query=${keywordName}" target="_blank">
-        <li class="naver-search">
-          <img src="../../images/naver.png" alt="네이버로고">
-            <span>네이버</span>
-        </li>
-      </a>
-      <a href="https://www.google.com/search?q=${keywordName}" target="_blank">
-        <li class="google-search">
-          <img src="../../images/google.png" alt="구글로고">
-          구글
-        </li>
-      </a>
-      <a href="https://www.youtube.com/results?search_query=${keywordName}" target="_blank">
-        <li class="youtube-search">
-          <img src="../../images/youtube.png" alt="유튜로고">
-          유튜브
-        </li>
-      </a>
-    </ul>
-  `;
-}
-
 // 즐겨찾기 안한 별 : far fa-star grey
 // 즐겨찾기 한 별 : fas fa-star yellow
 function onClickStarIcon(keywordLiEl) {
@@ -66,8 +41,42 @@ function onclickFoldIcon(keywordLiEl) {
   });
 }
 
-function onClickTrashIcon(keywordLiEl) {
-  // 삭제 구현
+function onClickTrashIcon(keywordLiEl,keywordName) {
+  const trashEl = keywordLiEl.querySelector('.trash-icon');
+
+  trashEl.addEventListener('click', () => {
+    const confirmMessage = `${keywordName} 키워드를 삭제하시겠습니까?`;
+
+    if(window.confirm(confirmMessage)) {
+      keywordLiEl.remove();
+      // TODO: storage 에서 삭제 구현
+    }
+  });
+}
+
+function getSearchButton(keywordName) {
+  return `
+    <ul class="search-platform">
+      <a href="https://search.naver.com/search.naver?query=${keywordName}" target="_blank">
+        <li class="naver-search">
+          <img src="../../images/naver.png" alt="네이버로고">
+            <span>네이버</span>
+        </li>
+      </a>
+      <a href="https://www.google.com/search?q=${keywordName}" target="_blank">
+        <li class="google-search">
+          <img src="../../images/google.png" alt="구글로고">
+          구글
+        </li>
+      </a>
+      <a href="https://www.youtube.com/results?search_query=${keywordName}" target="_blank">
+        <li class="youtube-search">
+          <img src="../../images/youtube.png" alt="유튜로고">
+          유튜브
+        </li>
+      </a>
+    </ul>
+  `;
 }
 
 window.getKeywordItemHTML = (keywordName, keywordInfo) => {
@@ -79,7 +88,7 @@ window.getKeywordItemHTML = (keywordName, keywordInfo) => {
        <div class="keyword-title">${keywordName}</div>
        <div class="util-icon">
          <i class="far fa-trash-alt grey trash-icon"></i>
-         <i class="fas fa-chevron-down grey fold-icon" style="margin-left: 5px;"></i>
+         <i class="fas fa-chevron-down grey fold-icon"></i>
        </div>
        ${getSearchButton(keywordName)}
        <ul class="link-list">
@@ -97,7 +106,7 @@ window.getKeywordItemHTML = (keywordName, keywordInfo) => {
 
   onClickStarIcon(keywordLiEl);
   onclickFoldIcon(keywordLiEl);
-  onClickTrashIcon(keywordLiEl);
+  onClickTrashIcon(keywordLiEl,keywordName);
 
   return keywordLiEl;
 };
