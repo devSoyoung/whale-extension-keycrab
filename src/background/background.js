@@ -1,3 +1,9 @@
+whale.runtime.onInstalled.addListener(() => {
+  whale.storage.sync.set({
+    keywords: {},
+  });
+});
+
 whale.runtime.onMessage.addListener((msg, sender, sendRes) => {
   if (msg.type === 'UPDATE_KEYWORDS') {
     whale.storage.sync.set({ keywords: msg.payload });
