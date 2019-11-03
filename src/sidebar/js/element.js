@@ -176,5 +176,11 @@ function addLinkLiElToList(keywordContent) {
       </div>
   `;
 
-  keywordEl.querySelector('.link-list').appendChild(linkLiEl);
+  const linkListEl = keywordEl.querySelector('.link-list');
+
+  if(!linkListEl.childElementCount) {
+    linkListEl.appendChild(linkLiEl); // 아직 저장된 키워드가 없을 경우
+  } else {
+    linkListEl.insertBefore(linkLiEl, linkListEl.firstChild); // 이미 자식 있는 경우 -> 맨첫번째 노드로 정렬
+  }
 }
