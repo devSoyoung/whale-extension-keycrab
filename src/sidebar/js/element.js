@@ -115,10 +115,12 @@ window.getKeywordItemHTML = (keywordName, keywordInfo) => {
 
 // storage 변화 감지하여 사이드바 화면 업데이트
 whale.runtime.onMessage.addListener((msg, sender, sendRes) => {
+  // TODO: ID 띄어쓰기 있는 경우 수정하기 매우급함!
   if (msg.type === 'UPDATE_KEYWORDS') {
-    // FIXME: 추가되는 키워드 찾는과정 필요
-    // TODO: 길이 비교해서 추가되는 것만 추가되도록
-    const newKeyword = '';
+    // TODO: 길이 비교해서 추가되는 것만 추가되도록!
+    const keywordArray = Object.keys(msg.payload);
+    const newKeyword = keywordArray[keywordArray.length-1];
+
     addKeywordLiToList(newKeyword);
   }
   else if (msg.type === 'ADD_LINK_TO_KEYWORD') {
@@ -129,7 +131,7 @@ whale.runtime.onMessage.addListener((msg, sender, sendRes) => {
 });
 
 function addKeywordLiToList(newKeyword) {
-  const keywordListEl = document.body.querySelector('#keyword-items-list');
+  const keywordListEl = document.body.querySelector('.keyword-items-list');
 
   const keywordLiEl = document.createElement('li');
   keywordLiEl.className = 'keyword-item';
@@ -164,16 +166,15 @@ function addKeywordLiToList(newKeyword) {
 }
 
 function addLinkLiElToList(keywordContent) {
-    const keywordListEl = document.body.querySelector('#keyword-items-list');
-    const keywordEl = keywordListEl.querySelector(`#${keywordContent.keyword}`);
+  const keywordEl = document.body.querySelector(`#${keywordContent.keyword}`);
+  const linkLiEl = document.createElement('li');
 
-    const linkLiEl = document.createElement('li');
-    linkLiEl.innerHTML = `
-        <div class="link-origin">${getOriginName(keywordContent.link.origin)}</div>
-        <div class="link-url">
-            <a target="_blank" href=${keywordContent.link.url}>${keywordContent.link.title}</a>
-        </div>
-    `;
+  linkLiEl.innerHTML = `  
+    <div class="link-origin">${getOriginName(keywordContent.link.origin)}</div>
+    <div class="link-url">
+      <a target="_blank" href=${keywordContent.link.url}>${keywordContent.link.title}</a>
+      </div>
+  `;
 
-    keywordEl.querySelector('.link-list').appendChild(linkLiEl);
+  keywordEl.querySelector('.link-list').appendChild(linkLiEl);
 }
