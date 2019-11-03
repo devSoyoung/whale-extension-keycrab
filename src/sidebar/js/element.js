@@ -38,27 +38,67 @@ function getSearchButton(keywordName) {
   `;
 }
 
+// 즐겨찾기 안한 별 : far fa-star grey
+// 즐겨찾기 한 별 : fas fa-star yellow
+function onClickStarIcon(keywordLiEl) {
+  const starEl = keywordLiEl.querySelector('.star-icon');
+
+  starEl.addEventListener('click', () => {
+    starEl.classList.toggle('fas');
+    starEl.classList.toggle('yellow');
+
+    starEl.classList.toggle('grey');
+    starEl.classList.toggle('far');
+  })
+}
+
+// 아래화살표 : fa-chevron-down
+// 위화살표 : fa-chevron-up
+function onclickFoldIcon(keywordLiEl) {
+  const foldEl = keywordLiEl.querySelector('.fold-icon');
+
+  foldEl.addEventListener('click', () => {
+    foldEl.classList.toggle('fa-chevron-down');
+    foldEl.classList.toggle('fa-chevron-up');
+
+    const linkListEl = foldEl.parentNode.parentNode.querySelector('.link-list');
+    linkListEl.classList.toggle('display-none');
+  });
+}
+
+function onClickTrashIcon(keywordLiEl) {
+  // 삭제 구현
+}
+
 window.getKeywordItemHTML = (keywordName, keywordInfo) => {
-  const liEl = document.createElement('li');
-  liEl.className = 'keyword-item';
-  liEl.innerHTML = `
-     <i class="fas fa-star star-icon yellow"></i>
+  const keywordLiEl = document.createElement('li');
+  keywordLiEl.className = 'keyword-item';
+  keywordLiEl.innerHTML = `
+     <i class="far fa-star star-icon grey"></i>
      <div class="keyword-item-content">
        <div class="keyword-title">${keywordName}</div>
        <div class="util-icon">
-         <i class="far fa-trash-alt grey"></i>
-         <i class="fas fa-chevron-down grey" style="margin-left: 5px;"></i>
+         <i class="far fa-trash-alt grey trash-icon"></i>
+         <i class="fas fa-chevron-down grey fold-icon" style="margin-left: 5px;"></i>
        </div>
        ${getSearchButton(keywordName)}
        <ul class="link-list">
          ${keywordInfo.link.map(item => (
-            `<li>
-              <div class="link-origin">${getOriginName(item.origin)}</div>
-              <a target="_blank" href=${item.url}>${item.title}</a>
-            </li>`  
-         )).join('')}
+             `<li>
+                <div class="link-origin">${getOriginName(item.origin)}</div>
+                <div class="link-url">
+                  <a target="_blank" href=${item.url}>${item.title}</a>
+                </div>
+             </li>`
+          )).join('')}
        </ul>
      </div>
   `;
-  return liEl;
+
+  onClickStarIcon(keywordLiEl);
+  onclickFoldIcon(keywordLiEl);
+  onClickTrashIcon(keywordLiEl);
+
+  return keywordLiEl;
 };
+
