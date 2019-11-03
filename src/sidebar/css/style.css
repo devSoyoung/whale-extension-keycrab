@@ -84,7 +84,8 @@ ul {
 .keyword-items-area .keyword-items-list .keyword-item{
   display: flex;
   flex-direction: row;
-    position: relative;
+  position: relative;
+  margin: 10px;
 }
 
 .keyword-items-area .keyword-items-list .keyword-item .star-icon{
@@ -101,6 +102,10 @@ ul {
     color: #666262;
 }
 
+.keyword-items-area .keyword-items-list .keyword-item .display-none{
+    display: none;
+}
+
 .keyword-items-list .keyword-item .keyword-title {
   font-weight: bold;
   font-size: 20px;
@@ -115,6 +120,15 @@ ul {
     font-size: 18px;
 }
 
+.keyword-items-list .keyword-item .util-icon .trash-icon{
+    cursor: pointer;
+}
+
+.keyword-items-list .keyword-item .util-icon .fold-icon{
+    margin-left: 8px;
+    cursor: pointer;
+}
+
 .keyword-items-list .keyword-item .search-platform {
   display: flex;
   flex-direction: row;
@@ -122,18 +136,16 @@ ul {
 }
 
 .keyword-items-list .keyword-item .search-platform li{
-    border-radius: 3px;
-    padding: 3px;
-    padding-right: 5px;
-    padding-left: 5px;
-    margin-right: 8px;
-    margin-bottom: 5px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    letter-spacing: -0.5px;
-    font-size: 11px;
+  border-radius: 3px;
+  padding: 3px 5px;
+  margin-right: 8px;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: -0.5px;
+  font-size: 11px;
 }
 
 .keyword-items-list .keyword-item .search-platform li img{
@@ -168,4 +180,10 @@ ul {
 .keyword-items-list .keyword-item .link-list li .link-origin{
   color: green;
   margin-right: 7px;
+  width: 55px;
 }
+
+.keyword-items-list .keyword-item .link-list li .link-url{
+  /*width:calc(-101)*/
+}
+
