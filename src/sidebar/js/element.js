@@ -49,7 +49,7 @@ function onClickTrashIcon(keywordLiEl,keywordName) {
 
     if(window.confirm(confirmMessage)) {
       keywordLiEl.remove();
-      // TODO: storage 에서 삭제 구현
+      // TODO: storage 에서 삭제 구현 keywordName 보내
     }
   });
 }
@@ -82,6 +82,8 @@ function getSearchButton(keywordName) {
 window.getKeywordItemHTML = (keywordName, keywordInfo) => {
   const keywordLiEl = document.createElement('li');
   keywordLiEl.className = 'keyword-item';
+  keywordLiEl.id = keywordName;
+
   keywordLiEl.innerHTML = `
      <i class="far fa-star star-icon grey"></i>
      <div class="keyword-item-content">
@@ -111,3 +113,56 @@ window.getKeywordItemHTML = (keywordName, keywordInfo) => {
   return keywordLiEl;
 };
 
+// storage 변화 감지하여 사이드바 화면 업데이트
+whale.runtime.onMessage.addListener((msg, sender, sendRes) => {
+  if (msg.type === 'UPDATE_KEYWORDS') {
+    // FIXME: 추가되는 키워드 찾는과정 필요
+    // TODO: 길이 비교해서 추가되는 것만 추가되도록
+    const newKeyword = '';
+    addKeywordLiToList(newKeyword);
+  }
+  else if (msg.type === 'ADD_LINK_TO_KEYWORD') {
+    // 키워드 아래 링크 추가되는 곳
+    const keywordContent = msg.payload;
+    addLinkLiElToList(keywordContent);
+  }
+});
+
+function addKeywordLiToList(newKeyword) {
+  const keywordListEl = document.body.querySelector('#keyword-items-list');
+
+  const keywordLiEl = document.createElement('li');
+  keywordLiEl.className = 'keyword-item';
+  keywordLiEl.id = newKeyword;
+
+  keywordLiEl.innerHTML = `
+     <i class="far fa-star star-icon grey"></i>
+     <div class="keyword-item-content">
+       <div class="keyword-title">${newKeyword}</div>
+       <div class="util-icon">
+         <i class="far fa-trash-alt grey trash-icon"></i>
+         <i class="fas fa-chevron-down grey fold-icon"></i>
+       </div>
+       ${getSearchButton(newKeyword)}
+       <ul class="link-list">
+       </ul>
+     </div>
+  `;
+
+  onClickStarIcon(keywordLiEl);
+  onclickFoldIcon(keywordLiEl);
+  onClickTrashIcon(keywordLiEl,newKeyword);
+
+  if(!keywordListEl.childElementCount) {
+    // 아직 저장된 키워드가 없을 경우
+    keywordListEl.appendChild(keywordLiEl);
+  } else {
+    // 이미 자식 있는 경우 -> 맨첫번째 노드로 정렬
+    // TODO: 생각해보니 최신순일때만..? 최신순일땐 맨앞인데...ㅜㅜ
+    keywordListEl.insertBefore(keywordLiEl, keywordListEl.firstChild);
+  }
+}
+
+function addLinkLiElToList(keywordContent) {
+
+}
