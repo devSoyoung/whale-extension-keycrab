@@ -113,22 +113,7 @@ window.getKeywordItemHTML = (keywordName, keywordInfo) => {
   return keywordLiEl;
 };
 
-// storage 변화 감지하여 사이드바 화면 업데이트
-whale.runtime.onMessage.addListener((msg, sender, sendRes) => {
-  // TODO: ID 띄어쓰기 있는 경우 수정하기 매우급함!
-  if (msg.type === 'UPDATE_KEYWORDS') {
-    // TODO: 길이 비교해서 추가되는 것만 추가되도록!
-    const keywordArray = Object.keys(msg.payload);
-    const newKeyword = keywordArray[keywordArray.length-1];
 
-    addKeywordLiToList(newKeyword);
-  }
-  else if (msg.type === 'ADD_LINK_TO_KEYWORD') {
-    // 키워드 아래 링크 추가되는 곳
-    const keywordContent = msg.payload;
-    addLinkLiElToList(keywordContent);
-  }
-});
 
 function addKeywordLiToList(newKeyword) {
   const keywordListEl = document.body.querySelector('.keyword-items-list');

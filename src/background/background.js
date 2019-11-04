@@ -1,6 +1,7 @@
 whale.runtime.onInstalled.addListener(() => {
   whale.storage.sync.set({
     keywords: {},
+    keywordsOrder: [],
   });
 });
 
@@ -20,9 +21,11 @@ whale.runtime.onMessage.addListener((msg, sender, sendRes) => {
 });
 
 function followKeyword(keywordName) {
-  whale.storage.sync.get(['keywords'], ({ keywords }) => {
+  whale.storage.sync.get(['keywords', 'keywordsOrder'], ({ keywords, keywordsOrder }) => {
+    console.log('keywordsOrder:', keywordsOrder);
     if (!keywords[keywordName]) {
       whale.storage.sync.set({
+        keywordsOrder: keywordsOrder.concat(keywordName),
         keywords: {
           ...keywords,
           [keywordName]: {
@@ -64,22 +67,33 @@ function unfollowKeyword(keywordName) {
   });
 }
 
-function addLinkToKeyword(keyword, link) {
+function addLinkToKeyword(keywordName, link) {
   whale.storage.sync.get(['keywords'], ({ keywords }) => {
     // TODO: 링크 중복검사
 
     // storage.sync 가 초기화 된 경우를 고려하여 예외처리
-    if (!keywords) keywords = {};
+    if (!keywords) {
+      whale.storage.sync.set({
+        keywords: {
+          [keywordName]: {
+            tracking: true,
+            link: [link],
+          }
+        },
+        keywordsOrder: [keywordName],
+      });
+      return;
+    }
 
     // 저장
     whale.storage.sync.set({
       keywords: {
         ...keywords,
-        [keyword]: {
-          ...keywords[keyword],
-          link: keywords[keyword].link.concat(link),
+        [keywordName]: {
+          ...keywords[keywordName],
+          link: keywords[keywordName].link.concat(link),
         }
-      }
+      },
     });
   });
 }
