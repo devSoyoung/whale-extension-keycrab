@@ -119,8 +119,8 @@ function getKeywordItemHTML(keywordName, keywordInfo) {
          ${keywordInfo ? keywordInfo.link.map(item => (
              `<li>
                 <div class="pin-icon">
-                    <img src="../../../images/icon/pin_fixed2.png" class="pin-fixed display-none" alt="고정된 핀">
-                    <img src="../../../images/icon/pin_unfixed.png" class="pin-unfixed" alt="고정된 핀">
+                    <img src="../../../images/icons/pin_fixed2.png" class="pin-fixed display-none" alt="고정된 핀">
+                    <img src="../../../images/icons/pin_unfixed.png" class="pin-unfixed" alt="고정된 핀">
                 </div>
                 <div class="link-origin">${getOriginName(item.origin)}</div>
                 <a target="_blank" href=${item.url}>
@@ -149,8 +149,8 @@ function addLinkLiElToList(keywordContent) {
 
   linkLiEl.innerHTML = `
     <div class="pin-icon">
-        <img src="../../../images/icon/pin_fixed2.png" class="pin-fixed display-none" alt="고정된 핀">
-        <img src="../../../images/icon/pin_unfixed.png" class="pin-unfixed" alt="고정된 핀">
+        <img src="../../../images/icons/pin_fixed2.png" class="pin-fixed display-none" alt="고정된 핀">
+        <img src="../../../images/icons/pin_unfixed.png" class="pin-unfixed" alt="고정된 핀">
     </div>
     <div class="link-origin">${getOriginName(keywordContent.link.origin)}</div>
     <a target="_blank" href=${keywordContent.link.url}>
