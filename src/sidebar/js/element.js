@@ -98,10 +98,11 @@ function getSearchButton(keywordName) {
   `;
 }
 
-window.getKeywordItemHTML = (keywordName, keywordInfo) => {
+function getKeywordItemHTML(keywordName, keywordInfo) {
   const keywordLiEl = document.createElement('li');
   keywordLiEl.className = 'keyword-item';
   keywordLiEl.id = keywordName;
+  keywordLiEl.setAttribute('keyword', keywordName);
 
   keywordLiEl.innerHTML = `
      <i class="far fa-star star-icon grey"></i>
@@ -113,7 +114,7 @@ window.getKeywordItemHTML = (keywordName, keywordInfo) => {
        </div>
        ${getSearchButton(keywordName)}
        <ul class="link-list">
-         ${keywordInfo.link.map(item => (
+         ${keywordInfo ? keywordInfo.link.map(item => (
              `<li>
                 <div class="pin-icon">
                     <img src="../../../images/icon/pin_fixed2.png" class="pin-fixed display-none" alt="고정된 핀">
@@ -124,55 +125,17 @@ window.getKeywordItemHTML = (keywordName, keywordInfo) => {
                   <a target="_blank" href=${item.url}>${item.title}</a>
                 </div>
              </li>`
-          )).join('')}
+          )).join('') : ''}
        </ul>
      </div>
   `;
 
   onClickStarIcon(keywordLiEl);
   onclickFoldIcon(keywordLiEl);
-  onClickTrashIcon(keywordLiEl,keywordName);
+  window.onClickTrashIcon(keywordLiEl, keywordName);
   onClickPinIcon(keywordLiEl);
 
   return keywordLiEl;
-};
-
-
-
-function addKeywordLiToList(newKeyword) {
-  const keywordListEl = document.body.querySelector('.keyword-items-list');
-
-  const keywordLiEl = document.createElement('li');
-  keywordLiEl.className = 'keyword-item';
-  keywordLiEl.id = newKeyword;
-  keywordLiEl.setAttribute('keyword', newKeyword);
-
-  keywordLiEl.innerHTML = `
-     <i class="far fa-star star-icon grey"></i>
-     <div class="keyword-item-content">
-       <div class="keyword-title">${newKeyword}</div>
-       <div class="util-icon">
-         <i class="far fa-trash-alt grey trash-icon"></i>
-         <i class="fas fa-chevron-down grey fold-icon"></i>
-       </div>
-       ${getSearchButton(newKeyword)}
-       <ul class="link-list">
-       </ul>
-     </div>
-  `;
-
-  onClickStarIcon(keywordLiEl);
-  onclickFoldIcon(keywordLiEl);
-  onClickTrashIcon(keywordLiEl,newKeyword);
-
-  if(!keywordListEl.childElementCount) {
-    // 아직 저장된 키워드가 없을 경우
-    keywordListEl.appendChild(keywordLiEl);
-  } else {
-    // 이미 자식 있는 경우 -> 맨첫번째 노드로 정렬
-    // TODO: 생각해보니 최신순일때만..? 최신순일땐 맨앞인데...ㅜㅜ
-    keywordListEl.insertBefore(keywordLiEl, keywordListEl.firstChild);
-  }
 }
 
 function addLinkLiElToList(keywordContent) {

@@ -6,7 +6,11 @@ whale.runtime.onInstalled.addListener(() => {
 });
 
 whale.runtime.onMessage.addListener((msg, sender, sendRes) => {
-  if (msg.type === 'FOLLOW_KEYWORD') {
+  if (msg.type === 'REMOVE_KEYWORD') {
+    const { keywordName } = msg.payload;
+    removeKeyword(keywordName);
+  }
+  else if (msg.type === 'FOLLOW_KEYWORD') {
     const { keywordName } = msg.payload;
     followKeyword(keywordName);
   }
@@ -19,6 +23,24 @@ whale.runtime.onMessage.addListener((msg, sender, sendRes) => {
     addLinkToKeyword(keyword, link);
   }
 });
+
+function removeKeyword(keywordName) {
+  whale.storage.sync.get(['keywords', 'keywordsOrder'], ({ keywords, keywordsOrder }) => {
+    if (!keywords || !keywords[keywordName]) {
+      return;
+    }
+
+    // keywordName 요소 삭제
+    delete keywords[keywordName];
+    const idx = keywordsOrder.indexOf(keywordName);
+    if (idx > -1) keywordsOrder.splice(idx, 1);
+
+    whale.storage.sync.set({
+      keywordsOrder,
+      keywords,
+    });
+  });
+}
 
 function followKeyword(keywordName) {
   whale.storage.sync.get(['keywords', 'keywordsOrder'], ({ keywords, keywordsOrder }) => {
