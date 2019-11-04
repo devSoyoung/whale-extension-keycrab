@@ -58,7 +58,9 @@ function onClickPinIcon(keywordLiEl) {
   const fixedPinEl = keywordLiEl.querySelector('.pin-fixed');
   const unfixedPinEl = keywordLiEl.querySelector('.pin-unfixed');
 
-
+  if(!fixedPinEl || !unfixedPinEl) {
+    return;
+  }
 
   // TODO: favorite 설정 관련 API 추가
   fixedPinEl.addEventListener('click', () => {
@@ -121,9 +123,11 @@ function getKeywordItemHTML(keywordName, keywordInfo) {
                     <img src="../../../images/icon/pin_unfixed.png" class="pin-unfixed" alt="고정된 핀">
                 </div>
                 <div class="link-origin">${getOriginName(item.origin)}</div>
-                <div class="link-url">
-                  <a target="_blank" href=${item.url}>${item.title}</a>
-                </div>
+                <a target="_blank" href=${item.url}>
+                    <div>
+                        ${item.title}
+                    </div>
+                </a>
              </li>`
           )).join('') : ''}
        </ul>
@@ -149,9 +153,11 @@ function addLinkLiElToList(keywordContent) {
         <img src="../../../images/icon/pin_unfixed.png" class="pin-unfixed" alt="고정된 핀">
     </div>
     <div class="link-origin">${getOriginName(keywordContent.link.origin)}</div>
-    <div class="link-url">
-      <a target="_blank" href=${keywordContent.link.url}>${keywordContent.link.title}</a>
-      </div>
+    <a target="_blank" href=${keywordContent.link.url}>
+        <div class="link-url">
+            ${keywordContent.link.title}
+        </div>
+    </a>
   `;
   onClickPinIcon(linkLiEl);
 
