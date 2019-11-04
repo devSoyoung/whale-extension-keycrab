@@ -183,7 +183,6 @@ ul {
 }
 
 .keyword-items-list .keyword-item .link-list li .link-origin{
-  color: green;
   margin-right: 7px;
   width: 50px;
   height: 18px;
@@ -201,6 +200,11 @@ ul {
 }
 
 .keyword-items-list .keyword-item .link-list li .link-url{
-  /*width:calc(-101)*/
+  width: calc(100vw - 140px);
+  height: 18px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  word-wrap:break-word;
 }
 
