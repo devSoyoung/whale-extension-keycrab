@@ -6,30 +6,16 @@ window.insertButton = function(keywordName) {
   buttonEl.className = getClassName(window.isTracking);
 
   buttonEl.onclick = function() {
+    window.isTracking = !window.isTracking;
+    if (!window.isTracking) {
+      sendMessageForUnfollowKeyword(keywordName);
+    } else {
+      sendMessageForFollowKeyword(keywordName);
+    }
+
     // 스타일과 텍스트 수정
-    buttonEl.innerText = getInnerText(!window.isTracking);
-    buttonEl.className = getClassName(!window.isTracking);
-
-    const tracking = !window.isTracking;
-    window.isTracking = tracking;
-
-    whale.storage.sync.get(['keywords'], ({ keywords }) => {
-      const newKeywords = { ...keywords };
-      if (!keywords[keywordName]) {
-        newKeywords[keywordName] = {
-          tracking: true,
-          favorite: false,
-          link: [],
-        };
-      } else {
-        newKeywords[keywordName] = {
-          ...keywords[keywordName],
-          tracking: tracking,
-        }
-      }
-
-      sendMessageForUpdateKeywords(newKeywords);
-    });
+    buttonEl.innerText = getInnerText(window.isTracking);
+    buttonEl.className = getClassName(window.isTracking);
   };
 
   document.querySelector('html').appendChild(buttonEl);
@@ -42,10 +28,17 @@ window.sendMessageForAddLink = (keyword, link) => {
   });
 };
 
-function sendMessageForUpdateKeywords(payload) {
+function sendMessageForFollowKeyword(keywordName) {
   whale.runtime.sendMessage({
-    type: 'UPDATE_KEYWORDS',
-    payload
+    type: 'FOLLOW_KEYWORD',
+    payload: { keywordName }
+  });
+}
+
+function sendMessageForUnfollowKeyword(keywordName) {
+  whale.runtime.sendMessage({
+    type: 'UNFOLLOW_KEYWORD',
+    payload: { keywordName }
   });
 }
 
