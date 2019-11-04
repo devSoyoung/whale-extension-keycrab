@@ -44,6 +44,13 @@
       ],
       "css": ["src/content-script/button.css"],
       "js": ["src/content-script/common.js", "src/content-script/naver/naver-news.js"]
+    },
+    {
+      "matches": [
+        "https://www.google.com/search?*"
+      ],
+      "css": ["src/content-script/button.css"],
+      "js": ["src/content-script/common.js", "src/content-script/google/google-unified-search.js"]
     }
   ],
   "permissions": [
