@@ -54,6 +54,25 @@ function onClickTrashIcon(keywordLiEl,keywordName) {
   });
 }
 
+function onClickPinIcon(keywordLiEl) {
+  const fixedPinEl = keywordLiEl.querySelector('.pin-fixed');
+  const unfixedPinEl = keywordLiEl.querySelector('.pin-unfixed');
+
+
+
+  // TODO: favorite 설정 관련 API 추가
+  fixedPinEl.addEventListener('click', () => {
+    fixedPinEl.classList.toggle('display-none');
+    unfixedPinEl.classList.toggle('display-none');
+    // favorite true > false
+  })
+  unfixedPinEl.addEventListener('click', () => {
+    fixedPinEl.classList.toggle('display-none');
+    unfixedPinEl.classList.toggle('display-none');
+    // favorite false > true
+  })
+}
+
 function getSearchButton(keywordName) {
   return `
     <ul class="search-platform">
@@ -96,6 +115,10 @@ window.getKeywordItemHTML = (keywordName, keywordInfo) => {
        <ul class="link-list">
          ${keywordInfo.link.map(item => (
              `<li>
+                <div class="pin-icon">
+                    <img src="../../../images/icon/pin_fixed2.png" class="pin-fixed display-none" alt="고정된 핀">
+                    <img src="../../../images/icon/pin_unfixed.png" class="pin-unfixed" alt="고정된 핀">
+                </div>
                 <div class="link-origin">${getOriginName(item.origin)}</div>
                 <div class="link-url">
                   <a target="_blank" href=${item.url}>${item.title}</a>
@@ -109,6 +132,7 @@ window.getKeywordItemHTML = (keywordName, keywordInfo) => {
   onClickStarIcon(keywordLiEl);
   onclickFoldIcon(keywordLiEl);
   onClickTrashIcon(keywordLiEl,keywordName);
+  onClickPinIcon(keywordLiEl);
 
   return keywordLiEl;
 };
@@ -156,12 +180,17 @@ function addLinkLiElToList(keywordContent) {
   console.log('keywordEl:', keywordEl);
   const linkLiEl = document.createElement('li');
 
-  linkLiEl.innerHTML = `  
+  linkLiEl.innerHTML = `
+    <div class="pin-icon">
+        <img src="../../../images/icon/pin_fixed2.png" class="pin-fixed display-none" alt="고정된 핀">
+        <img src="../../../images/icon/pin_unfixed.png" class="pin-unfixed" alt="고정된 핀">
+    </div>
     <div class="link-origin">${getOriginName(keywordContent.link.origin)}</div>
     <div class="link-url">
       <a target="_blank" href=${keywordContent.link.url}>${keywordContent.link.title}</a>
       </div>
   `;
+  onClickPinIcon(linkLiEl);
 
   const linkListEl = keywordEl.querySelector('.link-list');
 

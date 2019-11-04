@@ -23,6 +23,10 @@ ul {
   padding-left: 0;
 }
 
+.display-none{
+  display: none;
+}
+
 .title-area {
   /* text-align: center; */
   padding-left: 10px;
@@ -102,7 +106,7 @@ ul {
     color: #666262;
 }
 
-.keyword-items-area .keyword-items-list .keyword-item .display-none{
+.display-none{
     display: none;
 }
 
@@ -175,12 +179,25 @@ ul {
   flex-direction: row;
   margin-bottom: 5px;
   letter-spacing: -0.5px;
+  /*height: 18px;*/
 }
 
 .keyword-items-list .keyword-item .link-list li .link-origin{
   color: green;
   margin-right: 7px;
   width: 50px;
+  height: 18px;
+}
+
+.keyword-items-list .keyword-item .link-list li .pin-icon {
+  height: 18px;
+  width: 18px;
+}
+
+.keyword-items-list .keyword-item .link-list li .pin-icon img{
+  height: 13px;
+  width: 13px;
+  cursor: pointer;
 }
 
 .keyword-items-list .keyword-item .link-list li .link-url{
