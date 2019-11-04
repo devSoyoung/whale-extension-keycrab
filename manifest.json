@@ -37,6 +37,13 @@
       ],
       "css": ["src/content-script/button.css"],
       "js": ["src/content-script/common.js", "src/content-script/naver/naver-cafe.js"]
+    },
+    {
+      "matches": [
+        "https://search.naver.com/search.naver?where=news*"
+      ],
+      "css": ["src/content-script/button.css"],
+      "js": ["src/content-script/common.js", "src/content-script/naver/naver-news.js"]
     }
   ],
   "permissions": [
