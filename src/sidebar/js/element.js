@@ -121,6 +121,7 @@ function addKeywordLiToList(newKeyword) {
   const keywordLiEl = document.createElement('li');
   keywordLiEl.className = 'keyword-item';
   keywordLiEl.id = newKeyword;
+  keywordLiEl.setAttribute('keyword', newKeyword);
 
   keywordLiEl.innerHTML = `
      <i class="far fa-star star-icon grey"></i>
@@ -151,7 +152,8 @@ function addKeywordLiToList(newKeyword) {
 }
 
 function addLinkLiElToList(keywordContent) {
-  const keywordEl = document.body.querySelector(`#${keywordContent.keyword}`);
+  const keywordEl = document.body.querySelector(`.keyword-item[keyword="${keywordContent.keyword}"]`);
+  console.log('keywordEl:', keywordEl);
   const linkLiEl = document.createElement('li');
 
   linkLiEl.innerHTML = `  

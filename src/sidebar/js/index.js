@@ -32,14 +32,7 @@
   whale.runtime.onMessage.addListener((msg, sender, sendRes) => {
     // TODO: ID 띄어쓰기 있는 경우 수정하기 매우급함!
     const { type, payload } = msg;
-    if (type === 'FOLLOW_KEYWORD') {
-      addKeywordLiToList(payload.keywordName);
-    }
-
-    else if (type === 'UNFOLLOW_KEYWORD') {
-
-    }
-    else if (type === 'ADD_LINK_TO_KEYWORD') {
+    if (type === 'ADD_LINK_TO_KEYWORD') {
       // 키워드 아래 링크 추가되는 곳
       const keywordContent = msg.payload;
       addLinkLiElToList(keywordContent);
@@ -47,6 +40,13 @@
   });
 
   whale.storage.onChanged.addListener(function(changes, namespace) {
-    console.log(changes);
+    const { keywordsOrder } = changes;
+    if (keywordsOrder) {
+      const { newValue, oldValue } = keywordsOrder;
+      if (newValue.length > oldValue.length) {
+        addKeywordLiToList(newValue[newValue.length - 1]);
+      }
+      return;
+    }
   });
 })();
