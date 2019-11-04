@@ -35,6 +35,13 @@ window.insertButton = function(keywordName) {
   document.querySelector('html').appendChild(buttonEl);
 };
 
+window.sendMessageForAddLink = (keyword, link) => {
+  whale.runtime.sendMessage({
+    type: 'ADD_LINK_TO_KEYWORD',
+    payload: { keyword, link }
+  });
+};
+
 function sendMessageForUpdateKeywords(payload) {
   whale.runtime.sendMessage({
     type: 'UPDATE_KEYWORDS',

@@ -23,16 +23,9 @@
 
     function onClickItem() {
       if (!window.isTracking) return;
-      sendMessageForAddLink(currentKeyword, result);
+      window.sendMessageForAddLink(currentKeyword, result);
     }
 
     searchResultEl.addEventListener('click', onClickItem);
   });
 })();
-
-function sendMessageForAddLink(keyword, link) {
-  whale.runtime.sendMessage({
-    type: 'ADD_LINK_TO_KEYWORD',
-    payload: { keyword, link }
-  });
-}
