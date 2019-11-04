@@ -41,19 +41,6 @@ function onclickFoldIcon(keywordLiEl) {
   });
 }
 
-function onClickTrashIcon(keywordLiEl,keywordName) {
-  const trashEl = keywordLiEl.querySelector('.trash-icon');
-
-  trashEl.addEventListener('click', () => {
-    const confirmMessage = `${keywordName} 키워드를 삭제하시겠습니까?`;
-
-    if(window.confirm(confirmMessage)) {
-      keywordLiEl.remove();
-      // TODO: storage 에서 삭제 구현 keywordName 보내
-    }
-  });
-}
-
 function getSearchButton(keywordName) {
   return `
     <ul class="search-platform">
@@ -108,7 +95,7 @@ window.getKeywordItemHTML = (keywordName, keywordInfo) => {
 
   onClickStarIcon(keywordLiEl);
   onclickFoldIcon(keywordLiEl);
-  onClickTrashIcon(keywordLiEl,keywordName);
+  window.onClickTrashIcon(keywordLiEl,keywordName);
 
   return keywordLiEl;
 };
