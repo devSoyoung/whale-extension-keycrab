@@ -22,7 +22,6 @@ whale.runtime.onMessage.addListener((msg, sender, sendRes) => {
 
 function followKeyword(keywordName) {
   whale.storage.sync.get(['keywords', 'keywordsOrder'], ({ keywords, keywordsOrder }) => {
-    console.log('keywordsOrder:', keywordsOrder);
     if (!keywords[keywordName]) {
       whale.storage.sync.set({
         keywordsOrder: keywordsOrder.concat(keywordName),
@@ -69,8 +68,6 @@ function unfollowKeyword(keywordName) {
 
 function addLinkToKeyword(keywordName, link) {
   whale.storage.sync.get(['keywords'], ({ keywords }) => {
-    // TODO: 링크 중복검사
-
     // storage.sync 가 초기화 된 경우를 고려하여 예외처리
     if (!keywords) {
       whale.storage.sync.set({

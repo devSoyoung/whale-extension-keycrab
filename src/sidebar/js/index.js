@@ -30,10 +30,8 @@
 
   // storage 변화 감지하여 사이드바 화면 업데이트
   whale.runtime.onMessage.addListener((msg, sender, sendRes) => {
-    // TODO: ID 띄어쓰기 있는 경우 수정하기 매우급함!
     const { type, payload } = msg;
     if (type === 'ADD_LINK_TO_KEYWORD') {
-      // 키워드 아래 링크 추가되는 곳
       const keywordContent = msg.payload;
       addLinkLiElToList(keywordContent);
     }
@@ -46,7 +44,6 @@
       if (newValue.length > oldValue.length) {
         addKeywordLiToList(newValue[newValue.length - 1]);
       }
-      return;
     }
   });
 })();
