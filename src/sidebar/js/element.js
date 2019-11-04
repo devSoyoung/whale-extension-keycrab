@@ -41,6 +41,40 @@ function onclickFoldIcon(keywordLiEl) {
   });
 }
 
+function onClickTrashIcon(keywordLiEl,keywordName) {
+  const trashEl = keywordLiEl.querySelector('.trash-icon');
+
+  trashEl.addEventListener('click', () => {
+    const confirmMessage = `${keywordName} 키워드를 삭제하시겠습니까?`;
+
+    if(window.confirm(confirmMessage)) {
+      keywordLiEl.remove();
+      // TODO: storage 에서 삭제 구현 keywordName 보내
+    }
+  });
+}
+
+function onClickPinIcon(keywordLiEl) {
+  const fixedPinEl = keywordLiEl.querySelector('.pin-fixed');
+  const unfixedPinEl = keywordLiEl.querySelector('.pin-unfixed');
+
+  if(!fixedPinEl || !unfixedPinEl) {
+    return;
+  }
+
+  // TODO: favorite 설정 관련 API 추가
+  fixedPinEl.addEventListener('click', () => {
+    fixedPinEl.classList.toggle('display-none');
+    unfixedPinEl.classList.toggle('display-none');
+    // favorite true > false
+  })
+  unfixedPinEl.addEventListener('click', () => {
+    fixedPinEl.classList.toggle('display-none');
+    unfixedPinEl.classList.toggle('display-none');
+    // favorite false > true
+  })
+}
+
 function getSearchButton(keywordName) {
   return `
     <ul class="search-platform">
@@ -84,10 +118,16 @@ function getKeywordItemHTML(keywordName, keywordInfo) {
        <ul class="link-list">
          ${keywordInfo ? keywordInfo.link.map(item => (
              `<li>
-                <div class="link-origin">${getOriginName(item.origin)}</div>
-                <div class="link-url">
-                  <a target="_blank" href=${item.url}>${item.title}</a>
+                <div class="pin-icon">
+                    <img src="../../../images/icon/pin_fixed2.png" class="pin-fixed display-none" alt="고정된 핀">
+                    <img src="../../../images/icon/pin_unfixed.png" class="pin-unfixed" alt="고정된 핀">
                 </div>
+                <div class="link-origin">${getOriginName(item.origin)}</div>
+                <a target="_blank" href=${item.url}>
+                    <div>
+                        ${item.title}
+                    </div>
+                </a>
              </li>`
           )).join('') : ''}
        </ul>
@@ -97,22 +137,29 @@ function getKeywordItemHTML(keywordName, keywordInfo) {
   onClickStarIcon(keywordLiEl);
   onclickFoldIcon(keywordLiEl);
   window.onClickTrashIcon(keywordLiEl, keywordName);
+  onClickPinIcon(keywordLiEl);
 
   return keywordLiEl;
 }
 
 function addLinkLiElToList(keywordContent) {
-  console.log('keywordContent:', keywordContent);
   const keywordEl = document.body.querySelector(`.keyword-item[keyword="${keywordContent.keyword}"]`);
   console.log('keywordEl:', keywordEl);
   const linkLiEl = document.createElement('li');
 
-  linkLiEl.innerHTML = `  
+  linkLiEl.innerHTML = `
+    <div class="pin-icon">
+        <img src="../../../images/icon/pin_fixed2.png" class="pin-fixed display-none" alt="고정된 핀">
+        <img src="../../../images/icon/pin_unfixed.png" class="pin-unfixed" alt="고정된 핀">
+    </div>
     <div class="link-origin">${getOriginName(keywordContent.link.origin)}</div>
-    <div class="link-url">
-      <a target="_blank" href=${keywordContent.link.url}>${keywordContent.link.title}</a>
-      </div>
+    <a target="_blank" href=${keywordContent.link.url}>
+        <div class="link-url">
+            ${keywordContent.link.title}
+        </div>
+    </a>
   `;
+  onClickPinIcon(linkLiEl);
 
   const linkListEl = keywordEl.querySelector('.link-list');
 
