@@ -2,16 +2,20 @@
 const ulEl = document.querySelector('.keyword-items-list');
 
 window.initKeywordListByType = (type, keywords, keywordsOrder) => {
+  if(Object.keys(keywords).length) {
+    checkIntroAvailabe();
+  }
+
   // 최신순/이름순 클릭했을 때를 위하여 초기화
   ulEl.innerHTML = '';
 
   if (type === 'recent') {
     keywordsOrder.reverse().forEach(keywordName => {
-      ulEl.appendChild(getKeywordItemHTML(keywordName, keywords[keywordName]));
+      ulEl.appendChild(getKeywordItemEl(keywordName, keywords[keywordName]));
     });
   } else {
     [...Object.keys(keywords)].forEach(keywordName => {
-      ulEl.appendChild(getKeywordItemHTML(keywordName, keywords[keywordName]));
+      ulEl.appendChild(getKeywordItemEl(keywordName, keywords[keywordName]));
     });
   }
 };
@@ -19,9 +23,11 @@ window.initKeywordListByType = (type, keywords, keywordsOrder) => {
 (function () {
   window.orderState = 'recent';   // recent, name
   whale.storage.sync.get(['keywords', 'keywordsOrder'], ({ keywords, keywordsOrder }) => {
+
     if (!keywords) {
       return;
     }
+
     window.initKeywordListByType(window.orderState, keywords, keywordsOrder);
   });
 
@@ -51,7 +57,7 @@ window.initKeywordListByType = (type, keywords, keywordsOrder) => {
 
     const { newValue, oldValue } = keywordsOrder;
     const keywordName = newValue[newValue.length - 1];
-    const keywordEl = getKeywordItemHTML(keywordName);
+    const keywordEl = getKeywordItemEl(keywordName);
 
     if (newValue.length > oldValue.length) {
       if (window.orderState === 'recent') {
@@ -67,6 +73,8 @@ window.initKeywordListByType = (type, keywords, keywordsOrder) => {
 
 
 function appendKeywordRecent(keywordEl) {
+  checkIntroAvailabe();
+
   if(!ulEl.childElementCount) {
     // 아직 저장된 키워드가 없을 경우
     ulEl.appendChild(keywordEl);
@@ -76,6 +84,8 @@ function appendKeywordRecent(keywordEl) {
 }
 
 function appendKeywordName(keywordName, keywordEl) {
+  checkIntroAvailabe();
+
   whale.storage.sync.get(['keywords'], ({ keywords }) => {
     const idx = [...Object.keys(keywords)].indexOf(keywordName);
     const liEls = document.querySelectorAll('.keyword-item');
@@ -88,3 +98,9 @@ function appendKeywordName(keywordName, keywordEl) {
     ulEl.insertBefore(keywordEl, liEls[idx]);
   });
 }
+window.checkIntroAvailabe = () => {
+  const introAreaEl = document.body.querySelector('#intro-area');
+  if(introAreaEl) {
+    introAreaEl.remove();
+  }
+};

@@ -36,7 +36,8 @@ function onclickFoldIcon(keywordLiEl) {
     foldEl.classList.toggle('fa-chevron-down');
     foldEl.classList.toggle('fa-chevron-up');
 
-    const linkListEl = foldEl.parentNode.parentNode.querySelector('.link-list');
+    const linkListEl = keywordLiEl.querySelector('.link-list');
+    console.log(linkListEl);
     linkListEl.classList.toggle('display-none');
   });
 }
@@ -50,6 +51,7 @@ function onClickPinIcon(keywordLiEl) {
   }
 
   // TODO: favorite 설정 관련 API 추가
+  // 메세지 전달 후 storage의 onchange 감지로 바꾸기
   fixedPinEl.addEventListener('click', () => {
     fixedPinEl.classList.toggle('display-none');
     unfixedPinEl.classList.toggle('display-none');
@@ -87,7 +89,22 @@ function getSearchButton(keywordName) {
   `;
 }
 
-function getKeywordItemHTML(keywordName, keywordInfo) {
+function getLinkLiEl(linkItem) {
+  return  `
+    <li>
+        <div class="pin-icon">
+            <img src="../../../images/icons/pin_fixed2.png" class="pin-fixed display-none" alt="고정된 핀">
+            <img src="../../../images/icons/pin_unfixed.png" class="pin-unfixed" alt="고정된 핀">
+        </div>
+        <div class="link-origin">${getOriginName(linkItem.origin)}</div>
+        <a target="_blank" href=${linkItem.url}>
+            <div class="link-url">${linkItem.title}</div>
+        </a>
+    </li>
+`
+}
+
+function getKeywordItemEl(keywordName, keywordInfo) {
   const keywordLiEl = document.createElement('li');
   keywordLiEl.className = 'keyword-item';
   keywordLiEl.id = keywordName;
@@ -103,20 +120,9 @@ function getKeywordItemHTML(keywordName, keywordInfo) {
        </div>
        ${getSearchButton(keywordName)}
        <ul class="link-list">
-         ${keywordInfo ? keywordInfo.link.map(item => (
-             `<li>
-                <div class="pin-icon">
-                    <img src="../../../images/icons/pin_fixed2.png" class="pin-fixed display-none" alt="고정된 핀">
-                    <img src="../../../images/icons/pin_unfixed.png" class="pin-unfixed" alt="고정된 핀">
-                </div>
-                <div class="link-origin">${getOriginName(item.origin)}</div>
-                <a target="_blank" href=${item.url}>
-                    <div>
-                        ${item.title}
-                    </div>
-                </a>
-             </li>`
-          )).join('') : ''}
+         ${keywordInfo ? keywordInfo.link.map(linkItem => (
+          getLinkLiEl(linkItem)
+        )).join('') : ''}
        </ul>
      </div>
   `;
@@ -134,18 +140,8 @@ function addLinkLiElToList(keywordContent) {
   console.log('keywordEl:', keywordEl);
   const linkLiEl = document.createElement('li');
 
-  linkLiEl.innerHTML = `
-    <div class="pin-icon">
-        <img src="../../../images/icons/pin_fixed2.png" class="pin-fixed display-none" alt="고정된 핀">
-        <img src="../../../images/icons/pin_unfixed.png" class="pin-unfixed" alt="고정된 핀">
-    </div>
-    <div class="link-origin">${getOriginName(keywordContent.link.origin)}</div>
-    <a target="_blank" href=${keywordContent.link.url}>
-        <div class="link-url">
-            ${keywordContent.link.title}
-        </div>
-    </a>
-  `;
+  linkLiEl.innerHTML = `${getLinkLiEl(keywordContent.link)}`;
+
   onClickPinIcon(linkLiEl);
 
   const linkListEl = keywordEl.querySelector('.link-list');
@@ -156,3 +152,4 @@ function addLinkLiElToList(keywordContent) {
     linkListEl.insertBefore(linkLiEl, linkListEl.firstChild); // 이미 자식 있는 경우 -> 맨첫번째 노드로 정렬
   }
 }
+
