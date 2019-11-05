@@ -41,19 +41,6 @@ function onclickFoldIcon(keywordLiEl) {
   });
 }
 
-function onClickTrashIcon(keywordLiEl,keywordName) {
-  const trashEl = keywordLiEl.querySelector('.trash-icon');
-
-  trashEl.addEventListener('click', () => {
-    const confirmMessage = `${keywordName} 키워드를 삭제하시겠습니까?`;
-
-    if(window.confirm(confirmMessage)) {
-      keywordLiEl.remove();
-      // TODO: storage 에서 삭제 구현 keywordName 보내
-    }
-  });
-}
-
 function onClickPinIcon(keywordLiEl) {
   const fixedPinEl = keywordLiEl.querySelector('.pin-fixed');
   const unfixedPinEl = keywordLiEl.querySelector('.pin-unfixed');
@@ -136,7 +123,7 @@ function getKeywordItemHTML(keywordName, keywordInfo) {
 
   onClickStarIcon(keywordLiEl);
   onclickFoldIcon(keywordLiEl);
-  window.onClickTrashIcon(keywordLiEl, keywordName);
+  onClickTrashIcon(keywordLiEl, keywordName);
   onClickPinIcon(keywordLiEl);
 
   return keywordLiEl;

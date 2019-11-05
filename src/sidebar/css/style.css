@@ -208,3 +208,10 @@ ul {
   word-wrap:break-word;
 }
 
+ul.keyword-items-list.search-mode > li.keyword-item {
+  display: none;
+}
+
+ul.keyword-items-list.search-mode > li.keyword-item.show {
+  display: flex;
+}
