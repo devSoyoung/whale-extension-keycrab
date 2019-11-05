@@ -2,6 +2,10 @@
 const ulEl = document.querySelector('.keyword-items-list');
 
 window.initKeywordListByType = (type, keywords, keywordsOrder) => {
+  if(Object.keys(keywords).length) {
+    checkIntroAvailabe();
+  }
+
   // 최신순/이름순 클릭했을 때를 위하여 초기화
   ulEl.innerHTML = '';
 
@@ -19,9 +23,11 @@ window.initKeywordListByType = (type, keywords, keywordsOrder) => {
 (function () {
   window.orderState = 'recent';   // recent, name
   whale.storage.sync.get(['keywords', 'keywordsOrder'], ({ keywords, keywordsOrder }) => {
+
     if (!keywords) {
       return;
     }
+
     window.initKeywordListByType(window.orderState, keywords, keywordsOrder);
   });
 
@@ -67,11 +73,7 @@ window.initKeywordListByType = (type, keywords, keywordsOrder) => {
 
 
 function appendKeywordRecent(keywordEl) {
-  // 인트로 검사
-  const introAreaEl = document.body.querySelector('#intro-area');
-  if(introAreaEl) {
-    introAreaEl.remove();
-  }
+  checkIntroAvailabe();
 
   if(!ulEl.childElementCount) {
     // 아직 저장된 키워드가 없을 경우
@@ -82,10 +84,7 @@ function appendKeywordRecent(keywordEl) {
 }
 
 function appendKeywordName(keywordName, keywordEl) {
-  const introAreaEl = document.body.querySelector('#intro-area');
-  if(introAreaEl) {
-    introAreaEl.remove();
-  }
+  checkIntroAvailabe();
 
   whale.storage.sync.get(['keywords'], ({ keywords }) => {
     const idx = [...Object.keys(keywords)].indexOf(keywordName);
@@ -99,3 +98,9 @@ function appendKeywordName(keywordName, keywordEl) {
     ulEl.insertBefore(keywordEl, liEls[idx]);
   });
 }
+window.checkIntroAvailabe = () => {
+  const introAreaEl = document.body.querySelector('#intro-area');
+  if(introAreaEl) {
+    introAreaEl.remove();
+  }
+};
