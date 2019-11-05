@@ -50,7 +50,19 @@ ul {
   margin-top: 15px;
 }
 
-.search-input {
+.content-area .search-input-area {
+  position: relative;
+}
+
+.content-area .search-input-area .search-icon {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: 21px;
+  height: 21px;
+}
+
+.content-area .search-input-area .search-input {
   background: #e6e6e6;
   border-radius: 15px;
   border: none;
