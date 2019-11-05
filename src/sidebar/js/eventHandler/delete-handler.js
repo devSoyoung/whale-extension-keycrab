@@ -12,4 +12,4 @@ function onClickTrashIcon(keywordLiEl,keywordName) {
       });
     }
   });
-};
+}

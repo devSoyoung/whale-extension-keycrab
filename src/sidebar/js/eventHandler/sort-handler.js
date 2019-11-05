@@ -1,5 +1,4 @@
 const sortButtonEls = document.querySelectorAll('.sort-button-area button');
-console.log(sortButtonEls);
 window.handleClickSortButton = (e) => {
   const type = e.target.innerText;
   if (type === '최신순') {
