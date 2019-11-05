@@ -1,4 +1,4 @@
-window.onClickTrashIcon = (keywordLiEl,keywordName) => {
+function onClickTrashIcon(keywordLiEl,keywordName) {
   const trashEl = keywordLiEl.querySelector('.trash-icon');
 
   trashEl.addEventListener('click', () => {
