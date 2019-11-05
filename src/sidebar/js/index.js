@@ -26,7 +26,10 @@ window.initKeywordListByType = (type, keywords, keywordsOrder) => {
   });
 
   // 검색창 onchange 핸들러 추가
-  document.querySelector('.search-input').addEventListener('keypress', window.handleSearchKeyword);
+  const searchInputEl = document.querySelector('.search-input');
+  searchInputEl.addEventListener('keyup', handleSearchKeyword);
+  // searchInputEl.addEventListener('focus', handleFocusSearch);
+  // searchInputEl.addEventListener('focusout', handleFocusOutSearch);
   document.querySelectorAll('.sort-button').forEach(sortButtonEl => {
     sortButtonEl.addEventListener('click', window.handleClickSortButton);
   });
