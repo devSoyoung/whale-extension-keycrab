@@ -51,6 +51,7 @@ function onClickPinIcon(keywordLiEl) {
   }
 
   // TODO: favorite 설정 관련 API 추가
+  // 메세지 전달 후 storage의 onchange 감지로 바꾸기
   fixedPinEl.addEventListener('click', () => {
     fixedPinEl.classList.toggle('display-none');
     unfixedPinEl.classList.toggle('display-none');
@@ -103,7 +104,7 @@ function getLinkLiEl(linkItem) {
 `
 }
 
-function getKeywordItemHTML(keywordName, keywordInfo) {
+function getKeywordItemEl(keywordName, keywordInfo) {
   const keywordLiEl = document.createElement('li');
   keywordLiEl.className = 'keyword-item';
   keywordLiEl.id = keywordName;

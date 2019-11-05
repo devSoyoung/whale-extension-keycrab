@@ -80,6 +80,10 @@ ul {
   color: gray;
 }
 
+.keyword-items-area .intro-area {
+
+}
+
 .keyword-items-area .keyword-items-list {
   display: flex;
   flex-direction: column;
