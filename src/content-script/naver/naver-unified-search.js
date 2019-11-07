@@ -33,5 +33,9 @@
     // 뮤직
     // 학술정보
     // 동영상
+    const videoResultEls = document.querySelectorAll(`div.sp_video.section ul>li`);
+    videoResultEls.forEach(searchResultEl => {
+        videoElementEventBinder('video',searchResultEl, currentKeyword);
+    });
     // 이미지
 })();
