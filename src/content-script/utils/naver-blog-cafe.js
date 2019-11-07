@@ -1,12 +1,12 @@
-function blogElementEventBinder(searchResultEl, currentKeyword) {
+function elementEventBinder(origin, searchResultEl, currentKeyword) {
     const titleEl = searchResultEl.querySelector('dt');
     const thumbnailEl = searchResultEl.querySelector('.thumb') || undefined;
     const urlEl = searchResultEl.querySelector('.url') || undefined;
 
-    const { title } = titleEl.querySelector('a');
+    const title = titleEl.querySelector('a').title
+        || titleEl.querySelector('a').innerText;
     const { href } = urlEl;
-
-    const result = getResultForm('blog', title, href);
+    const result = getResultForm(origin, title, href);
 
     function onClickItem() {
         if (!window.isTracking) return;

@@ -5,6 +5,6 @@
   // 검색 결과에 이벤트 리스너 달기
   const searchResultEls = document.querySelectorAll('#elThumbnailResultArea li');
   searchResultEls.forEach(searchResultEl => {
-    blogElementEventBinder(searchResultEl, currentKeyword);
+      elementEventBinder('blog', searchResultEl, currentKeyword);
   });
 })();

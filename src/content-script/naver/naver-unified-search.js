@@ -11,11 +11,15 @@
     // 블로그
     const blogResultEls = document.querySelectorAll(`div.blog.section ul.type01>li`);
     blogResultEls.forEach(searchResultEl => {
-        blogElementEventBinder(searchResultEl, currentKeyword);
+        elementEventBinder('blog',searchResultEl, currentKeyword);
     });
     // 쇼핑
     // 웹사이트
     // 카페
+    const cafeResultEls = document.querySelectorAll(`div.cafe.section ul.type01>li`);
+    cafeResultEls.forEach(searchResultEl => {
+        elementEventBinder('cafe', searchResultEl, currentKeyword);
+    });
     // 지식인
     // 포스트
     // 뮤직
