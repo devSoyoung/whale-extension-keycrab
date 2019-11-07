@@ -50,7 +50,7 @@
         "https://search.naver.com/search.naver?*where=nexearch*"
       ],
       "css": ["src/content-script/button.css"],
-      "js": ["src/content-script/common.js", "src/content-script/utils/naver-news.js", "src/content-script/utils/naver-blog-cafe.js",
+      "js": ["src/content-script/common.js", "src/content-script/utils/naver-news.js", "src/content-script/utils/naver-blog-cafe.js", "src/content-script/utils/naver-post.js",
         "src/content-script/insert-button.js", "src/content-script/naver/naver-unified-search.js"]
     },
     {

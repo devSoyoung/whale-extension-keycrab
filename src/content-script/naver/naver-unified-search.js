@@ -22,6 +22,10 @@
     });
     // 지식인
     // 포스트
+    const postResultEls = document.querySelectorAll(`div.sp_post.section ul.type01>li`);
+    postResultEls.forEach(searchResultEl => {
+        postElementEventBinder('post', searchResultEl, currentKeyword);
+    });
     // 뮤직
     // 학술정보
     // 동영상
