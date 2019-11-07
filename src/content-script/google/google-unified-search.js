@@ -1,21 +1,6 @@
 (() => {
     // 현재 구글은 통합검색에서만 지원하도록 구현
-    const isTabMenu = `${location.href}`.includes(`tbm`);
-    if (isTabMenu) return;
-
-    window.isTracking = false;
     const currentKeyword = document.querySelector('input[title = 검색]').value;
-
-    // storage 에서 키워드 추적 여부를 가져와서 버튼 삽입
-    whale.storage.sync.get([ 'keywords' ], function ({ keywords }) {
-        if (!keywords || !keywords[currentKeyword]) {
-            window.insertButton(currentKeyword, false);
-            return;
-        }
-
-        window.isTracking = keywords[currentKeyword].tracking;
-        window.insertButton(currentKeyword, isTracking);
-    });
 
     // 검색 결과에 이벤트 리스너 달기
     // 일반 검색 결과
