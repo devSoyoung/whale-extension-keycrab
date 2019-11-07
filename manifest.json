@@ -26,24 +26,46 @@
   "content_scripts": [
     {
       "matches": [
-        "https://search.naver.com/search.naver?where=post*"
+        "https://search.naver.com/search.naver?*where=post*"
       ],
       "css": ["src/content-script/button.css"],
-      "js": ["src/content-script/common.js", "src/content-script/naver/naver-blog.js"]
+      "js": ["src/content-script/common.js", "src/content-script/utils/naver-blog-cafe.js", "src/content-script/insert-button.js", "src/content-script/naver/naver-blog.js"]
     },
     {
       "matches": [
-        "https://search.naver.com/search.naver?where=article*"
+        "https://search.naver.com/search.naver?*where=article*"
       ],
       "css": ["src/content-script/button.css"],
-      "js": ["src/content-script/common.js", "src/content-script/naver/naver-cafe.js"]
+      "js": ["src/content-script/common.js", "src/content-script/utils/naver-blog-cafe.js", "src/content-script/insert-button.js", "src/content-script/naver/naver-cafe.js"]
     },
     {
       "matches": [
-        "https://search.naver.com/search.naver?where=news*"
+        "https://search.naver.com/search.naver?*where=news*"
       ],
       "css": ["src/content-script/button.css"],
-      "js": ["src/content-script/common.js", "src/content-script/naver/naver-news.js"]
+      "js": ["src/content-script/common.js","src/content-script/utils/naver-news.js", "src/content-script/insert-button.js", "src/content-script/naver/naver-news.js"]
+    },
+    {
+      "matches": [
+        "https://search.naver.com/search.naver?*where=kin*"
+      ],
+      "css": ["src/content-script/button.css"],
+      "js": ["src/content-script/common.js","src/content-script/utils/naver-kin.js", "src/content-script/insert-button.js", "src/content-script/naver/naver-kin.js"]
+    },
+    {
+      "matches": [
+        "https://search.naver.com/search.naver?*where=nexearch*"
+      ],
+      "css": ["src/content-script/button.css"],
+      "js": ["src/content-script/common.js", "src/content-script/utils/naver-news.js", "src/content-script/utils/naver-blog-cafe.js", "src/content-script/utils/naver-post.js", "src/content-script/utils/naver-kin.js",
+        "src/content-script/insert-button.js", "src/content-script/naver/naver-unified-search.js"]
+    },
+    {
+      "matches": [
+        "https://www.google.com/search?*"
+      ],
+      "css": ["src/content-script/button.css"],
+      "js": ["src/content-script/common.js", "src/content-script/insert-button.js", "src/content-script/google/google-unified-search.js"]
     }
   ],
   "permissions": [
