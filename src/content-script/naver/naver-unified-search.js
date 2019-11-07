@@ -9,6 +9,10 @@
         newsElementEventBinder(searchResultEl, currentKeyword);
     });
     // 블로그
+    const blogResultEls = document.querySelectorAll(`div.blog.section ul.type01>li`);
+    blogResultEls.forEach(searchResultEl => {
+        blogElementEventBinder(searchResultEl, currentKeyword);
+    });
     // 쇼핑
     // 웹사이트
     // 카페
