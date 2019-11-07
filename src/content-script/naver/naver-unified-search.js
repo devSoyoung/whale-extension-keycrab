@@ -14,6 +14,10 @@
         elementEventBinder('blog',searchResultEl, currentKeyword);
     });
     // 쇼핑
+    const shoppingResultEls = document.querySelectorAll(`div.sp_shop_default.section ul>li`);
+    shoppingResultEls.forEach(searchResultEl => {
+        shoppingElementEventBinder('shopping', searchResultEl, currentKeyword);
+    });
     // 웹사이트
     // 카페
     const cafeResultEls = document.querySelectorAll(`div.cafe.section ul.type01>li`);
@@ -31,7 +35,6 @@
         postElementEventBinder('post', searchResultEl, currentKeyword);
     });
     // 뮤직
-    // 학술정보
     // 동영상
     const videoResultEls = document.querySelectorAll(`div.sp_video.section ul>li`);
     videoResultEls.forEach(searchResultEl => {
