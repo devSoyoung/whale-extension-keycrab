@@ -29,7 +29,7 @@
         "https://search.naver.com/search.naver?*where=post*"
       ],
       "css": ["src/content-script/button.css"],
-      "js": ["src/content-script/common.js", "src/content-script/insert-button.js", "src/content-script/naver/naver-blog.js"]
+      "js": ["src/content-script/common.js", "src/content-script/utils/naver-blog.js", "src/content-script/insert-button.js", "src/content-script/naver/naver-blog.js"]
     },
     {
       "matches": [
@@ -50,7 +50,8 @@
         "https://search.naver.com/search.naver?*where=nexearch*"
       ],
       "css": ["src/content-script/button.css"],
-      "js": ["src/content-script/common.js","src/content-script/utils/*", "src/content-script/insert-button.js", "src/content-script/naver/naver-unified-search.js"]
+      "js": ["src/content-script/common.js", "src/content-script/utils/naver-news.js", "src/content-script/utils/naver-blog.js",
+        "src/content-script/insert-button.js", "src/content-script/naver/naver-unified-search.js"]
     },
     {
       "matches": [

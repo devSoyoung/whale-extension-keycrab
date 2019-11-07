@@ -1,6 +1,6 @@
 function newsElementEventBinder(searchResultEl, currentKeyword) {
     const titleEl = searchResultEl.querySelector('dt');
-    const title = titleEl.querySelector('a').title;
+    const { title } = titleEl.querySelector('a');
     const thumbnailEl = searchResultEl.querySelector('.thumb') || undefined;
     const relationListEl = searchResultEl.querySelector('.relation_lst') || undefined;
 
