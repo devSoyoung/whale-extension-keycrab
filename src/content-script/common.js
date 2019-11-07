@@ -65,3 +65,12 @@ function getInnerText(isTracking) {
 function getClassName(isTracking) {
   return isTracking ? 'tracking-btn tracking-btn-active' : 'tracking-btn';
 }
+
+function getResultForm(origin, title, url) {
+  return {
+    favorite: false,
+    origin: origin,
+    title: title,
+    url: url
+  }
+}

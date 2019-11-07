@@ -43,14 +43,14 @@
         "https://search.naver.com/search.naver?*where=news*"
       ],
       "css": ["src/content-script/button.css"],
-      "js": ["src/content-script/common.js", "src/content-script/insert-button.js", "src/content-script/naver/naver-news.js"]
+      "js": ["src/content-script/common.js","src/content-script/utils/naver-news.js", "src/content-script/insert-button.js", "src/content-script/naver/naver-news.js"]
     },
     {
       "matches": [
         "https://search.naver.com/search.naver?*where=nexearch*"
       ],
       "css": ["src/content-script/button.css"],
-      "js": ["src/content-script/common.js", "src/content-script/insert-button.js", "src/content-script/naver/naver-unified-search.js"]
+      "js": ["src/content-script/common.js","src/content-script/utils/*", "src/content-script/insert-button.js", "src/content-script/naver/naver-unified-search.js"]
     },
     {
       "matches": [
