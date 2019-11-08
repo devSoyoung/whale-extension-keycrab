@@ -6,19 +6,23 @@ window.insertButton = function(keywordName) {
   buttonEl.className = getClassName(window.isTracking);
 
   buttonEl.onclick = function() {
-    window.isTracking = !window.isTracking;
+    window.setButtonState(!window.isTracking);
     if (!window.isTracking) {
       sendMessageForUnfollowKeyword(keywordName);
     } else {
       sendMessageForFollowKeyword(keywordName);
     }
-
-    // 스타일과 텍스트 수정
-    buttonEl.innerText = getInnerText(window.isTracking);
-    buttonEl.className = getClassName(window.isTracking);
   };
 
   document.querySelector('html').appendChild(buttonEl);
+};
+
+window.setButtonState = function(isTracking) {
+  window.isTracking = isTracking;
+  const buttonEl = document.querySelector('.tracking-btn');
+
+  buttonEl.innerText = getInnerText(window.isTracking);
+  buttonEl.className = getClassName(window.isTracking);
 };
 
 window.sendMessageForAddLink = (keywordName, link) => {
