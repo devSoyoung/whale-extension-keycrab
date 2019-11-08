@@ -57,8 +57,8 @@ function getKeywordLiHTML(keywordName, keywordInfo) {
     <div class="keyword-item-content">
       <div class="keyword-title">${keywordName}</div>
       <div class="util-icon">
-        <i class="far fa-trash-alt grey trash-icon"></i>
-        <i class="fas fa-chevron-up grey fold-icon"></i>
+        <img src="../../../images/icons/garbage.png" alt="쓰레기통아이콘" class="trash-icon">
+        <img src="../../../images/icons/fold.png" alt="접기아이콘" class="fold-icon">
       </div>
       ${getSearchButtonHTML(keywordName)}
       <ul class="link-list">
