@@ -110,18 +110,14 @@ ul {
   margin: 10px 10px 15px 10px;
 }
 
-.keyword-items-area .keyword-items-list .keyword-item .star-icon{
+.keyword-items-area .keyword-items-list .keyword-item .bell-icon{
   margin-right: 8px;
-  font-size: 18px;
-  cursor: pointer;
+  width: 20px;
 }
 
-.keyword-items-area .keyword-items-list .keyword-item .yellow{
-  color: #ecc251;
-}
-
-.keyword-items-area .keyword-items-list .keyword-item .grey{
-  color: #666262;
+.keyword-items-area .keyword-items-list .keyword-item .bell-icon img{
+  width: 20px;
+  height: 20px;
 }
 
 .display-none{
