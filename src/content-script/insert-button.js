@@ -1,5 +1,5 @@
 (()=> {
-    const isGoogle= `${location.href}`.includes(`google`);
+    const isGoogle= `${location.href}`.split(`?`)[0].includes(`google`);
     const isTabMenu = `${location.href}`.includes(`tbm`);
     // 구글 통검 이외에는 버튼 안달기
     if (isGoogle && isTabMenu) return;

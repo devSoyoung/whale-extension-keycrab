@@ -1,6 +1,6 @@
 // 페이지에 삽입 될 키워드 추적 버튼 관리하기
 window.insertButton = function(keywordName) {
-  const isGoogle= `${location.href}`.includes(`google`);
+  const isGoogle= `${location.href}`.split(`?`)[0].includes(`google`);
   const buttonEl = document.createElement('button');
   // 추적 여부에 따라 버튼 이름, 스타일 다르게
   buttonEl.innerText = getInnerText(window.isTracking);
@@ -15,7 +15,7 @@ window.insertButton = function(keywordName) {
     }
   };
 
-  if (isGoogle) console.log(`google`);
+  if (isGoogle) document.querySelector('#searchform').appendChild(buttonEl);
   else document.querySelector('.search_area').appendChild(buttonEl);
 };
 
@@ -24,12 +24,13 @@ window.insertCrabIcon = function(isTracking, isGoogle) {
 
   crabDivEl.className = getCrabClass(isTracking, isGoogle);
 
-  document.querySelector('.search_area').appendChild(crabDivEl);
+  if (isGoogle) document.querySelector('#searchform').appendChild(crabDivEl);
+  else document.querySelector('.search_area').appendChild(crabDivEl);
 };
 
 window.setButtonState = function(isTracking) {
   window.isTracking = isTracking;
-  const isGoogle = `${location.href}`.includes(`google`);
+  const isGoogle = `${location.href}`.split(`?`)[0].includes(`google`);
   const buttonEl = document.querySelector('.tracking-btn');
   const crabIconEl = document.querySelector('.crab-area');
 

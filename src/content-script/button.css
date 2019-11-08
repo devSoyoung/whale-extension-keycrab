@@ -23,6 +23,11 @@
   top: 39px;
 }
 
+.tracking-btn-google {
+    left: 838px;
+    top: 12px;
+}
+
 .tracking-btn-active {
   color: #fc4a49;
 }
@@ -43,6 +48,12 @@
   left: 656px;
   top: 10px;
   transform: rotate(-20deg);
+}
+
+.crab-google {
+    position: absolute;
+    left: 779px;
+    top: 6px;
 }
 .crab-area-active {
   display: block;
