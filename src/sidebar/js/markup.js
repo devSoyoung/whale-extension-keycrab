@@ -79,7 +79,6 @@ function getOrderedLinkList(links) {
 }
 
 function getLinkLiHTML(linkItem) {
-  console.log(linkItem);
   return  `
     <li favorite="${linkItem.favorite}">
       <div class="pin-icon">
