@@ -36,20 +36,19 @@ function getKeywordItemEl(keywordName, keywordInfo) {
   onClickStarIcon(keywordLiEl);
   onclickFoldIcon(keywordLiEl);
   onClickTrashIcon(keywordLiEl, keywordName);
-  onClickPinIcon(keywordLiEl, keywordInfo);
-
+  addHandlerToChildEls(keywordLiEl, keywordName, keywordInfo);
   return keywordLiEl;
 }
 
 function addLinkLiElToList(keywordContent) {
-  const keywordEl = document.body.querySelector(`.keyword-item[keyword="${keywordContent.keyword}"]`);
+  const { keyword, link } = keywordContent;
+  const keywordEl = document.body.querySelector(`.keyword-item[keyword="${keyword}"]`);
   const linkLiEl = document.createElement('li');
-  linkLiEl.innerHTML = `${getLinkLiHTML(keywordContent.link)}`;
-
-  onClickPinIcon(linkLiEl);
+  linkLiEl.innerHTML = `${getLinkLiHTML(link)}`;
+  addHandlerToTargetEl(linkLiEl, keyword, link);
 
   const linkListEl = keywordEl.querySelector('.link-list');
-  if(!linkListEl.childElementCount) {
+  if (!linkListEl.childElementCount) {
     linkListEl.appendChild(linkLiEl); // 아직 저장된 키워드가 없을 경우
   } else {
     linkListEl.insertBefore(linkLiEl, linkListEl.firstChild); // 이미 자식 있는 경우 -> 맨첫번째 노드로 정렬

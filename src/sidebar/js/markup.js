@@ -61,8 +61,8 @@ function getLinkLiHTML(linkItem) {
   return  `
     <li>
       <div class="pin-icon">
-        <img src="../../../images/icons/pin_fixed2.png" class="pin-fixed display-none" alt="고정된 핀">
-        <img src="../../../images/icons/pin_unfixed.png" class="pin-unfixed" alt="고정된 핀">
+        <img src="../../../images/icons/pin_fixed2.png" class="pin-fixed ${!linkItem.favorite && 'display-none'}" alt="고정된 핀">
+        <img src="../../../images/icons/pin_unfixed.png" class="pin-unfixed ${linkItem.favorite && 'display-none'}" alt="고정된 핀">
       </div>
       <div class="link-origin">${getOriginName(linkItem.origin)}</div>
       <a target="_blank" href=${linkItem.url}>
