@@ -1,9 +1,10 @@
 // 페이지에 삽입 될 키워드 추적 버튼 관리하기
 window.insertButton = function(keywordName) {
+  const isGoogle= `${location.href}`.includes(`google`);
   const buttonEl = document.createElement('button');
   // 추적 여부에 따라 버튼 이름, 스타일 다르게
   buttonEl.innerText = getInnerText(window.isTracking);
-  buttonEl.className = getClassName(window.isTracking);
+  buttonEl.className = getClassName(window.isTracking, isGoogle);
 
   buttonEl.onclick = function() {
     window.setButtonState(!window.isTracking);
@@ -14,15 +15,28 @@ window.insertButton = function(keywordName) {
     }
   };
 
-  document.querySelector('html').appendChild(buttonEl);
+  if (isGoogle) console.log(`google`);
+  else document.querySelector('.search_area').appendChild(buttonEl);
+};
+
+window.insertCrabIcon = function(isTracking, isGoogle) {
+  const crabDivEl= document.createElement('div');
+
+  crabDivEl.className = getCrabClass(isTracking, isGoogle);
+
+  document.querySelector('.search_area').appendChild(crabDivEl);
 };
 
 window.setButtonState = function(isTracking) {
   window.isTracking = isTracking;
+  const isGoogle = `${location.href}`.includes(`google`);
   const buttonEl = document.querySelector('.tracking-btn');
+  const crabIconEl = document.querySelector('.crab-area');
 
   buttonEl.innerText = getInnerText(window.isTracking);
-  buttonEl.className = getClassName(window.isTracking);
+  buttonEl.className = getClassName(window.isTracking, isGoogle);
+  // tracking 중이면 crabIconEl 에 active 아니면 빼기
+  crabIconEl.className = getCrabClass(window.isTracking, isGoogle);
 };
 
 window.sendMessageForAddLink = (keywordName, link) => {
@@ -66,8 +80,18 @@ function getInnerText(isTracking) {
   return isTracking ? '키워드 저장해제' : '키워드 저장';
 }
 
-function getClassName(isTracking) {
-  return isTracking ? 'tracking-btn tracking-btn-active' : 'tracking-btn';
+function getClassName(isTracking, isGoogle) {
+  let result = 'tracking-btn';
+  result += isGoogle ? ' tracking-btn-google' : ' tracking-btn-naver';
+  result += isTracking ? ' tracking-btn-active' : '';
+  return result;
+}
+
+function getCrabClass(isTracking, isGoogle) {
+  let result = 'crab-area';
+  result += isGoogle ? ' crab-google' : ' crab-naver';
+  result += isTracking ? ' crab-area-active' : '';
+  return result;
 }
 
 function getResultForm(origin, title, url) {

@@ -1,9 +1,15 @@
 .tracking-btn {
-  position: fixed;
+  position: absolute;
   right: 0;
   top: 0;
   z-index: 10000;
-  color: red;
+
+
+  background: transparent;
+  border: 1px solid #e3e7ee;
+  font-size: 12px;
+  letter-spacing: -1px;
+  padding: 5px 10px 5px 9px;
 }
 
 .tracking-btn:hover {
@@ -12,6 +18,32 @@
   transition: 0.2s;
 }
 
+.tracking-btn-naver {
+  left: 700px;
+  top: 39px;
+}
+
 .tracking-btn-active {
-  color: black;
+  color: #fc4a49;
+}
+
+.crab-area {
+  display: none;
+  position: absolute;
+  z-index: 10000;
+  width: 40px;
+  height: 40px;
+
+  background: url('chrome-extension://__MSG_@@extension_id__/images/crab.png') no-repeat center center;
+  background-size: cover;
+}
+
+.crab-naver {
+  position: absolute;
+  left: 656px;
+  top: 10px;
+  transform: rotate(-20deg);
+}
+.crab-area-active {
+  display: block;
 }

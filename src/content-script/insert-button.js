@@ -14,11 +14,13 @@
     whale.storage.sync.get([ 'keywords' ], function ({ keywords }) {
         if (!keywords || !keywords[currentKeyword]) {
             window.insertButton(currentKeyword, false);
+            window.insertCrabIcon(window.isTracking, isGoogle);
             return;
         }
 
         window.isTracking = keywords[currentKeyword].tracking;
         window.insertButton(currentKeyword, isTracking);
+        window.insertCrabIcon(window.isTracking, isGoogle);
     });
 
     whale.storage.onChanged.addListener((changes, changeArea) => {
