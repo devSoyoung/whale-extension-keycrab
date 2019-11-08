@@ -13,8 +13,6 @@ function onclickBellIcon(keywordLiEl) {
   });
 }
 
-// 아래화살표 : fa-chevron-down
-// 위화살표 : fa-chevron-up
 function onclickFoldIcon(keywordLiEl) {
   const foldEl = keywordLiEl.querySelector('.fold-icon');
   foldEl.addEventListener('click', () => {
@@ -80,3 +78,30 @@ function addLinkLiToListWithNoOrder(keywordContent) {
     linkListEl.insertBefore(linkLiEl.querySelector('li'), linkListEl.firstChild); // 이미 자식 있는 경우 -> 맨첫번째 노드로 정렬
   }
 }
+
+// 벨이랑 키워드 추적 동기화
+whale.runtime.onMessage.addListener((msg, sender, sendRes) => {
+  if (msg.type === 'FOLLOW_KEYWORD') {
+    const {keywordName} = msg.payload;
+    const keywordEl = document.body.querySelector(`.keyword-item[keyword="${keywordName}"]`);
+    if(keywordEl) {
+      console.log('FOLLOW_KEYWORD',keywordEl,keywordEl.querySelector('.bell-off'),keywordEl.querySelector('.bell-on'));
+
+      keywordEl.querySelector('.bell-off').classList.remove('display-none');
+      keywordEl.querySelector('.bell-off').classList.add('display-none');
+
+      keywordEl.querySelector('.bell-on').classList.remove('display-none');
+    }
+  } else if (msg.type === 'UNFOLLOW_KEYWORD') {
+    const {keywordName} = msg.payload;
+    const keywordEl = document.body.querySelector(`.keyword-item[keyword="${keywordName}"]`);
+
+    if(keywordEl) {
+      console.log('UNFOLLOW_KEYWORD',keywordEl,keywordEl.querySelector('bell-off'),keywordEl.querySelector('.bell-on'));
+      keywordEl.querySelector('.bell-on').classList.remove('display-none');
+      keywordEl.querySelector('.bell-on').classList.add('display-none');
+
+      keywordEl.querySelector('.bell-off').classList.remove('display-none');
+    }
+  }
+})
