@@ -101,6 +101,6 @@ function appendKeywordName(keywordName, keywordEl) {
 window.checkIntroAvailabe = () => {
   const introAreaEl = document.body.querySelector('#intro-area');
   if(introAreaEl) {
-    introAreaEl.remove();
+    introAreaEl.classList.add('display-none');
   }
 };

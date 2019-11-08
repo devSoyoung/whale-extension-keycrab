@@ -6,6 +6,16 @@ function getOriginName(type) {
       return '블로그';
     case 'cafe':
       return '카페';
+    case 'shopping':
+      return '쇼핑';
+    case 'kin':
+      return '지식';
+    case 'post':
+      return '포스트';
+    case 'vedio':
+      return '비디오';
+    case 'news':
+      return '뉴스';
     case 'google':
       return '구글';
     default:
@@ -69,6 +79,7 @@ function getOrderedLinkList(links) {
 }
 
 function getLinkLiHTML(linkItem) {
+  console.log(linkItem);
   return  `
     <li favorite="${linkItem.favorite}">
       <div class="pin-icon">
