@@ -41,6 +41,7 @@ function getKeywordItemEl(keywordName, keywordInfo) {
 }
 
 function addLinkLiElToList(keywordContent) {
+  console.log('addLinkLiElToList called');
   const { keyword, link } = keywordContent;
   const keywordEl = document.body.querySelector(`.keyword-item[keyword="${keyword}"]`);
   const linkLiEl = document.createElement('li');
@@ -49,9 +50,34 @@ function addLinkLiElToList(keywordContent) {
 
   const linkListEl = keywordEl.querySelector('.link-list');
   if (!linkListEl.childElementCount) {
-    linkListEl.appendChild(linkLiEl); // 아직 저장된 키워드가 없을 경우
+    linkListEl.appendChild(linkLiEl.querySelector('li')); // 아직 저장된 키워드가 없을 경우
   } else {
-    linkListEl.insertBefore(linkLiEl, linkListEl.firstChild); // 이미 자식 있는 경우 -> 맨첫번째 노드로 정렬
+    if (link.favorite) {
+      linkListEl.insertBefore(linkLiEl.querySelector('li'), linkListEl.firstChild); // 이미 자식 있는 경우 -> 맨첫번째 노드로 정렬
+      return;
+    }
+
+    const pinnedEl = linkListEl.querySelector('li[favorite="false"]');
+    console.log(pinnedEl);
+    if (!pinnedEl) {
+      linkListEl.appendChild(linkLiEl.querySelector('li'));
+      return;
+    }
+    linkListEl.insertBefore(linkLiEl.querySelector('li'), pinnedEl);
   }
 }
 
+function addLinkLiToListWithNoOrder(keywordContent) {
+  const { keyword, link } = keywordContent;
+  const keywordEl = document.body.querySelector(`.keyword-item[keyword="${keyword}"]`);
+  const linkLiEl = document.createElement('li');
+  linkLiEl.innerHTML = `${getLinkLiHTML(link)}`;
+  addHandlerToTargetEl(linkLiEl, keyword, link);
+
+  const linkListEl = keywordEl.querySelector('.link-list');
+  if (!linkListEl.childElementCount) {
+    linkListEl.appendChild(linkLiEl.querySelector('li')); // 아직 저장된 키워드가 없을 경우
+  } else {
+    linkListEl.insertBefore(linkLiEl.querySelector('li'), linkListEl.firstChild); // 이미 자식 있는 경우 -> 맨첫번째 노드로 정렬
+  }
+}

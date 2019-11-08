@@ -49,17 +49,25 @@ function getKeywordLiHTML(keywordName, keywordInfo) {
       </div>
       ${getSearchButtonHTML(keywordName)}
       <ul class="link-list">
-        ${keywordInfo ? keywordInfo.link.map(linkItem => (
-          getLinkLiHTML(linkItem)
-        )).join('') : ''}
+        ${keywordInfo ? (
+          getOrderedLinkList(keywordInfo.link).map(linkItem => (
+            getLinkLiHTML(linkItem)
+          )).join('')
+        ) : ''}
       </ul>
     </div>
   `;
 }
 
+function getOrderedLinkList(links) {
+  const pinnedLink = links.filter(link => link.favorite);
+  const unpinnedLink = links.filter(link => !link.favorite);
+  return unpinnedLink.concat(pinnedLink).reverse();
+}
+
 function getLinkLiHTML(linkItem) {
   return  `
-    <li>
+    <li favorite="${linkItem.favorite}">
       <div class="pin-icon">
         <img src="../../../images/icons/pin_fixed2.png" class="pin-fixed ${!linkItem.favorite && 'display-none'}" alt="고정된 핀">
         <img src="../../../images/icons/pin_unfixed.png" class="pin-unfixed ${linkItem.favorite && 'display-none'}" alt="고정된 핀">

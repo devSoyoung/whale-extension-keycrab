@@ -70,6 +70,6 @@ function rearrangeLinkEls(keywordName, newLinkOrder) {
   const favoriteEl = newLinkOrder.filter(linkItem => linkItem.favorite);
   const unfavoriteEl = newLinkOrder.filter(linkItem => !linkItem.favorite);
   unfavoriteEl.concat(favoriteEl).forEach(item => {
-    addLinkLiElToList({ keyword: keywordName, link: item });
+    addLinkLiToListWithNoOrder({ keyword: keywordName, link: item });
   })
 }
