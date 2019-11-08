@@ -6,13 +6,17 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=McLaren&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/4fcb81092f.js" crossorigin="anonymous"></script>
   <title>Keycrab</title>
 </head>
 
 <body>
   <div class="title-area">
-    <h1 class="title"><strong>key</strong>crab <span class="sub-title">스마트한 웹 서핑 도우미</span></h1>
+    <img class="logo-img" alt="logo-icon" src="../../images/crab.png">
+    <h1 class="title">
+      <strong>key</strong>crab <span class="sub-title">스마트한 웹 서핑 도우미</span>
+    </h1>
   </div>
   <div class="content-area">
     <div class="search-input-area">
@@ -24,10 +28,12 @@
       <button class="sort-button">이름순</button>
     </div>
     <div class="keyword-items-area">
-      <div id="intro-area">최초화면임니댱</div>
-      <ul class="keyword-items-list">
-
-      </ul>
+      <div id="intro-area">
+        <img src="../../images/empty.png" alt="키워드를 추가하세요."/>
+        저장된 키워드가 없습니다.<br/>
+        자주 보고 싶은 키워드를 저장해보세요 :)
+      </div>
+      <ul class="keyword-items-list"></ul>
     </div>
   </div>
   <script src="js/eventHandler/search-handler.js"></script>
