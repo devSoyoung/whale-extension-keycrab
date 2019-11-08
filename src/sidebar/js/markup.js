@@ -40,12 +40,15 @@ function getSearchButtonHTML(keywordName) {
 
 function getKeywordLiHTML(keywordName, keywordInfo) {
   return `
-    <i class="far fa-star star-icon grey"></i>
+    <div class="bell-icon">
+        <img src="../../../images/icons/bell_off.png" alt="꺼진벨" class="bell-off ">
+        <img src="../../../images/icons/bell_on.png" alt="켜진벨" class="bell-on display-none">
+    </div>
     <div class="keyword-item-content">
       <div class="keyword-title">${keywordName}</div>
       <div class="util-icon">
         <i class="far fa-trash-alt grey trash-icon"></i>
-        <i class="fas fa-chevron-down grey fold-icon"></i>
+        <i class="fas fa-chevron-up grey fold-icon"></i>
       </div>
       ${getSearchButtonHTML(keywordName)}
       <ul class="link-list">
