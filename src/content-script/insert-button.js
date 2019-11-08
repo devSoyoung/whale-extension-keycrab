@@ -1,5 +1,5 @@
 (()=> {
-    const isGoogle= `${location.href}`.includes(`google`);
+    const isGoogle= `${location.href}`.split(`?`)[0].includes(`google`);
     const isTabMenu = `${location.href}`.includes(`tbm`);
     // 구글 통검 이외에는 버튼 안달기
     if (isGoogle && isTabMenu) return;
@@ -14,17 +14,20 @@
     whale.storage.sync.get([ 'keywords' ], function ({ keywords }) {
         if (!keywords || !keywords[currentKeyword]) {
             window.insertButton(currentKeyword, false);
+            window.insertCrabIcon(window.isTracking, isGoogle);
             return;
         }
 
         window.isTracking = keywords[currentKeyword].tracking;
         window.insertButton(currentKeyword, isTracking);
+        window.insertCrabIcon(window.isTracking, isGoogle);
     });
 
     whale.storage.onChanged.addListener((changes, changeArea) => {
         if (changeArea === 'sync') {
             const newValue = changes.keywords.newValue || undefined;
-            if (newValue) window.setButtonState(newValue[currentKeyword]['tracking']);
+            if (!newValue[currentKeyword]) window.setButtonState(false);
+            else window.setButtonState(newValue[currentKeyword]['tracking']);
         }
     });
 })();
