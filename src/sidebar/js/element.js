@@ -18,8 +18,7 @@ function onclickBellIcon(keywordLiEl) {
 function onclickFoldIcon(keywordLiEl) {
   const foldEl = keywordLiEl.querySelector('.fold-icon');
   foldEl.addEventListener('click', () => {
-    foldEl.classList.toggle('fa-chevron-down');
-    foldEl.classList.toggle('fa-chevron-up');
+    foldEl.classList.toggle('unfold-active');
 
     const linkListEl = keywordLiEl.querySelector('.link-list');
     linkListEl.classList.toggle('display-none');

@@ -155,7 +155,15 @@ ul {
   cursor: pointer;
   width: 17px;
   height: 17px;
+
 }
+
+.keyword-items-list .keyword-item .util-icon .unfold-active{
+  transform: rotate( 180deg );
+  -webkit-transform: rotate(180deg);
+  /*transition: all ease 0.3s;*/
+}
+
 
 .keyword-items-list .keyword-item .search-platform {
   display: flex;
