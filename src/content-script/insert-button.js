@@ -20,4 +20,11 @@
         window.isTracking = keywords[currentKeyword].tracking;
         window.insertButton(currentKeyword, isTracking);
     });
+
+    whale.storage.onChanged.addListener((changes, changeArea) => {
+        if (changeArea === 'sync') {
+            const newValue = changes.keywords.newValue || undefined;
+            if (newValue) window.setButtonState(newValue[currentKeyword]['tracking']);
+        }
+    });
 })();
