@@ -10,6 +10,11 @@ function onClickTrashIcon(keywordLiEl,keywordName) {
         type: 'REMOVE_KEYWORD',
         payload: { keywordName }
       });
+
+      const keywordItemAreaEl = document.body.querySelector('.keyword-items-area');
+      if(!keywordItemAreaEl.querySelector('.keyword-items-list').childElementCount) {
+        keywordItemAreaEl.querySelector('#intro-area').classList.remove('display-none');
+      }
     }
   });
 }

@@ -1,25 +1,24 @@
-// 즐겨찾기 안한 별 : far fa-star grey
-// 즐겨찾기 한 별 : fas fa-star yellow
-function onClickStarIcon(keywordLiEl) {
-  const starEl = keywordLiEl.querySelector('.star-icon');
+function onclickBellIcon(keywordLiEl) {
+  const bellOnIconEl = keywordLiEl.querySelector('.bell-on');
+  const bellOffIconEl = keywordLiEl.querySelector('.bell-off');
 
-  starEl.addEventListener('click', () => {
-    starEl.classList.toggle('fas');
-    starEl.classList.toggle('yellow');
+  bellOnIconEl.addEventListener('click', () => {
+    bellOnIconEl.classList.toggle('display-none');
+    bellOffIconEl.classList.toggle('display-none');
+  });
 
-    starEl.classList.toggle('grey');
-    starEl.classList.toggle('far');
-  })
+  bellOffIconEl.addEventListener('click', () => {
+    bellOnIconEl.classList.toggle('display-none');
+    bellOffIconEl.classList.toggle('display-none');
+  });
 }
 
 // 아래화살표 : fa-chevron-down
 // 위화살표 : fa-chevron-up
 function onclickFoldIcon(keywordLiEl) {
   const foldEl = keywordLiEl.querySelector('.fold-icon');
-
   foldEl.addEventListener('click', () => {
-    foldEl.classList.toggle('fa-chevron-down');
-    foldEl.classList.toggle('fa-chevron-up');
+    foldEl.classList.toggle('unfold-active');
 
     const linkListEl = keywordLiEl.querySelector('.link-list');
     linkListEl.classList.toggle('display-none');
@@ -33,7 +32,7 @@ function getKeywordItemEl(keywordName, keywordInfo) {
   keywordLiEl.setAttribute('keyword', keywordName);
   keywordLiEl.innerHTML = getKeywordLiHTML(keywordName, keywordInfo);
 
-  onClickStarIcon(keywordLiEl);
+  onclickBellIcon(keywordLiEl);
   onclickFoldIcon(keywordLiEl);
   onClickTrashIcon(keywordLiEl, keywordName);
   addHandlerToChildEls(keywordLiEl, keywordName, keywordInfo);

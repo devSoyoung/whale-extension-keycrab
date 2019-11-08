@@ -6,6 +6,16 @@ function getOriginName(type) {
       return '블로그';
     case 'cafe':
       return '카페';
+    case 'shopping':
+      return '쇼핑';
+    case 'kin':
+      return '지식';
+    case 'post':
+      return '포스트';
+    case 'vedio':
+      return '비디오';
+    case 'news':
+      return '뉴스';
     case 'google':
       return '구글';
     default:
@@ -40,12 +50,15 @@ function getSearchButtonHTML(keywordName) {
 
 function getKeywordLiHTML(keywordName, keywordInfo) {
   return `
-    <i class="far fa-star star-icon grey"></i>
+    <div class="bell-icon">
+        <img src="../../../images/icons/bell_off.png" alt="꺼진벨" class="bell-off ">
+        <img src="../../../images/icons/bell_on.png" alt="켜진벨" class="bell-on display-none">
+    </div>
     <div class="keyword-item-content">
       <div class="keyword-title">${keywordName}</div>
       <div class="util-icon">
-        <i class="far fa-trash-alt grey trash-icon"></i>
-        <i class="fas fa-chevron-down grey fold-icon"></i>
+        <img src="../../../images/icons/garbage.png" alt="쓰레기통아이콘" class="trash-icon">
+        <img src="../../../images/icons/fold.png" alt="접기아이콘" class="fold-icon">
       </div>
       ${getSearchButtonHTML(keywordName)}
       <ul class="link-list">
