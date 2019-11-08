@@ -19,6 +19,10 @@
         shoppingElementEventBinder('shopping', searchResultEl, currentKeyword);
     });
     // 웹사이트
+    const webResultEls = document.querySelectorAll(`div.sp_website.section ul.type01>li`);
+    webResultEls.forEach(searchResultEl => {
+        kinElementEventBinder('website', searchResultEl, currentKeyword);
+    });
     // 카페
     const cafeResultEls = document.querySelectorAll(`div.cafe.section ul.type01>li`);
     cafeResultEls.forEach(searchResultEl => {
