@@ -49,6 +49,11 @@ function getSearchButtonHTML(keywordName) {
 }
 
 function getKeywordLiHTML(keywordName, keywordInfo) {
+  // 새 키워드 추가 될 때, keywordInfo 안 보내주는 것 예외처리
+  if (!keywordInfo) {
+    keywordInfo = { tracking: true };
+  }
+
   return `
     <div class="bell-icon">
         <img src="../../../images/icons/bell_off.png" alt="꺼진벨" class="bell-off ${keywordInfo.tracking && 'display-none'}">
@@ -73,6 +78,9 @@ function getKeywordLiHTML(keywordName, keywordInfo) {
 }
 
 function getOrderedLinkList(links) {
+  if (!links) {
+    return [];
+  }
   const pinnedLink = links.filter(link => link.favorite);
   const unpinnedLink = links.filter(link => !link.favorite);
   return unpinnedLink.concat(pinnedLink).reverse();

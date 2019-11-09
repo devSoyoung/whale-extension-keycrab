@@ -40,7 +40,7 @@ window.initKeywordListByType = (type, keywords, keywordsOrder) => {
     sortButtonEl.addEventListener('click', window.handleClickSortButton);
   });
 
-  // storage 변화 감지하여 사이드바 화면 업데이트
+  // storage 변화 감지하여 사이드바 키워드의 "링크" 업데이트
   whale.runtime.onMessage.addListener((msg, sender, sendRes) => {
     const { type, payload } = msg;
     if (type === 'ADD_LINK_TO_KEYWORD') {
@@ -50,6 +50,7 @@ window.initKeywordListByType = (type, keywords, keywordsOrder) => {
   });
 
   whale.storage.onChanged.addListener(function(changes, namespace) {
+    // 키워드 순서에 변화: 새로운 "키워드" 추가되는 것
     const { keywordsOrder } = changes;
     if (!keywordsOrder) {
       return;
