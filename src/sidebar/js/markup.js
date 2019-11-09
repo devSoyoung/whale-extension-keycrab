@@ -51,8 +51,8 @@ function getSearchButtonHTML(keywordName) {
 function getKeywordLiHTML(keywordName, keywordInfo) {
   return `
     <div class="bell-icon">
-        <img src="../../../images/icons/bell_off.png" alt="꺼진벨" class="bell-off display-none">
-        <img src="../../../images/icons/bell_on.png" alt="켜진벨" class="bell-on">
+        <img src="../../../images/icons/bell_off.png" alt="꺼진벨" class="bell-off ${keywordInfo.tracking && 'display-none'}">
+        <img src="../../../images/icons/bell_on.png" alt="켜진벨" class="bell-on ${!keywordInfo.tracking && 'display-none'}">
     </div>
     <div class="keyword-item-content">
       <div class="keyword-title">${keywordName}</div>

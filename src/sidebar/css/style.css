@@ -57,7 +57,7 @@ ul {
 }
 
 .content-area {
-  padding: 0 10px;
+  padding: 0 5px;
   margin-top: 10px;
 }
 
@@ -136,7 +136,7 @@ ul {
   display: flex;
   flex-direction: row;
   position: relative;
-  margin: 10px 10px 15px 10px;
+  margin: 5px 5px 10px 5px;
 }
 
 .keyword-items-area .keyword-items-list .keyword-item .bell-icon{
@@ -145,8 +145,8 @@ ul {
 }
 
 .keyword-items-area .keyword-items-list .keyword-item .bell-icon img{
-  width: 20px;
-  height: 20px;
+  width: 17px;
+  height: 17px;
 }
 
 .display-none{
@@ -164,6 +164,7 @@ ul {
   white-space: nowrap;
   word-wrap:break-word;
   height: 19px;
+  cursor: default;
 }
 
 .keyword-items-list .keyword-item .util-icon {
@@ -175,16 +176,20 @@ ul {
 
 .keyword-items-list .keyword-item .util-icon .trash-icon{
   cursor: pointer;
-  width: 17px;
-  height: 17px;
+  width: 15px;
+  height: 15px;
 }
 
 .keyword-items-list .keyword-item .util-icon .fold-icon{
   margin-left: 10px;
   cursor: pointer;
-  width: 17px;
-  height: 17px;
+  width: 15px;
+  height: 15px;
+}
 
+.fold-icon:hover, .trash-icon:hover {
+  transform: scale(1.15);
+  transition: 0.2s;
 }
 
 .keyword-items-list .keyword-item .util-icon .unfold-active{
@@ -270,6 +275,11 @@ ul {
   overflow: hidden;
   white-space: nowrap;
   word-wrap:break-word;
+}
+
+.link-url:hover {
+  opacity: 0.6;
+  transition: 0.2s;
 }
 
 ul.keyword-items-list.search-mode > li.keyword-item {
