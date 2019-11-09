@@ -238,7 +238,19 @@ ul {
 .keyword-items-list .keyword-item .link-list {
   display: flex;
   flex-direction: column;
+
+  max-height: 23vh;
+  overflow-y: auto;
 }
+
+.keyword-items-list .keyword-item .link-list {
+  display: flex;
+  flex-direction: column;
+
+  max-height: 23vh;
+  overflow-y: auto;
+}
+
 
 .keyword-items-list .keyword-item .link-list li{
   display: flex;
