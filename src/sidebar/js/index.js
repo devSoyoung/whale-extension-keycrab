@@ -105,3 +105,16 @@ window.checkIntroAvailabe = () => {
     introAreaEl.classList.add('display-none');
   }
 };
+
+// 사이드바로 드래그앤 드롭해 페이지 전환 막기
+window.addEventListener(`dragover`, (evt = event) => {
+  evt.preventDefault();
+  evt.dataTransfer.effectAllowed = `none`;
+  evt.dataTransfer.dropEffect = `none`;
+}, false);
+
+window.addEventListener(`drop`, (evt = event) => {
+  evt.preventDefault();
+  evt.dataTransfer.effectAllowed = `none`;
+  evt.dataTransfer.dropEffect = `none`;
+}, false);
