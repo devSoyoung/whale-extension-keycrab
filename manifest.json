@@ -1,9 +1,9 @@
 {
   "manifest_version": 2,
-  "name": "키크랩",
+  "name": "키크랩 - Keycrab",
   "version": "1.0.0",
 
-  "description": "키워드 스크랩으로 더 나은 웹서핑을 경험 할 수 있게 도와주는 웨일 확장앱입니다.",
+  "description": "키워드 저장으로 스마트한 웹 서핑을 도와주는 확장앱입니다.",
   "icons": {
     "64": "images/icon16.png"
   },
@@ -13,7 +13,7 @@
     "default_icon": {
       "64": "images/icon16.png"
     },
-    "default_title": "Keycrab",
+    "default_title": "키크랩 - Keycrab",
     "use_navigation_bar": false
   },
 

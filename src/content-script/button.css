@@ -18,6 +18,10 @@
   transition: 0.2s;
 }
 
+.tracking-btn:focus {
+  outline: 0;
+}
+
 .tracking-btn-naver {
   left: 700px;
   top: 39px;

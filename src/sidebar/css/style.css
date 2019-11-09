@@ -294,7 +294,8 @@ ul.keyword-items-list.search-mode > li.keyword-item.show {
 }
 
 .sub-title {
-  font-size: 11px;
+  font-family: 'NanumSquare', sans-serif;
+  font-size: 12px;
   font-weight: 300;
   letter-spacing: -0.8px;
   color: gray;
