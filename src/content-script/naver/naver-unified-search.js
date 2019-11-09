@@ -14,7 +14,7 @@
         elementEventBinder('blog',searchResultEl, currentKeyword);
     });
     // 쇼핑
-    const shoppingResultEls = document.querySelectorAll(`div.sp_shop_default.section ul>li`);
+    const shoppingResultEls = document.querySelectorAll(`div.sp_shop_default.section .group_guide ul>li`);
     shoppingResultEls.forEach(searchResultEl => {
         shoppingElementEventBinder('shopping', searchResultEl, currentKeyword);
     });
