@@ -1,17 +1,4 @@
-function onclickBellIcon(keywordLiEl) {
-  const bellOnIconEl = keywordLiEl.querySelector('.bell-on');
-  const bellOffIconEl = keywordLiEl.querySelector('.bell-off');
 
-  bellOnIconEl.addEventListener('click', () => {
-    bellOnIconEl.classList.toggle('display-none');
-    bellOffIconEl.classList.toggle('display-none');
-  });
-
-  bellOffIconEl.addEventListener('click', () => {
-    bellOnIconEl.classList.toggle('display-none');
-    bellOffIconEl.classList.toggle('display-none');
-  });
-}
 
 function onclickFoldIcon(keywordLiEl) {
   const foldEl = keywordLiEl.querySelector('.fold-icon');
@@ -30,7 +17,7 @@ function getKeywordItemEl(keywordName, keywordInfo) {
   keywordLiEl.setAttribute('keyword', keywordName);
   keywordLiEl.innerHTML = getKeywordLiHTML(keywordName, keywordInfo);
 
-  onclickBellIcon(keywordLiEl);
+  onClickBellIcon(keywordLiEl, keywordName);
   onclickFoldIcon(keywordLiEl);
   onClickTrashIcon(keywordLiEl, keywordName);
   addHandlerToChildEls(keywordLiEl, keywordName, keywordInfo);

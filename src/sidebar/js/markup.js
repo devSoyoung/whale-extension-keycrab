@@ -9,13 +9,15 @@ function getOriginName(type) {
     case 'shopping':
       return '쇼핑';
     case 'kin':
-      return '지식IN';
+      return '지식iN';
     case 'post':
       return '포스트';
-    case 'vedio':
-      return '비디오';
+    case 'video':
+      return '동영상';
     case 'news':
       return '뉴스';
+    case 'website':
+      return '사이트';
     case 'google':
       return '구글';
     default:
