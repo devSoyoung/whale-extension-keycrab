@@ -15,6 +15,7 @@
 .tracking-btn:hover {
   cursor: pointer;
   color: gray;
+  border: 1px solid #e3e7ee;
   transition: 0.2s;
 }
 
@@ -34,6 +35,7 @@
 
 .tracking-btn-active {
   color: #fc4a49;
+  border-color: #fc4a49;
 }
 
 .crab-area {

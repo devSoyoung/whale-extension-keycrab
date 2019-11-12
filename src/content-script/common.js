@@ -84,7 +84,7 @@ function getInnerText(isTracking) {
 function getClassName(isTracking, isGoogle) {
   let result = 'tracking-btn';
   result += isGoogle ? ' tracking-btn-google' : ' tracking-btn-naver';
-  result += isTracking ? ' tracking-btn-active' : '';
+  result += isTracking ? '' : ' tracking-btn-active';
   return result;
 }
 
