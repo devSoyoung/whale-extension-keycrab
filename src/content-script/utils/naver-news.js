@@ -26,7 +26,6 @@ function thumbnailHandler (thumbnailEl, title, currentKeyword) {
 
 function listHandler (relationListEl, currentKeyword) {
     const listEls = relationListEl.querySelectorAll('li');
-    console.log(listEls);
     listEls.forEach(listEl => {
         const listTitleLink = listEl.querySelector('a');
         const title = listTitleLink.title;
