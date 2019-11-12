@@ -4,9 +4,9 @@
   // 웹사이트
   if (classList.includes('tabsch_website')) {
     const currentKeyword = document.querySelector('#nx_query').value;
-    const videoResultEls = document.querySelectorAll(`div.sp_video.section ul>li`);
-    videoResultEls.forEach(searchResultEl => {
-      videoElementEventBinder('video',searchResultEl, currentKeyword);
+    const webResultEls = document.querySelectorAll(`div.sp_website.section ul.type01>li`);
+    webResultEls.forEach(searchResultEl => {
+      kinElementEventBinder('website', searchResultEl, currentKeyword);
     });
     return;
   }
