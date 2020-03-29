@@ -57,6 +57,7 @@ function addLinkLiToListWithNoOrder(keywordContent) {
   const linkLiEl = document.createElement('li');
   linkLiEl.innerHTML = `${getLinkLiHTML(link)}`;
   addHandlerToTargetEl(linkLiEl, keyword, link);
+  addRemoverToLink(linkLiEl, keyword);
 
   const linkListEl = keywordEl.querySelector('.link-list');
   if (!linkListEl.childElementCount) {
