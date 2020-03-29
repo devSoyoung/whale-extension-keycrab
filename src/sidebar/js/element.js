@@ -25,7 +25,6 @@ function getKeywordItemEl(keywordName, keywordInfo) {
 }
 
 function addLinkLiElToList(keywordContent) {
-  console.log('addLinkLiElToList called');
   const { keyword, link } = keywordContent;
   const keywordEl = document.body.querySelector(`.keyword-item[keyword="${keyword}"]`);
   const linkLiEl = document.createElement('li');
@@ -42,7 +41,6 @@ function addLinkLiElToList(keywordContent) {
     }
 
     const pinnedEl = linkListEl.querySelector('li[favorite="false"]');
-    console.log(pinnedEl);
     if (!pinnedEl) {
       linkListEl.appendChild(linkLiEl.querySelector('li'));
       return;
@@ -72,8 +70,6 @@ whale.runtime.onMessage.addListener((msg, sender, sendRes) => {
     const {keywordName} = msg.payload;
     const keywordEl = document.body.querySelector(`.keyword-item[keyword="${keywordName}"]`);
     if(keywordEl) {
-      console.log('FOLLOW_KEYWORD',keywordEl,keywordEl.querySelector('.bell-off'),keywordEl.querySelector('.bell-on'));
-
       keywordEl.querySelector('.bell-off').classList.remove('display-none');
       keywordEl.querySelector('.bell-off').classList.add('display-none');
 
@@ -84,7 +80,6 @@ whale.runtime.onMessage.addListener((msg, sender, sendRes) => {
     const keywordEl = document.body.querySelector(`.keyword-item[keyword="${keywordName}"]`);
 
     if(keywordEl) {
-      console.log('UNFOLLOW_KEYWORD',keywordEl,keywordEl.querySelector('bell-off'),keywordEl.querySelector('.bell-on'));
       keywordEl.querySelector('.bell-on').classList.remove('display-none');
       keywordEl.querySelector('.bell-on').classList.add('display-none');
 
