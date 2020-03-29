@@ -99,7 +99,7 @@ function getLinkLiHTML(linkItem) {
       <a target="_blank" href=${linkItem.url}>
         <div class="link-url">${linkItem.title}</div>
       </a>
-      <button>x</button>
+      <button class="link-delete-button"><i class="far fa-times-circle"></i></button>
     </li>
   `;
 }

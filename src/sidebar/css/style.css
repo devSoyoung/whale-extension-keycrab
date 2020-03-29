@@ -6,6 +6,7 @@ body		{ font-family: 'NanumSquare', sans-serif; margin: 0; }
 
 input:focus {outline:none;}
 button:focus {outline:none;}
+button {cursor: pointer;}
 
 a {
   color: black;
@@ -320,6 +321,17 @@ ul {
 .link-url:hover {
   opacity: 0.6;
   transition: 0.2s;
+}
+
+.link-list li button.link-delete-button {
+  padding-top: 0;
+  border: none;
+  font-size: 14px;
+  color: #ececec;
+}
+
+.link-list li:hover button.link-delete-button {
+  color: #f94e3f;
 }
 
 ul.keyword-items-list.search-mode > li.keyword-item {
