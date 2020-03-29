@@ -20,7 +20,7 @@ function getKeywordItemEl(keywordName, keywordInfo) {
   onClickBellIcon(keywordLiEl, keywordName);
   onclickFoldIcon(keywordLiEl);
   onClickTrashIcon(keywordLiEl, keywordName);
-  onClickLinkRemoveButton(keywordLiEl, keywordName, keywordInfo);
+  addRemoverToLinks(keywordLiEl, keywordName, keywordInfo);
   addHandlerToChildEls(keywordLiEl, keywordName, keywordInfo);
   return keywordLiEl;
 }
@@ -31,6 +31,7 @@ function addLinkLiElToList(keywordContent) {
   const linkLiEl = document.createElement('li');
   linkLiEl.innerHTML = `${getLinkLiHTML(link)}`;
   addHandlerToTargetEl(linkLiEl, keyword, link);
+  addRemoverToLink(linkLiEl, keyword);
 
   const linkListEl = keywordEl.querySelector('.link-list');
   if (!linkListEl.childElementCount) {
