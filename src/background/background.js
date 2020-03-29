@@ -1,8 +1,11 @@
-whale.runtime.onInstalled.addListener(() => {
-  whale.storage.sync.set({
-    keywords: {},
-    keywordsOrder: [],
-  });
+whale.runtime.onInstalled.addListener((installInfo) => {
+  const {reason} = installInfo;
+  if(reason === 'install') {
+    whale.storage.sync.set({
+      keywords: {},
+      keywordsOrder: [],
+    });
+  }
 });
 
 whale.runtime.onMessage.addListener((msg, sender, sendRes) => {
