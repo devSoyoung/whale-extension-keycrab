@@ -20,6 +20,7 @@ function getKeywordItemEl(keywordName, keywordInfo) {
   onClickBellIcon(keywordLiEl, keywordName);
   onclickFoldIcon(keywordLiEl);
   onClickTrashIcon(keywordLiEl, keywordName);
+  onClickLinkRemoveButton(keywordLiEl, keywordName, keywordInfo);
   addHandlerToChildEls(keywordLiEl, keywordName, keywordInfo);
   return keywordLiEl;
 }
