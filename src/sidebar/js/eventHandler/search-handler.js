@@ -11,7 +11,6 @@ function handleSearchKeyword(e) {
 
   whale.storage.sync.get(['keywords'], ({ keywords }) => {
     const result = [...Object.keys(keywords)].filter(keyword => keyword.includes(searchKeyword));
-    console.log('result:', result);
     document.querySelectorAll('.keyword-item').forEach(el => {
       const found = result.find(item => item === el.getAttribute('keyword'));
       if (found) {

@@ -1,14 +1,21 @@
-whale.runtime.onInstalled.addListener(() => {
-  whale.storage.sync.set({
-    keywords: {},
-    keywordsOrder: [],
-  });
+whale.runtime.onInstalled.addListener((installInfo) => {
+  const {reason} = installInfo;
+  if(reason === 'install') {
+    whale.storage.sync.set({
+      keywords: {},
+      keywordsOrder: [],
+    });
+  }
 });
 
 whale.runtime.onMessage.addListener((msg, sender, sendRes) => {
   if (msg.type === 'REMOVE_KEYWORD') {
     const { keywordName } = msg.payload;
     removeKeyword(keywordName);
+  }
+  else if (msg.type === 'REMOVE_LINK') {
+    const { keywordName, href } = msg.payload;
+    removeLink(keywordName, href);
   }
   else if (msg.type === 'FOLLOW_KEYWORD') {
     const { keywordName } = msg.payload;
@@ -38,6 +45,22 @@ function removeKeyword(keywordName) {
     whale.storage.sync.set({
       keywordsOrder,
       keywords,
+    });
+  });
+}
+
+function removeLink(keywordName, href) {
+  whale.storage.sync.get(['keywords'], ({keywords}) => {
+    if (!keywords || !keywords[keywordName]) {
+      return;
+    }
+
+    const links = keywords[keywordName].link;
+    const idx = links.findIndex(({url}) => url === href);
+    if (idx > -1) links.splice(idx, 1);
+
+    whale.storage.sync.set({
+      keywords
     });
   });
 }

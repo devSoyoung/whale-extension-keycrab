@@ -20,17 +20,18 @@ function getKeywordItemEl(keywordName, keywordInfo) {
   onClickBellIcon(keywordLiEl, keywordName);
   onclickFoldIcon(keywordLiEl);
   onClickTrashIcon(keywordLiEl, keywordName);
+  addRemoverToLinks(keywordLiEl, keywordName, keywordInfo);
   addHandlerToChildEls(keywordLiEl, keywordName, keywordInfo);
   return keywordLiEl;
 }
 
 function addLinkLiElToList(keywordContent) {
-  console.log('addLinkLiElToList called');
   const { keyword, link } = keywordContent;
   const keywordEl = document.body.querySelector(`.keyword-item[keyword="${keyword}"]`);
   const linkLiEl = document.createElement('li');
   linkLiEl.innerHTML = `${getLinkLiHTML(link)}`;
   addHandlerToTargetEl(linkLiEl, keyword, link);
+  addRemoverToLink(linkLiEl, keyword);
 
   const linkListEl = keywordEl.querySelector('.link-list');
   if (!linkListEl.childElementCount) {
@@ -42,7 +43,6 @@ function addLinkLiElToList(keywordContent) {
     }
 
     const pinnedEl = linkListEl.querySelector('li[favorite="false"]');
-    console.log(pinnedEl);
     if (!pinnedEl) {
       linkListEl.appendChild(linkLiEl.querySelector('li'));
       return;
@@ -57,6 +57,7 @@ function addLinkLiToListWithNoOrder(keywordContent) {
   const linkLiEl = document.createElement('li');
   linkLiEl.innerHTML = `${getLinkLiHTML(link)}`;
   addHandlerToTargetEl(linkLiEl, keyword, link);
+  addRemoverToLink(linkLiEl, keyword);
 
   const linkListEl = keywordEl.querySelector('.link-list');
   if (!linkListEl.childElementCount) {
@@ -72,8 +73,6 @@ whale.runtime.onMessage.addListener((msg, sender, sendRes) => {
     const {keywordName} = msg.payload;
     const keywordEl = document.body.querySelector(`.keyword-item[keyword="${keywordName}"]`);
     if(keywordEl) {
-      console.log('FOLLOW_KEYWORD',keywordEl,keywordEl.querySelector('.bell-off'),keywordEl.querySelector('.bell-on'));
-
       keywordEl.querySelector('.bell-off').classList.remove('display-none');
       keywordEl.querySelector('.bell-off').classList.add('display-none');
 
@@ -84,7 +83,6 @@ whale.runtime.onMessage.addListener((msg, sender, sendRes) => {
     const keywordEl = document.body.querySelector(`.keyword-item[keyword="${keywordName}"]`);
 
     if(keywordEl) {
-      console.log('UNFOLLOW_KEYWORD',keywordEl,keywordEl.querySelector('bell-off'),keywordEl.querySelector('.bell-on'));
       keywordEl.querySelector('.bell-on').classList.remove('display-none');
       keywordEl.querySelector('.bell-on').classList.add('display-none');
 

@@ -58,14 +58,14 @@ function getKeywordLiHTML(keywordName, keywordInfo) {
 
   return `
     <div class="bell-icon">
-        <img src="../../../images/icons/bell_off.png" alt="꺼진벨" class="bell-off ${keywordInfo.tracking && 'display-none'}">
-        <img src="../../../images/icons/bell_on.png" alt="켜진벨" class="bell-on ${!keywordInfo.tracking && 'display-none'}">
+        <img src="../../../images/icons/bell_off.png" alt="알림 해제 상태" class="bell-off ${keywordInfo.tracking && 'display-none'}">
+        <img src="../../../images/icons/bell_on.png" alt="알림 설정 상태" class="bell-on ${!keywordInfo.tracking && 'display-none'}">
     </div>
     <div class="keyword-item-content">
       <div class="keyword-title">${keywordName}</div>
       <div class="util-icon">
-        <img src="../../../images/icons/garbage.png" alt="쓰레기통아이콘" class="trash-icon">
-        <img src="../../../images/icons/fold.png" alt="접기아이콘" class="fold-icon">
+        <img src="../../../images/icons/garbage.png" alt="키워드 삭제 버튼" class="trash-icon">
+        <img src="../../../images/icons/fold.png" alt="키워드 내용 접기/펼치기" class="fold-icon">
       </div>
       ${getSearchButtonHTML(keywordName)}
       <ul class="link-list">
@@ -99,6 +99,7 @@ function getLinkLiHTML(linkItem) {
       <a target="_blank" href=${linkItem.url}>
         <div class="link-url">${linkItem.title}</div>
       </a>
+      <button class="link-delete-button"><i class="far fa-times-circle"></i></button>
     </li>
   `;
 }
