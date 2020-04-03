@@ -1,22 +1,21 @@
-function addRemoverToLinks(keywordLiEl, keywordName, keywordInfo) {
-    const linklistEl = keywordLiEl.querySelector('ul.link-list');
-    const linkEls = linklistEl.querySelectorAll('li');
+function addRemoverToLinks(keywordLiEl, keywordName) {
+    const linkEls = keywordLiEl.querySelectorAll('ul.link-list > li');
 
-    linkEls.forEach(link =>
-        addRemoverToLink(link, keywordName)
+    linkEls.forEach(linkEl =>
+        addRemoverToLink(linkEl, keywordName)
     );
 }
 
-function addRemoverToLink(link, keywordName) {
-    const button = link.querySelector('button');
-    const {href} = link.querySelector('a');
-    button.addEventListener('click', () => {
+function addRemoverToLink(linkEl, keywordName) {
+    const buttonEl = linkEl.querySelector('button');
+    const {href} = linkEl.querySelector('a');
+    buttonEl.addEventListener('click', () => {
         whale.runtime.sendMessage({
             type: 'REMOVE_LINK',
             payload: {keywordName, href}
         });
 
-        const buttonParentEl = button.parentElement;
+        const buttonParentEl = buttonEl.parentElement;
         buttonParentEl.parentElement.removeChild(buttonParentEl);
     });
 }
