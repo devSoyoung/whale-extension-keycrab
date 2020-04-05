@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "키크랩 - Keycrab",
-  "version": "1.0.1",
+  "version": "1.0.2",
 
   "description": "키워드 저장으로 스마트한 웹 서핑을 도와주는 확장앱입니다.",
   "icons": {
