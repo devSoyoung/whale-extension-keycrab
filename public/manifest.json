@@ -9,7 +9,7 @@
   },
 
   "sidebar_action": {
-    "default_page": "src/sidebar/sidebar.html",
+    "default_page": "sidebar.html",
     "default_icon": {
       "64": "images/icon16.png"
     },
@@ -18,35 +18,30 @@
   },
 
   "background": {
-    "scripts": [],
-    "page": "src/background/background.html"
+    "scripts": ["background.js"]
   },
 
-  "content_security_policy": "script-src 'self' https://kit.fontawesome.com/4fcb81092f.js; object-src 'self'",
+  "content_security_policy": "script-src 'self' 'unsafe-eval' https://kit.fontawesome.com/4fcb81092f.js; object-src 'self'",
   "content_scripts": [
     {
       "matches": [
         "https://search.naver.com/search.naver?*"
       ],
-      "css": ["src/content-script/button.css"],
+      "css": ["css/button.css"],
       "js": [
-        "src/content-script/common.js",
-        "src/content-script/utils/naver-news.js",
-        "src/content-script/utils/naver-blog-cafe.js",
-        "src/content-script/utils/naver-post.js",
-        "src/content-script/utils/naver-kin.js",
-        "src/content-script/utils/naver-video.js",
-        "src/content-script/utils/naver-shopping.js",
-        "src/content-script/insert-button.js",
-        "src/content-script/naver/index.js"
+        "content-script/common.js",
+        "content-script/naver.js"
       ]
     },
     {
       "matches": [
         "https://www.google.com/search?*"
       ],
-      "css": ["src/content-script/button.css"],
-      "js": ["src/content-script/common.js", "src/content-script/insert-button.js", "src/content-script/google/google-unified-search.js"]
+      "css": ["css/button.css"],
+      "js": [
+        "content-script/common.js", 
+        "content-script/google.js"
+      ]
     }
   ],
   "permissions": [
