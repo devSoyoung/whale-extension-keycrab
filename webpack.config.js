@@ -19,7 +19,10 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new CopyPlugin({
-      patterns: [{ from: "public" }],
+      patterns: [
+        { from: "public" },
+        { from: "src/sidebar", to: "sidebar" }
+      ],
     }),
   ]
 };
