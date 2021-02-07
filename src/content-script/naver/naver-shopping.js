@@ -1,4 +1,4 @@
-function shoppingElementEventBinder(origin, searchResultEl, currentKeyword) {
+export default function shoppingElementEventBinder(origin, searchResultEl, currentKeyword) {
     const titleEl = searchResultEl.querySelector('.detail .tit');
     const thumbnailEl = searchResultEl.querySelector('.thumb_area') || undefined;
 

@@ -1,4 +1,4 @@
-function postElementEventBinder(origin, searchResultEl, currentKeyword) {
+export default function postElementEventBinder(origin, searchResultEl, currentKeyword) {
     const titleEl = searchResultEl.querySelector('dt');
     const thumbnailEl = searchResultEl.querySelector('.thumb') || undefined;
 

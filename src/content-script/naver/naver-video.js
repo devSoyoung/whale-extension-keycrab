@@ -1,4 +1,4 @@
-function videoElementEventBinder(origin, searchResultEl, currentKeyword) {
+export default function videoElementEventBinder(origin, searchResultEl, currentKeyword) {
     const titleEl = searchResultEl.querySelector('dt');
     const thumbnailEl = searchResultEl.querySelector('.video_thum') || undefined;
 

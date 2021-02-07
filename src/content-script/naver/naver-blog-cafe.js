@@ -1,4 +1,4 @@
-function elementEventBinder(origin, searchResultEl, currentKeyword) {
+export default function elementEventBinder(origin, searchResultEl, currentKeyword) {
     const titleEl = searchResultEl.querySelector('dt');
     const thumbnailEl = searchResultEl.querySelector('.thumb') || undefined;
     const urlEl = searchResultEl.querySelector('.url') || undefined;

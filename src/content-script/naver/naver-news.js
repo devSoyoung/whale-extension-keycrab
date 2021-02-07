@@ -1,4 +1,4 @@
-function newsElementEventBinder(searchResultEl, currentKeyword) {
+export default function newsElementEventBinder(searchResultEl, currentKeyword) {
     const titleEl = searchResultEl.querySelector('dt');
     const { title } = titleEl.querySelector('a');
     const thumbnailEl = searchResultEl.querySelector('.thumb') || undefined;

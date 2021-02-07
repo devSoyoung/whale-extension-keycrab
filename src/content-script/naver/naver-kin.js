@@ -1,4 +1,4 @@
-function kinElementEventBinder(origin, searchResultEl, currentKeyword) {
+export default function kinElementEventBinder(origin, searchResultEl, currentKeyword) {
     const titleEl = searchResultEl.querySelector('dt');
     const title = titleEl.querySelector('a').innerText;
     const { href } = titleEl.querySelector('a');
