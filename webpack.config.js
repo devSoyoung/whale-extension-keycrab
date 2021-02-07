@@ -1,5 +1,7 @@
 const path = require('path');
 
+const CopyPlugin = require("copy-webpack-plugin");
+
 const srcPath = path.resolve(__dirname, "src");
 const contentScriptPath = path.join(srcPath, "content-script");
 
@@ -13,4 +15,9 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
   },
+  plugins: [
+    new CopyPlugin({
+      patterns: [{ from: "public" }],
+    }),
+  ]
 };
