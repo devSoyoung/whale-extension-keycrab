@@ -10,7 +10,7 @@ module.exports = {
   entry: {
     background: path.join(srcPath, "background/index.js"),
     "content-script/common": path.join(contentScriptPath, "common.js"),
-    "content-script/google": path.join(contentScriptPath, "google/google-unified-search.js"),
+    "content-script/google": path.join(contentScriptPath, "google/index.js"),
     "content-script/naver": path.join(contentScriptPath, "naver/index.js")
   },
   output: {
