@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/devSoyoung/whale-extension-keycrab#readme",
   "devDependencies": {
+    "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^7.0.0",
     "webpack": "^5.20.2",
     "webpack-cli": "^4.5.0"
