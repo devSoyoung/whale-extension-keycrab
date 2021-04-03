@@ -1,0 +1,53 @@
+{
+  "manifest_version": 2,
+  "name": "키크랩 - Keycrab",
+  "version": "1.0.2",
+
+  "description": "키워드 저장으로 스마트한 웹 서핑을 도와주는 확장앱입니다.",
+  "icons": {
+    "64": "images/icon16.png"
+  },
+
+  "sidebar_action": {
+    "default_page": "sidebar.html",
+    "default_icon": {
+      "64": "images/icon16.png"
+    },
+    "default_title": "키크랩 - Keycrab",
+    "use_navigation_bar": false
+  },
+
+  "background": {
+    "scripts": ["background.js"]
+  },
+
+  "content_security_policy": "script-src 'self' 'unsafe-eval' https://kit.fontawesome.com/4fcb81092f.js; object-src 'self'",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://search.naver.com/search.naver?*"
+      ],
+      "css": ["css/button.css"],
+      "js": [
+        "content-script/common.js",
+        "content-script/naver.js"
+      ]
+    },
+    {
+      "matches": [
+        "https://www.google.com/search?*"
+      ],
+      "css": ["css/button.css"],
+      "js": [
+        "content-script/common.js", 
+        "content-script/google.js"
+      ]
+    }
+  ],
+  "permissions": [
+    "storage"
+  ],
+  "web_accessible_resources": [
+    "images/search-crab.png"
+  ]
+}

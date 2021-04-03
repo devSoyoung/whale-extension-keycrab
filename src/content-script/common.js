@@ -1,3 +1,5 @@
+import "./utils/insert-button.js";
+
 // 페이지에 삽입 될 키워드 추적 버튼 관리하기
 window.insertButton = function(keywordName) {
   const isGoogle= `${location.href}`.split(`?`)[0].includes(`google`);

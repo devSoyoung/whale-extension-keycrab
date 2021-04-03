@@ -1,6 +1,6 @@
-function shoppingElementEventBinder(origin, searchResultEl, currentKeyword) {
-    const titleEl = searchResultEl.querySelector('.detail .tit');
-    const thumbnailEl = searchResultEl.querySelector('.thumb_area') || undefined;
+export default function videoElementEventBinder(origin, searchResultEl, currentKeyword) {
+    const titleEl = searchResultEl.querySelector('dt');
+    const thumbnailEl = searchResultEl.querySelector('.video_thum') || undefined;
 
     const title = titleEl.querySelector('a').title
         || titleEl.querySelector('a').innerText;

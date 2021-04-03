@@ -1,7 +1,5 @@
-function postElementEventBinder(origin, searchResultEl, currentKeyword) {
+export default function kinElementEventBinder(origin, searchResultEl, currentKeyword) {
     const titleEl = searchResultEl.querySelector('dt');
-    const thumbnailEl = searchResultEl.querySelector('.thumb') || undefined;
-
     const title = titleEl.querySelector('a').innerText;
     const { href } = titleEl.querySelector('a');
     const result = getResultForm(origin, title, href);
@@ -12,5 +10,4 @@ function postElementEventBinder(origin, searchResultEl, currentKeyword) {
     }
 
     if (titleEl) titleEl.addEventListener('click', onClickItem);
-    if (thumbnailEl) thumbnailEl.addEventListener('click', onClickItem);
 }

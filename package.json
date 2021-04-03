@@ -1,0 +1,30 @@
+{
+  "name": "whale-extension-keycrab",
+  "version": "1.0.0",
+  "description": "주요 포털의 검색 키워드를 스크랩하는 웨일 사이드바 확장앱",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --mode=development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devSoyoung/whale-extension-keycrab.git"
+  },
+  "keywords": [
+    "extensions",
+    "typescript"
+  ],
+  "author": "keycrab",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/devSoyoung/whale-extension-keycrab/issues"
+  },
+  "homepage": "https://github.com/devSoyoung/whale-extension-keycrab#readme",
+  "devDependencies": {
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^7.0.0",
+    "webpack": "^5.20.2",
+    "webpack-cli": "^4.5.0"
+  }
+}

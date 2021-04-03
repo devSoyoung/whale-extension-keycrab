@@ -202,3 +202,5 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/macos,windows,intellij,webstorm
+node_modules/
+dist/
