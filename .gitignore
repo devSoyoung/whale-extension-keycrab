@@ -202,6 +202,5 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/macos,windows,intellij,webstorm
-package-lock.json
 node_modules/
 dist/
