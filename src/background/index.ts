@@ -31,7 +31,7 @@ whale.runtime.onMessage.addListener((msg, sender, sendRes) => {
   }
 });
 
-function removeKeyword(keywordName) {
+function removeKeyword(keywordName: string) {
   whale.storage.sync.get(['keywords', 'keywordsOrder'], ({ keywords, keywordsOrder }) => {
     if (!keywords || !keywords[keywordName]) {
       return;
@@ -49,7 +49,7 @@ function removeKeyword(keywordName) {
   });
 }
 
-function removeLink(keywordName, href) {
+function removeLink(keywordName: string, href: string) {
   whale.storage.sync.get(['keywords'], ({keywords}) => {
     if (!keywords || !keywords[keywordName]) {
       return;
@@ -65,7 +65,7 @@ function removeLink(keywordName, href) {
   });
 }
 
-function followKeyword(keywordName) {
+function followKeyword(keywordName: string) {
   whale.storage.sync.get(['keywords', 'keywordsOrder'], ({ keywords, keywordsOrder }) => {
     if (!keywords[keywordName]) {
       whale.storage.sync.set({
@@ -93,7 +93,7 @@ function followKeyword(keywordName) {
   });
 }
 
-function unfollowKeyword(keywordName) {
+function unfollowKeyword(keywordName: string) {
   whale.storage.sync.get(['keywords'], ({ keywords }) => {
     if (!keywords[keywordName] || !keywords[keywordName].tracking) {
       return;
@@ -111,7 +111,7 @@ function unfollowKeyword(keywordName) {
   });
 }
 
-function addLinkToKeyword(keywordName, link) {
+function addLinkToKeyword(keywordName: string, link: string) {
   whale.storage.sync.get(['keywords'], ({ keywords }) => {
     // storage.sync 가 초기화 된 경우를 고려하여 예외처리
     if (!keywords) {
