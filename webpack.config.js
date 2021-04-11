@@ -10,7 +10,7 @@ const distPath = path.resolve(__dirname, "dist");
 
 module.exports = {
   entry: {
-    background: path.join(srcPath, "background/index.js"),
+    background: path.join(srcPath, "background/index.ts"),
     "content-script/common": path.join(contentScriptPath, "common.js"),
     "content-script/google": path.join(contentScriptPath, "google/index.js"),
     "content-script/naver": path.join(contentScriptPath, "naver/index.js"),
