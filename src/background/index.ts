@@ -1,9 +1,9 @@
-import { Storage } from "../types/Storage";
-import { Message } from "../types/Message";
+import { Storage } from '../types/Storage';
+import { Message } from '../types/Message';
 
 whale.runtime.onInstalled.addListener((installDetails) => {
-  const {reason} = installDetails;
-  if(reason === 'install') {
+  const { reason } = installDetails;
+  if (reason === 'install') {
     whale.storage.sync.set({
       keywords: {},
       keywordsOrder: [],
@@ -31,17 +31,18 @@ whale.runtime.onMessage.addListener(({ type, payload }: Message) => {
 });
 
 function removeKeyword(keyword: string) {
-  whale.storage.sync.get(['keywords', 'keywordsOrder'], 
+  whale.storage.sync.get(
+    ['keywords', 'keywordsOrder'],
     ({ keywords, keywordsOrder }: Storage) => {
       if (!keywords || !keywords[keyword]) {
         return;
       }
-  
+
       // keywordName 요소 삭제
       delete keywords[keyword];
       const idx = keywordsOrder.indexOf(keyword);
       if (idx > -1) keywordsOrder.splice(idx, 1);
-  
+
       whale.storage.sync.set({
         keywordsOrder,
         keywords,
@@ -65,7 +66,8 @@ function removeLink(keyword: string, href: string) {
 }
 
 function followKeyword(keyword: string) {
-  whale.storage.sync.get(['keywords', 'keywordsOrder'], 
+  whale.storage.sync.get(
+    ['keywords', 'keywordsOrder'],
     ({ keywords, keywordsOrder }: Storage) => {
       if (!keywords[keyword]) {
         whale.storage.sync.set({
@@ -75,8 +77,8 @@ function followKeyword(keyword: string) {
             [keyword]: {
               tracking: true,
               link: [],
-            }
-          }
+            },
+          },
         });
         return;
       }
@@ -87,8 +89,8 @@ function followKeyword(keyword: string) {
           [keyword]: {
             ...keywords[keyword],
             tracking: true,
-          }
-        }
+          },
+        },
       });
     }
   );
@@ -106,8 +108,8 @@ function unfollowKeyword(keyword: string) {
         [keyword]: {
           ...keywords[keyword],
           tracking: false,
-        }
-      }
+        },
+      },
     });
   });
 }
@@ -121,7 +123,7 @@ function addLinkToKeyword(keyword: string, link: string) {
           [keyword]: {
             tracking: true,
             link: [link],
-          }
+          },
         },
         keywordsOrder: [keyword],
       });
@@ -135,7 +137,7 @@ function addLinkToKeyword(keyword: string, link: string) {
         [keyword]: {
           ...keywords[keyword],
           link: keywords[keyword].link.concat(link),
-        }
+        },
       },
     });
   });
