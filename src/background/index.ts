@@ -1,3 +1,5 @@
+import { Storage } from "../types/Storage";
+
 whale.runtime.onInstalled.addListener((installDetails) => {
   const {reason} = installDetails;
   if(reason === 'install') {
@@ -32,31 +34,33 @@ whale.runtime.onMessage.addListener((msg, sender, sendRes) => {
 });
 
 function removeKeyword(keywordName: string) {
-  whale.storage.sync.get(['keywords', 'keywordsOrder'], ({ keywords, keywordsOrder }) => {
-    if (!keywords || !keywords[keywordName]) {
-      return;
+  whale.storage.sync.get(['keywords', 'keywordsOrder'], 
+    ({ keywords, keywordsOrder }: Storage) => {
+      if (!keywords || !keywords[keywordName]) {
+        return;
+      }
+  
+      // keywordName 요소 삭제
+      delete keywords[keywordName];
+      const idx = keywordsOrder.indexOf(keywordName);
+      if (idx > -1) keywordsOrder.splice(idx, 1);
+  
+      whale.storage.sync.set({
+        keywordsOrder,
+        keywords,
+      });
     }
-
-    // keywordName 요소 삭제
-    delete keywords[keywordName];
-    const idx = keywordsOrder.indexOf(keywordName);
-    if (idx > -1) keywordsOrder.splice(idx, 1);
-
-    whale.storage.sync.set({
-      keywordsOrder,
-      keywords,
-    });
-  });
+  );
 }
 
 function removeLink(keywordName: string, href: string) {
-  whale.storage.sync.get(['keywords'], ({keywords}) => {
+  whale.storage.sync.get(['keywords'], ({ keywords }: Storage) => {
     if (!keywords || !keywords[keywordName]) {
       return;
     }
 
     const links = keywords[keywordName].link;
-    const idx = links.findIndex(({url}) => url === href);
+    const idx = links.findIndex((url) => url === href);
     if (idx > -1) links.splice(idx, 1);
 
     whale.storage.sync.set({
@@ -66,35 +70,37 @@ function removeLink(keywordName: string, href: string) {
 }
 
 function followKeyword(keywordName: string) {
-  whale.storage.sync.get(['keywords', 'keywordsOrder'], ({ keywords, keywordsOrder }) => {
-    if (!keywords[keywordName]) {
+  whale.storage.sync.get(['keywords', 'keywordsOrder'], 
+    ({ keywords, keywordsOrder }: Storage) => {
+      if (!keywords[keywordName]) {
+        whale.storage.sync.set({
+          keywordsOrder: keywordsOrder.concat(keywordName),
+          keywords: {
+            ...keywords,
+            [keywordName]: {
+              tracking: true,
+              link: [],
+            }
+          }
+        });
+        return;
+      }
+
       whale.storage.sync.set({
-        keywordsOrder: keywordsOrder.concat(keywordName),
         keywords: {
           ...keywords,
           [keywordName]: {
+            ...keywords[keywordName],
             tracking: true,
-            link: [],
           }
         }
       });
-      return;
     }
-
-    whale.storage.sync.set({
-      keywords: {
-        ...keywords,
-        [keywordName]: {
-          ...keywords[keywordName],
-          tracking: true,
-        }
-      }
-    });
-  });
+  );
 }
 
 function unfollowKeyword(keywordName: string) {
-  whale.storage.sync.get(['keywords'], ({ keywords }) => {
+  whale.storage.sync.get(['keywords'], ({ keywords }: Storage) => {
     if (!keywords[keywordName] || !keywords[keywordName].tracking) {
       return;
     }
@@ -112,7 +118,7 @@ function unfollowKeyword(keywordName: string) {
 }
 
 function addLinkToKeyword(keywordName: string, link: string) {
-  whale.storage.sync.get(['keywords'], ({ keywords }) => {
+  whale.storage.sync.get(['keywords'], ({ keywords }: Storage) => {
     // storage.sync 가 초기화 된 경우를 고려하여 예외처리
     if (!keywords) {
       whale.storage.sync.set({
