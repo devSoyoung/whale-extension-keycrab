@@ -70,8 +70,8 @@ function addLinkLiToListWithNoOrder(keywordContent) {
 // 벨이랑 키워드 추적 동기화
 whale.runtime.onMessage.addListener((msg, sender, sendRes) => {
   if (msg.type === 'FOLLOW_KEYWORD') {
-    const {keywordName} = msg.payload;
-    const keywordEl = document.body.querySelector(`.keyword-item[keyword="${keywordName}"]`);
+    const { keyword } = msg.payload;
+    const keywordEl = document.body.querySelector(`.keyword-item[keyword="${keyword}"]`);
     if(keywordEl) {
       keywordEl.querySelector('.bell-off').classList.remove('display-none');
       keywordEl.querySelector('.bell-off').classList.add('display-none');
@@ -79,8 +79,8 @@ whale.runtime.onMessage.addListener((msg, sender, sendRes) => {
       keywordEl.querySelector('.bell-on').classList.remove('display-none');
     }
   } else if (msg.type === 'UNFOLLOW_KEYWORD') {
-    const {keywordName} = msg.payload;
-    const keywordEl = document.body.querySelector(`.keyword-item[keyword="${keywordName}"]`);
+    const { keyword } = msg.payload;
+    const keywordEl = document.body.querySelector(`.keyword-item[keyword="${keyword}"]`);
 
     if(keywordEl) {
       keywordEl.querySelector('.bell-on').classList.remove('display-none');

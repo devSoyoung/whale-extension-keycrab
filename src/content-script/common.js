@@ -65,17 +65,17 @@ window.sendMessageForAddLink = (keywordName, link) => {
 
 };
 
-function sendMessageForFollowKeyword(keywordName) {
+function sendMessageForFollowKeyword(keyword) {
   whale.runtime.sendMessage({
     type: 'FOLLOW_KEYWORD',
-    payload: { keywordName }
+    payload: { keyword }
   });
 }
 
-function sendMessageForUnfollowKeyword(keywordName) {
+function sendMessageForUnfollowKeyword(keyword) {
   whale.runtime.sendMessage({
     type: 'UNFOLLOW_KEYWORD',
-    payload: { keywordName }
+    payload: { keyword }
   });
 }
 

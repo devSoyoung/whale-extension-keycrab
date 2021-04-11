@@ -1,4 +1,5 @@
 import { Storage } from "../types/Storage";
+import { Message } from "../types/Message";
 
 whale.runtime.onInstalled.addListener((installDetails) => {
   const {reason} = installDetails;
@@ -10,22 +11,22 @@ whale.runtime.onInstalled.addListener((installDetails) => {
   }
 });
 
-whale.runtime.onMessage.addListener((msg, sender, sendRes) => {
+whale.runtime.onMessage.addListener((msg: Message, sender, sendRes) => {
   if (msg.type === 'REMOVE_KEYWORD') {
-    const { keywordName } = msg.payload;
-    removeKeyword(keywordName);
+    const { keyword } = msg.payload;
+    removeKeyword(keyword);
   }
   else if (msg.type === 'REMOVE_LINK') {
-    const { keywordName, href } = msg.payload;
-    removeLink(keywordName, href);
+    const { keyword, link } = msg.payload;
+    removeLink(keyword, link);
   }
   else if (msg.type === 'FOLLOW_KEYWORD') {
-    const { keywordName } = msg.payload;
-    followKeyword(keywordName);
+    const { keyword } = msg.payload;
+    followKeyword(keyword);
   }
   else if (msg.type === 'UNFOLLOW_KEYWORD') {
-    const { keywordName } = msg.payload;
-    unfollowKeyword(keywordName);
+    const { keyword } = msg.payload;
+    unfollowKeyword(keyword);
   }
   else if (msg.type === 'ADD_LINK_TO_KEYWORD') {
     const { keyword, link } = msg.payload;
@@ -63,9 +64,7 @@ function removeLink(keyword: string, href: string) {
     const idx = links.findIndex((url) => url === href);
     if (idx > -1) links.splice(idx, 1);
 
-    whale.storage.sync.set({
-      keywords
-    });
+    whale.storage.sync.set({ keywords });
   });
 }
 
