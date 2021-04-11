@@ -1,5 +1,5 @@
-whale.runtime.onInstalled.addListener((installInfo) => {
-  const {reason} = installInfo;
+whale.runtime.onInstalled.addListener((installDetails) => {
+  const {reason} = installDetails;
   if(reason === 'install') {
     whale.storage.sync.set({
       keywords: {},
