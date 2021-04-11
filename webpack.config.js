@@ -2,9 +2,11 @@ const path = require('path');
 
 const CopyPlugin = require("copy-webpack-plugin");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const ExtensionReloader  = require('webpack-extension-reloader');
 
 const srcPath = path.resolve(__dirname, "src");
 const contentScriptPath = path.join(srcPath, "content-script");
+const distPath = path.resolve(__dirname, "dist");
 
 module.exports = {
   entry: {
@@ -55,5 +57,17 @@ module.exports = {
         { from: "public" },
       ],
     }),
+    new ExtensionReloader({
+      reloadPage: true,
+      entries: {
+        contentScript: [
+          "content-script/common",
+          "content-script/google",
+          "content-script/naver"
+        ],
+        background: 'background',
+        extensionPage: 'sidebar-react',
+      }
+    })
   ]
 };
