@@ -1,7 +1,14 @@
-import React from "react";
+import React from 'react';
+import Header from './components/header';
+import ListView from './components/listview';
 
 const App: React.FC = () => {
-    return <div>Hello, react</div>;
+  return (
+    <>
+      <Header />
+      <ListView />
+    </>
+  );
 };
 
 export default App;
