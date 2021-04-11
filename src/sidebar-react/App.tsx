@@ -1,12 +1,11 @@
 import React from "react";
-import Title from "./components/Title";
-import SearchInput from "./components/SearchInput";
+import Header from "./components/header";
 
 const App: React.FC = () => {
-    return <div>
-        <Title/>
-        <SearchInput />
-    </div>;
+    return(
+        <>
+            <Header />
+        </>);
 };
 
 export default App;
