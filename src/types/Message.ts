@@ -27,3 +27,5 @@ export interface LinkMessage {
   type: keyof typeof LinkEventNames;
   payload: LinkPayload;
 }
+
+export type Message = KeywordMessage | LinkMessage;

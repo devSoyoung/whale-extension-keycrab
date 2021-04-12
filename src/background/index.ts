@@ -1,9 +1,10 @@
 import { Storage } from '../types/Storage';
 import {
-  KeywordMessage,
-  LinkMessage,
+  Message,
   KeywordEventNames,
   LinkEventNames,
+  KeywordPayload,
+  LinkPayload,
 } from '../types/Message';
 
 whale.runtime.onInstalled.addListener((installDetails) => {
@@ -16,27 +17,26 @@ whale.runtime.onInstalled.addListener((installDetails) => {
   }
 });
 
-whale.runtime.onMessage.addListener(({ type, payload }: KeywordMessage) => {
-  if (!(type in KeywordEventNames)) return;
-
-  const { keyword } = payload;
-  if (type === 'REMOVE_KEYWORD') {
-    removeKeyword(keyword);
-  } else if (type === 'FOLLOW_KEYWORD') {
-    followKeyword(keyword);
-  } else if (type === 'UNFOLLOW_KEYWORD') {
-    unfollowKeyword(keyword);
+whale.runtime.onMessage.addListener(({ type, payload }: Message) => {
+  if (type in KeywordEventNames) {
+    const { keyword } = payload as KeywordPayload;
+    if (type === 'REMOVE_KEYWORD') {
+      removeKeyword(keyword);
+    } else if (type === 'FOLLOW_KEYWORD') {
+      followKeyword(keyword);
+    } else if (type === 'UNFOLLOW_KEYWORD') {
+      unfollowKeyword(keyword);
+    }
   }
-});
 
-whale.runtime.onMessage.addListener(({ type, payload }: LinkMessage) => {
-  if (!(type in LinkEventNames)) return;
+  if (type in LinkEventNames) {
+    const { keyword, link } = payload as LinkPayload;
 
-  const { keyword, link } = payload;
-  if (type === 'REMOVE_LINK') {
-    removeLink(keyword, link);
-  } else if (type === 'ADD_LINK_TO_KEYWORD') {
-    addLinkToKeyword(keyword, link);
+    if (type === 'REMOVE_LINK') {
+      removeLink(keyword, link);
+    } else if (type === 'ADD_LINK_TO_KEYWORD') {
+      addLinkToKeyword(keyword, link);
+    }
   }
 });
 
