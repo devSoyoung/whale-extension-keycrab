@@ -12,21 +12,25 @@ whale.runtime.onInstalled.addListener((installDetails) => {
 });
 
 whale.runtime.onMessage.addListener(({ type, payload }: Message) => {
+  if ('link' in payload) {
+    if (type === 'ADD_LINK_TO_KEYWORD') {
+      const { keyword, link } = payload;
+      addLinkToKeyword(keyword, link);
+    } else if (type === 'REMOVE_LINK') {
+      const { keyword, link } = payload;
+      removeLink(keyword, link);
+    }
+  }
+
   if (type === 'REMOVE_KEYWORD') {
     const { keyword } = payload;
     removeKeyword(keyword);
-  } else if (type === 'REMOVE_LINK') {
-    const { keyword, link } = payload;
-    removeLink(keyword, link);
   } else if (type === 'FOLLOW_KEYWORD') {
     const { keyword } = payload;
     followKeyword(keyword);
   } else if (type === 'UNFOLLOW_KEYWORD') {
     const { keyword } = payload;
     unfollowKeyword(keyword);
-  } else if (type === 'ADD_LINK_TO_KEYWORD') {
-    const { keyword, link } = payload;
-    addLinkToKeyword(keyword, link);
   }
 });
 
