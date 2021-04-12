@@ -1,5 +1,10 @@
 import { Storage } from '../types/Storage';
-import { Message } from '../types/Message';
+import {
+  KeywordMessage,
+  LinkMessage,
+  KeywordEventNames,
+  LinkEventNames,
+} from '../types/Message';
 
 whale.runtime.onInstalled.addListener((installDetails) => {
   const { reason } = installDetails;
@@ -11,21 +16,26 @@ whale.runtime.onInstalled.addListener((installDetails) => {
   }
 });
 
-whale.runtime.onMessage.addListener(({ type, payload }: Message) => {
+whale.runtime.onMessage.addListener(({ type, payload }: KeywordMessage) => {
+  if (!(type in KeywordEventNames)) return;
+
+  const { keyword } = payload;
   if (type === 'REMOVE_KEYWORD') {
-    const { keyword } = payload;
     removeKeyword(keyword);
-  } else if (type === 'REMOVE_LINK') {
-    const { keyword, link } = payload;
-    removeLink(keyword, link);
   } else if (type === 'FOLLOW_KEYWORD') {
-    const { keyword } = payload;
     followKeyword(keyword);
   } else if (type === 'UNFOLLOW_KEYWORD') {
-    const { keyword } = payload;
     unfollowKeyword(keyword);
+  }
+});
+
+whale.runtime.onMessage.addListener(({ type, payload }: LinkMessage) => {
+  if (!(type in LinkEventNames)) return;
+
+  const { keyword, link } = payload;
+  if (type === 'REMOVE_LINK') {
+    removeLink(keyword, link);
   } else if (type === 'ADD_LINK_TO_KEYWORD') {
-    const { keyword, link } = payload;
     addLinkToKeyword(keyword, link);
   }
 });

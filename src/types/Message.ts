@@ -7,34 +7,23 @@ export interface LinkPayload {
   link: string;
 }
 
-interface FollowKeywordMessage {
-  type: 'FOLLOW_KEYWORD';
+export const KeywordEventNames = {
+  FOLLOW_KEYWORD: 'FOLLOW_KEYWORD',
+  UNFOLLOW_KEYWORD: 'UNFOLLOW_KEYWORD',
+  REMOVE_KEYWORD: 'REMOVE_KEYWORD',
+} as const;
+
+export const LinkEventNames = {
+  ADD_LINK_TO_KEYWORD: 'ADD_LINK_TO_KEYWORD',
+  REMOVE_LINK: 'REMOVE_LINK',
+} as const;
+
+export interface KeywordMessage {
+  type: keyof typeof KeywordEventNames;
   payload: KeywordPayload;
 }
 
-interface UnfollowKeywordMessage {
-  type: 'UNFOLLOW_KEYWORD';
-  payload: KeywordPayload;
-}
-
-interface RemoveKeywordMessage {
-  type: 'REMOVE_KEYWORD';
-  payload: KeywordPayload;
-}
-
-interface AddLinkMessage {
-  type: 'ADD_LINK_TO_KEYWORD';
+export interface LinkMessage {
+  type: keyof typeof LinkEventNames;
   payload: LinkPayload;
 }
-
-interface RemoveLinkMessage {
-  type: 'REMOVE_LINK';
-  payload: LinkPayload;
-}
-
-export type Message =
-  | FollowKeywordMessage
-  | UnfollowKeywordMessage
-  | RemoveKeywordMessage
-  | AddLinkMessage
-  | RemoveLinkMessage;
