@@ -3,7 +3,6 @@ import { Actions as KeywordActions } from '../actions/keywords';
 
 const getKeywordFromStorage = async () => {
   const findStorage = new Promise(function (resolve, reject) {
-    // @ts-ignore
     whale.storage.sync.get(['keywords'], ({ keywords }) => {
       resolve(keywords);
     });
@@ -14,7 +13,6 @@ const getKeywordFromStorage = async () => {
 
 function* getKeywordSaga() {
   console.log('Keyword Fetch is Called');
-  // @ts-ignore
   const keywords = yield call(getKeywordFromStorage);
   console.log('in Saga, keywords are ', keywords);
 
