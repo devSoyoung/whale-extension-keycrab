@@ -1,4 +1,4 @@
-function onClickBellIcon(keywordLiEl, keywordName) {
+function onClickBellIcon(keywordLiEl, keyword) {
   const bellOnIconEl = keywordLiEl.querySelector('.bell-on');
   const bellOffIconEl = keywordLiEl.querySelector('.bell-off');
 
@@ -8,7 +8,7 @@ function onClickBellIcon(keywordLiEl, keywordName) {
 
     whale.runtime.sendMessage({
       type: 'UNFOLLOW_KEYWORD',
-      payload: { keywordName }
+      payload: { keyword }
     });
   });
 
@@ -18,7 +18,7 @@ function onClickBellIcon(keywordLiEl, keywordName) {
 
     whale.runtime.sendMessage({
       type: 'FOLLOW_KEYWORD',
-      payload: { keywordName }
+      payload: { keyword }
     });
   });
 }
