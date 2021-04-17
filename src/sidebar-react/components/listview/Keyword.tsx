@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { Keyword } from '../../type/keywords';
+import ShortCut from './ShortCut';
 
 const BELL_OFF_IMAGE = 'images/icons/bell_off';
 const BELL_ON_IMAGE = 'images/icons/bell_on';
@@ -49,6 +50,7 @@ const Keyword: React.FC<KeywordProps & Keyword> = (props) => {
       <FollowButton isFollow={tracking} />
       <div>
         <div className="keyword-title">{title}</div>
+        <ShortCut keyword={title} />
       </div>
     </li>
   );
