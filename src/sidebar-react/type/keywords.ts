@@ -1,11 +1,11 @@
-interface Link {
+export interface Link {
   favorite: boolean;
   origin: string;
   title: string;
   url: string;
 }
 
-interface Keyword {
+export interface Keyword {
   link: Link[];
   tracking: boolean;
 }
