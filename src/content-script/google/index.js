@@ -1,6 +1,6 @@
 (() => {
     // 현재 구글은 통합검색에서만 지원하도록 구현
-    const currentKeyword = document.querySelector('input[title = 검색]').value;
+    const currentKeyword = document.querySelector('#searchform [aria-label="검색"]').value;
 
     // 검색 결과에 이벤트 리스너 달기
     // 일반 검색 결과

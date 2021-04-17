@@ -6,7 +6,7 @@
 
     window.isTracking = false;
     const currentKeyword = isGoogle
-        ? document.querySelector('input[title = 검색]').value
+        ? document.querySelector('#searchform [aria-label="검색"]').value
         : document.querySelector('#nx_query').value;
 
 
