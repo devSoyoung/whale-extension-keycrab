@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { Keyword } from '../../type/keywords';
 import Shortcut from './Shortcut';
 import Link from './Link';
+import useKeywords from '../../hooks/useKeywords';
 
 const BELL_OFF_IMAGE = 'images/icons/bell_off.png';
 const BELL_ON_IMAGE = 'images/icons/bell_on.png';
@@ -9,26 +10,32 @@ const GARBAGE_IMAGE = 'images/icons/garbage.png';
 const FOLD_IMAGE = 'images/icons/fold.png';
 
 interface FollowButtonProps {
-  isFollow: boolean;
+  tracking: boolean;
+  title: string;
 }
 
 interface KeywordProps {
   title: string;
 }
 
-const FollowButton = ({ isFollow }: FollowButtonProps) => {
+const FollowButton = ({ tracking, title }: FollowButtonProps) => {
   const [imageProps, setImageProps] = useState({});
+  const { toggleFollowKeyword } = useKeywords();
+
+  const handleClick = () => {
+    toggleFollowKeyword({ tracking, keyword: title });
+  };
 
   useMemo(() => {
     setImageProps({
-      src: isFollow ? BELL_ON_IMAGE : BELL_OFF_IMAGE,
-      alt: isFollow ? '알림 설정 됨 아이콘' : '알림 해제 됨 아이콘',
-      className: isFollow ? 'bell-on' : 'bell-off',
+      src: tracking ? BELL_ON_IMAGE : BELL_OFF_IMAGE,
+      alt: tracking ? '알림 설정 됨 아이콘' : '알림 해제 됨 아이콘',
+      className: tracking ? 'bell-on' : 'bell-off',
     });
-  }, [isFollow]);
+  }, [tracking]);
 
   return (
-    <button className="card--header__bell">
+    <button className="card--header__bell" onClick={handleClick}>
       <img {...imageProps} />
     </button>
   );
@@ -41,7 +48,7 @@ const KeywordCard = (props: KeywordProps & Keyword) => {
       <div className="card--header">
         <div className="card--header__row">
           <div className="card--header__title">
-            <FollowButton isFollow={tracking} />
+            <FollowButton tracking={tracking} title={title} />
             {title}
           </div>
           <div className="card--header__icons">

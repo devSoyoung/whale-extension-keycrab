@@ -16,7 +16,8 @@
   "rules": {
     "prettier/prettier": ["error", { "singleQuote": true }],
     "react/jsx-uses-vars": "warn",
-    "react/prop-types": "off"
+    "react/prop-types": "off",
+    "no-case-declarations": "warn"
   },
   "ignorePatterns": ["*.config.js"]
 }
