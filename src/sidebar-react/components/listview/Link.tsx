@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link as LinkProps } from '../../type/keywords';
+import LinkDelete from '../icons/LinkDelete';
 
 const OriginMap = {
   total: '통합검색',
@@ -19,7 +20,6 @@ const DEFAULT_ORIGIN = '네이버';
 const PIN_IMAGE = 'images/icons/pin_fixed2.png';
 const UNPIN_IMAGE = 'images/icons/pin_unfixed.png';
 // 임시, x 표 아이콘 생성 필요
-const GARBAGE_IMAGE = 'images/icons/garbage.png';
 
 const Link = ({ favorite, origin, title, url }: LinkProps) => {
   return (
@@ -36,7 +36,7 @@ const Link = ({ favorite, origin, title, url }: LinkProps) => {
         </a>
       </div>
       <button className="card--main__remove">
-        <img src={GARBAGE_IMAGE} alt="링크 삭제" />
+        <LinkDelete />
       </button>
     </div>
   );

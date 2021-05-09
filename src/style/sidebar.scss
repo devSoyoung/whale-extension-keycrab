@@ -238,11 +238,11 @@ main {
         }
 
         .card--main__remove {
-          img {
-            height: 15px;
-            width: 15px;
-            padding: 0 2px 2px 0;
-            cursor: pointer;
+          margin-left: 4px;
+          cursor: pointer;
+
+          svg {
+            transition: all 0.1s;
           }
         }
       }
