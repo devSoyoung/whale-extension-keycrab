@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { Keyword } from '../../type/keywords';
 import Shortcut from './Shortcut';
+import Link from './Link';
 
 const BELL_OFF_IMAGE = 'images/icons/bell_off.png';
 const BELL_ON_IMAGE = 'images/icons/bell_on.png';
@@ -15,9 +16,7 @@ interface KeywordProps {
   title: string;
 }
 
-const FollowButton: React.FC<FollowButtonProps> = ({
-  isFollow,
-}: FollowButtonProps) => {
+const FollowButton = ({ isFollow }: FollowButtonProps) => {
   const [imageProps, setImageProps] = useState({});
 
   useMemo(() => {
@@ -36,7 +35,7 @@ const FollowButton: React.FC<FollowButtonProps> = ({
 };
 
 const KeywordCard = (props: KeywordProps & Keyword) => {
-  const { title, tracking } = props;
+  const { title, tracking, link } = props;
   return (
     <div className="card">
       <div className="card--header">
@@ -57,12 +56,9 @@ const KeywordCard = (props: KeywordProps & Keyword) => {
         <Shortcut keyword={title} />
       </div>
       <div className="card--main">
-        <div className="card--main__link">
-          <button className="card--main__pin" />
-          <div className="card--main__origin" />
-          <div className="card--main__desc" />
-          <button className="card--main__remove" />
-        </div>
+        {link?.map((item, index) => (
+          <Link key={index} {...item} />
+        ))}
       </div>
     </div>
   );
