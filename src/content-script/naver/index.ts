@@ -1,6 +1,6 @@
 import elementEventBinder from "./naver-blog-cafe.js";
 import kinElementEventBinder from "./naver-kin.js";
-import newsElementEventBinder from "./naver-news.js";
+import newsElementEventBinder from "./naver-news";
 import postElementEventBinder from "./naver-post.js";
 import shoppingElementEventBinder from "./naver-shopping.js";
 import videoElementEventBinder from "./naver-video.js";
