@@ -20,11 +20,8 @@ import videoElementEventBinder from "./naver-video";
 
   // 비디오
   if (classList.includes('tabsch_video')) {
-    const currentKeyword = document.querySelector('#nx_query').value;
-    const videoResultEls = document.querySelectorAll(`div.sp_video.section ul>li`);
-    videoResultEls.forEach(searchResultEl => {
-      videoElementEventBinder('video',searchResultEl, currentKeyword);
-    });
+    const keyword = document.querySelector('#nx_query').value;
+    videoElementEventBinder(keyword);
     return;
   }
 

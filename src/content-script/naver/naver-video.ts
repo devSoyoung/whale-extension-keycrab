@@ -1,17 +1,18 @@
-export default function videoElementEventBinder(origin, searchResultEl, currentKeyword) {
-    const titleEl = searchResultEl.querySelector('dt');
-    const thumbnailEl = searchResultEl.querySelector('.video_thum') || undefined;
+import { sendMessageForAddLink } from "../utils/message";
 
-    const title = titleEl.querySelector('a').title
-        || titleEl.querySelector('a').innerText;
-    const { href } = titleEl.querySelector('a');
-    const result = getResultForm(origin, title, href);
-
-    function onClickItem() {
-        if (!window.isTracking) return;
-        window.sendMessageForAddLink(currentKeyword, result);
-    }
-
-    if (titleEl) titleEl.addEventListener('click', onClickItem);
-    if (thumbnailEl) thumbnailEl.addEventListener('click', onClickItem);
+export default function videoElementEventBinder(keyword: string) {
+    const titleEls = document.querySelectorAll(".video_square_list .info_title");
+    titleEls.forEach(titleEl => {
+        if (!(titleEl instanceof HTMLAnchorElement)) return;
+        const { href: url, textContent: title } = titleEl;
+        titleEl.addEventListener("click", () => {
+            if (!window.isTracking) return;
+            sendMessageForAddLink(keyword, {
+                url,
+                title,
+                origin: '',
+                favorite: false
+            });
+        });
+    });
 }
