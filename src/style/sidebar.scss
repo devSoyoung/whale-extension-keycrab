@@ -195,5 +195,57 @@ main {
         }
       }
     }
+
+    .card--main {
+      padding: 16px;
+
+      .card--main__link {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 5px;
+        letter-spacing: -0.5px;
+        font-size: 12px;
+        height: 18px;
+        line-height: 18px;
+
+        .card--main__pin {
+          height: 16px;
+          margin-right: 2px;
+          margin-top: -0.5px;
+
+          img {
+            height: 15px;
+            width: 15px;
+            padding: 0 2px 2px 0;
+            cursor: pointer;
+          }
+        }
+
+        .card--main__origin {
+          margin-right: 5px;
+          width: 35px;
+          letter-spacing: -1px;
+          font-weight: 600;
+          padding-left: 2px;
+        }
+
+        .card--main__desc {
+          width: calc(100vw - 140px);
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+          word-wrap: break-word;
+        }
+
+        .card--main__remove {
+          img {
+            height: 15px;
+            width: 15px;
+            padding: 0 2px 2px 0;
+            cursor: pointer;
+          }
+        }
+      }
+    }
   }
 }
