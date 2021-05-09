@@ -54,9 +54,7 @@ const KeywordCard = (props: KeywordProps & Keyword) => {
             </button>
           </div>
         </div>
-        <div className="card--header__row">
-          <Shortcut keyword={title} />
-        </div>
+        <Shortcut keyword={title} />
       </div>
       <div className="card--main">
         <div className="card--main__link">

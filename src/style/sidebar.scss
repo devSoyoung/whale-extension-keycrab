@@ -147,7 +147,7 @@ main {
     border: 1px solid #F0F0F0;
 
     .card--header{
-      padding: 8px 16px;
+      padding: 16px 16px;
       border-bottom: 1px solid #F0F0F0;
       box-sizing: border-box;
       -moz-box-sizing: border-box;
@@ -156,6 +156,7 @@ main {
       .card--header__row {
         display: flex;
         justify-content: space-between;
+        margin-bottom: 8px;
 
         .card--header__title {
           font-size: 16px;
@@ -175,7 +176,13 @@ main {
 
       }
 
+      .card--header__shortcuts {
+        display: flex;
 
+        li {
+          margin-right: 8px;
+        }
+      }
     }
   }
 }
