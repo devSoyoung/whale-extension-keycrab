@@ -3,6 +3,7 @@
 body {
   font-family: 'NanumSquare', sans-serif; margin: 0;
   letter-spacing: -1px;
+  background: #f4f4f4;
 
   .normal {
     font-weight: 400
@@ -49,6 +50,7 @@ ul {
 header {
   padding: 8px 0;
   box-shadow: 0 0px 3px 2px rgba(0, 0, 0, 0.05);
+  background: #ffffff;
 }
 
 .title-area {
@@ -70,6 +72,15 @@ header {
 .title > strong {
   color: #f94e3f;
   font-weight: 800;
+}
+
+.sub-title {
+  font-family: 'NanumSquare', sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: -0.8px;
+  color: gray;
+  margin-left: 1px;
 }
 
 .logo-img {
@@ -138,7 +149,6 @@ header {
 main {
   padding: 0 16px;
   margin-top: 16px;
-  background-color: #E8E8E8;
 
   .card {
     width: 100%;
