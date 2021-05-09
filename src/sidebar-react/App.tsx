@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Header from './components/header';
 import ListView from './components/listview';
-import useKeywords from './components/hooks/useKeywords';
+import useKeywords from './hooks/useKeywords';
 import '../style/sidebar.scss';
 
 const App: React.FC = () => {

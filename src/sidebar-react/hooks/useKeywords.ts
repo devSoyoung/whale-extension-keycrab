@@ -1,8 +1,8 @@
-import { RootState } from '../../reducer';
+import { RootState } from '../reducer';
 import { useSelector, useDispatch } from 'react-redux';
-import actions from '../../actions/keywords';
+import actions from '../actions/keywords';
 import { useCallback } from 'react';
-import { Keywords } from '../../type/keywords';
+import { Keywords } from '../type/keywords';
 
 export default () => {
   const dispatch = useDispatch();

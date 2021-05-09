@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import useKeywords from '../hooks/useKeywords';
+import useKeywords from '../../hooks/useKeywords';
 import Keyword from './Keyword';
 
 const ListView: React.FC = () => {
