@@ -2,18 +2,29 @@ import React, { useMemo, useState } from 'react';
 import { Keyword } from '../../type/keywords';
 import Shortcut from './Shortcut';
 
-const BELL_OFF_IMAGE = 'images/icons/bell_off';
-const BELL_ON_IMAGE = 'images/icons/bell_on';
+const BELL_OFF_IMAGE = 'images/icons/bell_off.png';
+const BELL_ON_IMAGE = 'images/icons/bell_on.png';
+const GARBAGE_IMAGE = 'images/icons/garbage.png';
+const FOLD_IMAGE = 'images/icons/fold.png';
 
 const KeywordCard = (props) => {
   return (
     <div className="card">
       <div className="card--header">
         <div className="card--header__row">
-          <div className="card--header__title">삼성 벽걸이 에어컨</div>
+          <div className="card--header__title">
+            <button className="card--header__bell">
+              <img src={BELL_OFF_IMAGE} alt="키워드 구독 아이콘"/>
+            </button>
+            삼성 벽걸이 에어컨
+          </div>
           <div className="card--header__icons">
-            <button className="card--header__bell"/>
-            <button className="card--header__discard"/>
+            <button className="card--header__discard">
+              <img src={GARBAGE_IMAGE} alt="키워드 삭제 아이콘"/>
+            </button>
+            <button className="card--header__fold">
+              <img src={FOLD_IMAGE} alt="키워드 접기 아이콘"/>
+            </button>
           </div>
         </div>
         <div className="card--header__row">

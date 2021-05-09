@@ -1,5 +1,9 @@
+@import "reset.scss";
+
 body {
   font-family: 'NanumSquare', sans-serif; margin: 0;
+  letter-spacing: -1px;
+
   .normal {
     font-weight: 400
   }
@@ -134,4 +138,44 @@ header {
 main {
   padding: 0 16px;
   margin-top: 16px;
+  background-color: #E8E8E8;
+
+  .card {
+    width: 100%;
+    background-color: white;
+    border-radius: 12px;
+    border: 1px solid #F0F0F0;
+
+    .card--header{
+      padding: 8px 16px;
+      border-bottom: 1px solid #F0F0F0;
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+
+      .card--header__row {
+        display: flex;
+        justify-content: space-between;
+
+        .card--header__title {
+          font-size: 16px;
+
+          .card--header__bell img{
+            width: 16px;
+            height: 15px;
+            margin-right: 4px;
+          }
+        }
+
+        .card--header__icons img{
+          width: 16px;
+          height: 16px;
+          padding: 0 4px;
+        }
+
+      }
+
+
+    }
+  }
 }
