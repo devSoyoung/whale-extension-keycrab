@@ -1,40 +1,32 @@
+import { sendMessageForAddLink } from "../utils/message";
+
 export default function newsElementEventBinder(searchResultEl: HTMLLIElement, keyword: string) {
-    const titleEl = searchResultEl.querySelector('dt');
-    const { title } = titleEl.querySelector('a');
-    const thumbnailEl = searchResultEl.querySelector('.thumb') || undefined;
-    const relationListEl = searchResultEl.querySelector('.relation_lst') || undefined;
-
-    if (titleEl) titleHandler(titleEl, title, keyword);
-    if (thumbnailEl) thumbnailHandler(thumbnailEl, title, keyword);
-    if (relationListEl) listHandler(relationListEl, keyword);
-}
-// 각 엘리먼트 있으면 안에 리스너 등록해주는 함수
-function titleHandler (titleEl, title, currentKeyword) {
-    const { href } = titleEl.querySelector('a');
-    titleEl.addEventListener('click', () => {
+    // 뉴스 아이템 메인 영역
+    const contentEl: HTMLDivElement = searchResultEl.querySelector(".news_wrap");
+    if (!contentEl) return;
+    const titleEl: HTMLAnchorElement = contentEl.querySelector(".news_tit");
+    const { title, href: url } = titleEl;
+    contentEl.addEventListener("click", () => {
         if (!window.isTracking) return;
-        window.sendMessageForAddLink(currentKeyword, getResultForm('news', title, href));
+        sendMessageForAddLink(keyword, {
+            url,
+            title,
+            origin: 'news',
+            favorite: false
+        });
     });
-}
-function thumbnailHandler (thumbnailEl, title, currentKeyword) {
-    const { href } = thumbnailEl.querySelector('a');
-    thumbnailEl.addEventListener('click', () => {
-        if (!window.isTracking) return;
-        window.sendMessageForAddLink(currentKeyword, getResultForm('news', title, href));
-    });
-}
 
-function listHandler (relationListEl, currentKeyword) {
-    const listEls = relationListEl.querySelectorAll('li');
-    listEls.forEach(listEl => {
-        const listTitleLink = listEl.querySelector('a');
-        const title = listTitleLink.title;
-        listEl.querySelectorAll('a').forEach(anchorEl => {
-            const { href } = anchorEl;
-            anchorEl.addEventListener('click', () => {
-                if(!window.isTracking) return;
-                window.sendMessageForAddLink(currentKeyword, getResultForm('news', title, href));
-            });
-        })
+    // 연관 뉴스 영역
+    const relatedEl: HTMLDivElement = searchResultEl.querySelector(".news_cluster");
+    if (!relatedEl) return;
+    relatedEl.addEventListener("click", ({ target }) => {
+        if (!(target instanceof HTMLAnchorElement) || !window.isTracking) return;
+        const { title, href: url } = target;
+        sendMessageForAddLink(keyword, {
+            url,
+            title,
+            origin: 'news',
+            favorite: false
+        });
     });
 }
