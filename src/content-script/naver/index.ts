@@ -31,9 +31,9 @@ import videoElementEventBinder from "./naver-video.js";
   // 뉴스
   if (classList.includes('tabsch_news')) {
     const currentKeyword = document.querySelector('#nx_query').value;
-    const searchResultEls = document.querySelectorAll('ul.type01>li');
-    searchResultEls.forEach(searchResultEl => {
-      newsElementEventBinder(searchResultEl, currentKeyword);
+    const liEls = document.querySelectorAll('.list_news > li');
+    liEls.forEach((liEl: HTMLLIElement) => {
+      newsElementEventBinder(liEl, currentKeyword);
     });
     return;
   }
