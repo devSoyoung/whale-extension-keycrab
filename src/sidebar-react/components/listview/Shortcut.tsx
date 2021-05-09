@@ -4,9 +4,9 @@ interface ShortCutProps {
   keyword: string;
 }
 
-const ShortCut: React.FC<ShortCutProps> = ({ keyword }) => {
+const Shortcut: React.FC<ShortCutProps> = ({ keyword }) => {
   return (
-    <ul className="search-platform">
+    <ul className="card--header__shortcuts">
       <a
         href={`https://search.naver.com/search.naver?query=${keyword}`}
         target="_blank"
@@ -41,4 +41,4 @@ const ShortCut: React.FC<ShortCutProps> = ({ keyword }) => {
   );
 };
 
-export default ShortCut;
+export default Shortcut;
