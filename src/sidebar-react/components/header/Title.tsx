@@ -9,8 +9,11 @@ const Title: React.FC = () => {
         src="images/crab.png"
       />
       <h1 className="title">
-        <strong>key</strong>
-        crab
+        <img
+          className="title-img"
+          alt="키크랩 타이틀"
+          src="svgs/keycrab-title.svg"
+        />
         <span className="sub-title">스마트한 웹 서핑 도우미</span>
       </h1>
     </div>

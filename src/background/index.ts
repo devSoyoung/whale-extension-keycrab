@@ -12,6 +12,8 @@ whale.runtime.onInstalled.addListener((installDetails) => {
 });
 
 whale.runtime.onMessage.addListener(({ type, payload }: Message) => {
+  if (!payload) return;
+
   if ('link' in payload) {
     if (type === 'ADD_LINK_TO_KEYWORD') {
       const { keyword, link } = payload;
