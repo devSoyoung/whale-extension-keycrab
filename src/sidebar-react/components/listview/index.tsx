@@ -10,7 +10,14 @@ const ListView: React.FC = () => {
   }, [keywords]);
   return (
     <main>
-      <KeywordCard/>
+      {Object.keys(keywords).map((keyword, index) => {
+        return (
+          <KeywordCard
+            key={`${keyword}_${index}`}
+            {...{ ...keywords[keyword], title: keyword }}
+          />
+        );
+      })}
     </main>
   );
 };
