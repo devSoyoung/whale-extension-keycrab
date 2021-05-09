@@ -1,12 +1,12 @@
-export default function newsElementEventBinder(searchResultEl, currentKeyword) {
+export default function newsElementEventBinder(searchResultEl: HTMLLIElement, keyword: string) {
     const titleEl = searchResultEl.querySelector('dt');
     const { title } = titleEl.querySelector('a');
     const thumbnailEl = searchResultEl.querySelector('.thumb') || undefined;
     const relationListEl = searchResultEl.querySelector('.relation_lst') || undefined;
 
-    if (titleEl) titleHandler(titleEl, title, currentKeyword);
-    if (thumbnailEl) thumbnailHandler(thumbnailEl, title, currentKeyword);
-    if (relationListEl) listHandler(relationListEl, currentKeyword);
+    if (titleEl) titleHandler(titleEl, title, keyword);
+    if (thumbnailEl) thumbnailHandler(thumbnailEl, title, keyword);
+    if (relationListEl) listHandler(relationListEl, keyword);
 }
 // 각 엘리먼트 있으면 안에 리스너 등록해주는 함수
 function titleHandler (titleEl, title, currentKeyword) {
