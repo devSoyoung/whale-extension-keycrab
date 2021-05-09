@@ -13,8 +13,7 @@ const Shortcut: React.FC<ShortCutProps> = ({ keyword }) => {
         rel="noreferrer"
       >
         <li className="naver-search">
-          <img src="../../images/naver.png" alt="네이버로고" />
-          <span>네이버</span>
+          <img src="svgs/shortcut-naver.svg" alt={`네이버로 ${keyword} 검색`} />
         </li>
       </a>
       <a
@@ -23,8 +22,7 @@ const Shortcut: React.FC<ShortCutProps> = ({ keyword }) => {
         rel="noreferrer"
       >
         <li className="google-search">
-          <img src="../../images/google.png" alt="구글로고" />
-          구글
+          <img src="svgs/shortcut-google.svg" alt={`구글로 ${keyword} 검색`} />
         </li>
       </a>
       <a
@@ -33,8 +31,7 @@ const Shortcut: React.FC<ShortCutProps> = ({ keyword }) => {
         rel="noreferrer"
       >
         <li className="youtube-search">
-          <img src="../../images/youtube.png" alt="유튜로고" />
-          유튜브
+          <img src="svgs/shortcut-yt.svg" alt={`유튜브로 ${keyword} 검색`} />
         </li>
       </a>
     </ul>
