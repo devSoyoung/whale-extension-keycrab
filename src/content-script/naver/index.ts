@@ -17,13 +17,14 @@ import videoElementEventBinder from "./naver-video.js";
 (function() {
   const classList = [...document.body.classList];
 
-  const currentKeyword = document.querySelector('#nx_query').value;
+  const currentKeywordEl: HTMLInputElement = document.querySelector('#nx_query');
+  const { value: currentKeyword = '' } = currentKeywordEl;
 
   // 뉴스
   const newsSectionEl = document.querySelector('#main_pack>section.sp_nnews');
   if (newsSectionEl) {
     const searchResultEls = newsSectionEl.querySelectorAll('ul.list_news>li');
-    searchResultEls.forEach(searchResultEl => {
+    searchResultEls.forEach((searchResultEl: HTMLLIElement) => {
       newsElementEventBinder(searchResultEl, currentKeyword);
     });
     return;
