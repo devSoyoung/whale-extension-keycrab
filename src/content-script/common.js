@@ -95,7 +95,7 @@ function getCrabClass(isTracking, isGoogle) {
   return result;
 }
 
-function getResultForm(origin, title, url) {
+export function getResultForm(origin, title, url) {
   return {
     favorite: false,
     origin: origin,
