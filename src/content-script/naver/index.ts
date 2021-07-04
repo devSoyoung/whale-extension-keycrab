@@ -1,9 +1,9 @@
-import elementEventBinder from "./naver-blog-cafe.js";
-import kinElementEventBinder from "./naver-kin.js";
-import newsElementEventBinder from "./naver-news.js";
-import postElementEventBinder from "./naver-post.js";
-import shoppingElementEventBinder from "./naver-shopping.js";
-import videoElementEventBinder from "./naver-video.js";
+import elementEventBinder from './naver-blog-cafe.js';
+import kinElementEventBinder from './naver-kin.js';
+import newsElementEventBinder from './naver-news';
+import postElementEventBinder from './naver-post.js';
+import shoppingElementEventBinder from './naver-shopping.js';
+import videoElementEventBinder from './naver-video.js';
 
 // sp_nshop : 네이버 쇼핑
 // sp_nnews : 네이버 뉴스
@@ -14,10 +14,12 @@ import videoElementEventBinder from "./naver-video.js";
 // sp_ntotal : 네이버 전체 검색결과???
 // sp_nbook : 네이버 책
 
-(function() {
+(function () {
   const classList = [...document.body.classList];
 
-  const currentKeywordEl: HTMLInputElement = document.querySelector('#nx_query');
+  const currentKeywordEl: HTMLInputElement = document.querySelector(
+    '#nx_query'
+  );
   const { value: currentKeyword = '' } = currentKeywordEl;
 
   // 뉴스
@@ -135,4 +137,3 @@ import videoElementEventBinder from "./naver-video.js";
   //   });
   // }
 })();
-

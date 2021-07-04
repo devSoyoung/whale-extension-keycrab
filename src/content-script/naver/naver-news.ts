@@ -1,4 +1,4 @@
-import {getResultForm} from "../common";
+import { getResultForm } from '../common';
 
 export default function newsElementEventBinder(searchResultEl, currentKeyword) {
   const titleEl = searchResultEl.querySelector('a.news_tit');
@@ -40,7 +40,7 @@ function listHandler(relationListEl, currentKeyword) {
 
     linkEl.addEventListener('click', () => {
       if (!window.isTracking) return;
-      const {href : linkHref} = linkEl;
+      const { href: linkHref } = linkEl;
 
       window.sendMessageForAddLink(
         currentKeyword,
@@ -52,7 +52,7 @@ function listHandler(relationListEl, currentKeyword) {
     const naverLinkEl = listEl.querySelector('a.sub_txt');
     naverLinkEl.addEventListener('click', () => {
       if (!window.isTracking) return;
-      const {href : naverLinkHref} = linkEl;
+      const { href: naverLinkHref } = linkEl;
 
       window.sendMessageForAddLink(
         currentKeyword,
