@@ -1,14 +1,14 @@
-import "./utils/insert-button.js";
+import './utils/insert-button.js';
 
 // 페이지에 삽입 될 키워드 추적 버튼 관리하기
-window.insertButton = function(keywordName) {
-  const isGoogle= `${location.href}`.split(`?`)[0].includes(`google`);
+window.insertButton = function (keywordName) {
+  const isGoogle = `${location.href}`.split(`?`)[0].includes(`google`);
   const buttonEl = document.createElement('button');
   // 추적 여부에 따라 버튼 이름, 스타일 다르게
   buttonEl.innerText = getInnerText(window.isTracking);
   buttonEl.className = getClassName(window.isTracking, isGoogle);
 
-  buttonEl.onclick = function() {
+  buttonEl.onclick = function () {
     window.setButtonState(!window.isTracking);
     if (!window.isTracking) {
       sendMessageForUnfollowKeyword(keywordName);
@@ -21,8 +21,8 @@ window.insertButton = function(keywordName) {
   else document.querySelector('.search_area').appendChild(buttonEl);
 };
 
-window.insertCrabIcon = function(isTracking, isGoogle) {
-  const crabDivEl= document.createElement('div');
+window.insertCrabIcon = function (isTracking, isGoogle) {
+  const crabDivEl = document.createElement('div');
 
   crabDivEl.className = getCrabClass(isTracking, isGoogle);
 
@@ -30,7 +30,7 @@ window.insertCrabIcon = function(isTracking, isGoogle) {
   else document.querySelector('.search_area').appendChild(crabDivEl);
 };
 
-window.setButtonState = function(isTracking) {
+window.setButtonState = function (isTracking) {
   window.isTracking = isTracking;
   const isGoogle = `${location.href}`.split(`?`)[0].includes(`google`);
   const buttonEl = document.querySelector('.tracking-btn');
@@ -48,7 +48,7 @@ window.sendMessageForAddLink = (keywordName, link) => {
   whale.storage.sync.get(['keywords'], ({ keywords }) => {
     let isDuplicated = false;
     if (keywords[keywordName]) {
-      keywords[keywordName].link.forEach(linkItem => {
+      keywords[keywordName].link.forEach((linkItem) => {
         if (linkItem.title === link.title) {
           isDuplicated = true;
         }
@@ -58,24 +58,22 @@ window.sendMessageForAddLink = (keywordName, link) => {
     if (isDuplicated) return;
     whale.runtime.sendMessage({
       type: 'ADD_LINK_TO_KEYWORD',
-      payload: { keyword: keywordName, link }
+      payload: { keyword: keywordName, link },
     });
   });
-
-
 };
 
 function sendMessageForFollowKeyword(keyword) {
   whale.runtime.sendMessage({
     type: 'FOLLOW_KEYWORD',
-    payload: { keyword }
+    payload: { keyword },
   });
 }
 
 function sendMessageForUnfollowKeyword(keyword) {
   whale.runtime.sendMessage({
     type: 'UNFOLLOW_KEYWORD',
-    payload: { keyword }
+    payload: { keyword },
   });
 }
 
@@ -102,6 +100,6 @@ function getResultForm(origin, title, url) {
     favorite: false,
     origin: origin,
     title: title,
-    url: url
-  }
+    url: url,
+  };
 }
