@@ -17,8 +17,8 @@ const OriginMap = {
 
 const DEFAULT_ORIGIN = '네이버';
 
-const PIN_IMAGE = 'images/icons/pin_fixed2.png';
-const UNPIN_IMAGE = 'images/icons/pin_unfixed.png';
+const PIN_IMAGE = 'images/icons/jjim-on.svg';
+const UNPIN_IMAGE = 'images/icons/jjim-off.svg';
 // 임시, x 표 아이콘 생성 필요
 
 const Link = ({ favorite, origin, title, url }: LinkProps) => {

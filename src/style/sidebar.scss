@@ -3,7 +3,6 @@
 body {
   font-family: 'NanumSquare', sans-serif; margin: 0;
   letter-spacing: -1px;
-  background: #f4f4f4;
 
   .normal {
     font-weight: 400
@@ -87,8 +86,6 @@ header {
   width: 25px;
   height: 25px;
   padding: 6px;
-  /*top: 21px;*/
-  /*position: absolute;*/
 }
 
 .title-img {
@@ -147,25 +144,23 @@ header {
 }
 
 main {
-  padding: 0 16px;
-  margin-top: 16px;
+  padding: 0 8px;
+  margin-top: 8px;
 
-  .card {
+  .list-item {
     width: 100%;
     background-color: white;
-    border-radius: 12px;
-    border: 1px solid #F0F0F0;
+    border-bottom: 1px solid #F0F0F0;
     margin: 16px 0;
 
     .card--header{
-      padding: 16px 16px;
-      border-bottom: 1px solid #F0F0F0;
       box-sizing: border-box;
       -moz-box-sizing: border-box;
       -webkit-box-sizing: border-box;
 
       .card--header__row {
         display: flex;
+        align-items: center;
         justify-content: space-between;
         margin-bottom: 8px;
 
@@ -173,16 +168,16 @@ main {
           font-size: 16px;
 
           .card--header__bell img{
-            width: 16px;
-            height: 15px;
-            margin-right: 4px;
+            width: 24px;
+            height: 24px;
+            margin: 0 12px 0 8px;
           }
         }
 
         .card--header__icons img{
           width: 16px;
           height: 16px;
-          padding: 0 4px;
+          padding: 8px;
         }
 
       }
@@ -197,12 +192,12 @@ main {
     }
 
     .card--main {
-      padding: 16px;
+      padding: 8px;
 
       .card--main__link {
         display: flex;
         flex-direction: row;
-        margin-bottom: 5px;
+        margin-bottom: 16px;
         letter-spacing: -0.5px;
         font-size: 12px;
         height: 18px;
@@ -210,12 +205,11 @@ main {
 
         .card--main__pin {
           height: 16px;
-          margin-right: 2px;
-          margin-top: -0.5px;
+          margin: 0 5px;
 
           img {
             height: 15px;
-            width: 15px;
+            width: 12px;
             padding: 0 2px 2px 0;
             cursor: pointer;
           }
@@ -224,13 +218,11 @@ main {
         .card--main__origin {
           margin-right: 5px;
           width: 35px;
-          letter-spacing: -1px;
-          font-weight: 600;
-          padding-left: 2px;
+          padding-left: 12px;
         }
 
         .card--main__desc {
-          width: calc(100vw - 140px);
+          width: calc(100vw - 124px);
           text-overflow: ellipsis;
           overflow: hidden;
           white-space: nowrap;

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 const DEFAULT_SIZE = 8;
-const HOVERED_SIZE = 12;
+const HOVERED_SIZE = 8;
 
 const LinkDelete = ({ color = '#c6c6c6', hoveredColor = 'red' }) => {
   const [isHovered, setHovered] = useState(false);

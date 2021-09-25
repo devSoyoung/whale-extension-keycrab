@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import useKeywords from '../../hooks/useKeywords';
 import KeywordCard from './KeywordCard';
+import KeywordListItem from './KeywordListItem';
 
 const ListView: React.FC = () => {
   const { keywords } = useKeywords();
@@ -12,7 +13,7 @@ const ListView: React.FC = () => {
     <main>
       {Object.keys(keywords).map((keyword, index) => {
         return (
-          <KeywordCard
+          <KeywordListItem
             key={`${keyword}_${index}`}
             {...{ ...keywords[keyword], title: keyword }}
           />
