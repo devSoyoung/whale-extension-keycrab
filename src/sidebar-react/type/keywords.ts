@@ -8,6 +8,7 @@ export interface Link {
 export interface Keyword {
   link: Link[];
   tracking: boolean;
+  fold?: boolean;
 }
 
 export interface Keywords {

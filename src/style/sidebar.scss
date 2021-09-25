@@ -180,6 +180,14 @@ main {
           padding: 8px;
         }
 
+        .card--header__fold {
+          transition: all 0.1s;
+        }
+
+        .folded {
+          transform: rotate( 180deg );
+        }
+
       }
 
       .card--header__shortcuts {
@@ -238,6 +246,10 @@ main {
           }
         }
       }
+    }
+
+    .hidden {
+      display: none;
     }
   }
 }

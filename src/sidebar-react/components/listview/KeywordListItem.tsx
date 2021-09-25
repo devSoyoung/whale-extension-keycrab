@@ -41,7 +41,13 @@ const FollowButton = ({ tracking, title }: FollowButtonProps) => {
 };
 
 const KeywordListItem = (props: KeywordProps & Keyword) => {
-  const { title, tracking, link } = props;
+  const { title, tracking, link, fold = false } = props;
+  const { toggleFoldKeyword } = useKeywords();
+
+  const handleClick = () => {
+    toggleFoldKeyword({ fold, keyword: title });
+  };
+
   return (
     <div className="list-item">
       <div className="card--header">
@@ -51,7 +57,10 @@ const KeywordListItem = (props: KeywordProps & Keyword) => {
             {title}
           </div>
           <div className="card--header__icons">
-            <button className="card--header__fold">
+            <button
+              className={`card--header__fold ${fold ? 'folded' : ''}`}
+              onClick={handleClick}
+            >
               <img src={FOLD_IMAGE} alt="키워드 접기 아이콘" />
             </button>
             <button className="card--header__discard">
@@ -60,7 +69,7 @@ const KeywordListItem = (props: KeywordProps & Keyword) => {
           </div>
         </div>
       </div>
-      <div className="card--main">
+      <div className={`card--main ${fold ? 'hidden' : ''}`}>
         {link?.map((item, index) => (
           <Link key={index} {...item} />
         ))}

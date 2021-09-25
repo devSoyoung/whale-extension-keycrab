@@ -18,6 +18,11 @@ export interface SetFollowKeywordPayload {
   keyword: string;
 }
 
+export interface SetFoldKeywordPayload {
+  fold: boolean;
+  keyword: string;
+}
+
 export default {
   fetchKeywordList: (): Action<Record<string, never>> => ({
     type: Actions.FETCH_KEYWORD_LIST,

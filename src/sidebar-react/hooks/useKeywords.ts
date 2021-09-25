@@ -1,6 +1,9 @@
 import { RootState } from '../reducer';
 import { useSelector, useDispatch } from 'react-redux';
-import actions, { SetFollowKeywordPayload } from '../actions/keywords';
+import actions, {
+  SetFoldKeywordPayload,
+  SetFollowKeywordPayload,
+} from '../actions/keywords';
 import { useCallback } from 'react';
 import { Keywords } from '../type/keywords';
 
@@ -17,9 +20,22 @@ export default () => {
 
   const toggleFollowKeyword = useCallback(
     (payload: SetFollowKeywordPayload) => {
-      dispatch(actions.setFollowKeyword(payload));
+      const { keyword, tracking } = payload;
+      const newKeywords = { ...keywords };
+      newKeywords[keyword].tracking = !tracking;
+      dispatch(actions.setKeywordList(newKeywords));
     },
-    [dispatch]
+    [dispatch, keywords]
+  );
+
+  const toggleFoldKeyword = useCallback(
+    (payload: SetFoldKeywordPayload) => {
+      const { keyword, fold } = payload;
+      const newKeywords = { ...keywords };
+      newKeywords[keyword].fold = !fold;
+      dispatch(actions.setKeywordList(newKeywords));
+    },
+    [dispatch, keywords]
   );
 
   return {
@@ -27,5 +43,6 @@ export default () => {
 
     fetchKeywordList,
     toggleFollowKeyword,
+    toggleFoldKeyword,
   };
 };
