@@ -23,6 +23,11 @@ export interface SetFoldKeywordPayload {
   keyword: string;
 }
 
+export interface RemoveLinkPayload {
+  url: string;
+  keyword: string;
+}
+
 export default {
   fetchKeywordList: (): Action<Record<string, never>> => ({
     type: Actions.FETCH_KEYWORD_LIST,

@@ -71,7 +71,7 @@ const KeywordListItem = (props: KeywordProps & Keyword) => {
       </div>
       <div className={`card--main ${fold ? 'hidden' : ''}`}>
         {link?.map((item, index) => (
-          <Link key={index} {...item} />
+          <Link key={index} ownKeyword={title} {...item} />
         ))}
       </div>
     </div>

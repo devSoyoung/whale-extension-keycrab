@@ -1,6 +1,7 @@
 import React from 'react';
-import { Link as LinkProps } from '../../type/keywords';
+import { LinkProps } from '../../type/keywords';
 import LinkDelete from '../icons/LinkDelete';
+import useKeywords from '../../hooks/useKeywords';
 
 const OriginMap = {
   total: '통합검색',
@@ -21,7 +22,12 @@ const PIN_IMAGE = 'images/icons/jjim-on.svg';
 const UNPIN_IMAGE = 'images/icons/jjim-off.svg';
 // 임시, x 표 아이콘 생성 필요
 
-const Link = ({ favorite, origin, title, url }: LinkProps) => {
+const Link = ({ favorite, origin, title, url, ownKeyword }: LinkProps) => {
+  const { removeLink } = useKeywords();
+  const handleClickRemove = () => {
+    removeLink({ url, keyword: ownKeyword });
+  };
+
   return (
     <div className="card--main__link">
       <button className="card--main__pin">
@@ -35,7 +41,7 @@ const Link = ({ favorite, origin, title, url }: LinkProps) => {
           {title}
         </a>
       </div>
-      <button className="card--main__remove">
+      <button className="card--main__remove" onClick={handleClickRemove}>
         <LinkDelete />
       </button>
     </div>

@@ -64,7 +64,7 @@ const KeywordCard = (props: KeywordProps & Keyword) => {
       </div>
       <div className="card--main">
         {link?.map((item, index) => (
-          <Link key={index} {...item} />
+          <Link key={index} ownKeyword={title} {...item} />
         ))}
       </div>
     </div>

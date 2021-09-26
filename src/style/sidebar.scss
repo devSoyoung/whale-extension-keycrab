@@ -213,7 +213,7 @@ main {
 
         .card--main__pin {
           height: 16px;
-          margin: 0 5px;
+          margin: 0 4px 0 7px;
 
           img {
             height: 15px;
@@ -230,7 +230,7 @@ main {
         }
 
         .card--main__desc {
-          width: calc(100vw - 124px);
+          width: calc(100vw - 125px);
           text-overflow: ellipsis;
           overflow: hidden;
           white-space: nowrap;
