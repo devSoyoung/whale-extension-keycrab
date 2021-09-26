@@ -4,6 +4,7 @@ import actions, {
   SetFoldKeywordPayload,
   SetFollowKeywordPayload,
   RemoveLinkPayload,
+  PinLinkPayload,
 } from '../actions/keywords';
 import { useCallback } from 'react';
 import { Keywords } from '../type/keywords';
@@ -51,6 +52,23 @@ export default () => {
     [dispatch, keywords]
   );
 
+  const togglePinLink = useCallback(
+    (payload: PinLinkPayload) => {
+      const { keyword, url: targetUrl, favorite } = payload;
+      const newKeywords = { ...keywords };
+      const links = newKeywords[keyword].link;
+      const idx = links.findIndex(({ url }) => url === targetUrl);
+      links[idx].favorite = !favorite;
+      // rearrange links
+      newKeywords[keyword].link = [
+        ...links.filter(({ favorite }) => favorite),
+        ...links.filter(({ favorite }) => !favorite),
+      ];
+      dispatch(actions.setKeywordList(newKeywords));
+    },
+    [dispatch, keywords]
+  );
+
   return {
     keywords,
 
@@ -59,5 +77,6 @@ export default () => {
     toggleFoldKeyword,
 
     removeLink,
+    togglePinLink,
   };
 };

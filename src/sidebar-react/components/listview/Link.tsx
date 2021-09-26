@@ -23,14 +23,18 @@ const UNPIN_IMAGE = 'images/icons/jjim-off.svg';
 // 임시, x 표 아이콘 생성 필요
 
 const Link = ({ favorite, origin, title, url, ownKeyword }: LinkProps) => {
-  const { removeLink } = useKeywords();
+  const { removeLink, togglePinLink } = useKeywords();
   const handleClickRemove = () => {
     removeLink({ url, keyword: ownKeyword });
   };
 
+  const handleClickPin = () => {
+    togglePinLink({ url, keyword: ownKeyword, favorite });
+  };
+
   return (
     <div className="card--main__link">
-      <button className="card--main__pin">
+      <button className="card--main__pin" onClick={handleClickPin}>
         <img src={favorite ? PIN_IMAGE : UNPIN_IMAGE} alt="고정하기" />
       </button>
       <div className="card--main__origin">
