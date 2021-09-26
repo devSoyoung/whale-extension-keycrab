@@ -1,4 +1,4 @@
-import elementEventBinder from './naver-blog-cafe.js';
+import elementEventBinder from './naver-blog-cafe';
 import kinElementEventBinder from './naver-kin.js';
 import newsElementEventBinder from './naver-news';
 import postElementEventBinder from './naver-post.js';
@@ -13,6 +13,7 @@ import videoElementEventBinder from './naver-video.js';
 // sp_ncafe_used : 네이버 카페
 // sp_ntotal : 네이버 전체 검색결과???
 // sp_nbook : 네이버 책
+// sp_nsite : ??
 
 (function () {
   const classList = [...document.body.classList];
@@ -57,15 +58,11 @@ import videoElementEventBinder from './naver-video.js';
   //   return;
   // }
   //
-  // // 블로그
-  // if (classList.includes('tabsch_blog')) {
-  //   const currentKeyword = document.querySelector('#nx_query').value;
-  //   const blogResultEls = document.querySelectorAll(`div.blog.section ul.type01>li`);
-  //   blogResultEls.forEach(searchResultEl => {
-  //     elementEventBinder('blog',searchResultEl, currentKeyword);
-  //   });
-  //   return;
-  // }
+  // 블로그
+  const blogResultEls = document.querySelectorAll(`section.sp_nblog ul li`);
+  blogResultEls?.forEach((searchResultEl) => {
+    elementEventBinder('blog', searchResultEl, currentKeyword);
+  });
   //
   // // 지식인
   // if (classList.includes('tabsch_kin')) {
@@ -77,15 +74,11 @@ import videoElementEventBinder from './naver-video.js';
   //   return;
   // }
   //
-  // // 카페
-  // if (classList.includes('tabsch_cafe')) {
-  //   const currentKeyword = document.querySelector('#nx_query').value;
-  //   const searchResultEls = document.querySelectorAll('#elThumbnailResultArea li');
-  //   searchResultEls.forEach(searchResultEl => {
-  //     elementEventBinder('cafe', searchResultEl, currentKeyword);
-  //   });
-  //   return;
-  // }
+  // 카페
+  const cafeResultEls = document.querySelectorAll(`section.sp_ncafe ul li`);
+  cafeResultEls?.forEach((searchResultEl) => {
+    elementEventBinder('cafe', searchResultEl, currentKeyword);
+  });
 
   // // 통합검색
   // if (!classList.length) {
@@ -105,7 +98,6 @@ import videoElementEventBinder from './naver-video.js';
   //   });
   // 쇼핑
   const shoppingResultEls = document.querySelectorAll(`section.sp_nshop ul li`);
-  console.log('selected shopping');
   shoppingResultEls?.forEach((searchResultEl) => {
     shoppingElementEventBinder('shopping', searchResultEl, currentKeyword);
   });

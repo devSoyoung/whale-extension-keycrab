@@ -38,7 +38,7 @@ function listHandler(relationListEl, currentKeyword) {
     const linkEl = listEl.querySelector('a.sub_tit');
     const { title } = linkEl;
 
-    linkEl.addEventListener('click', () => {
+    linkEl?.addEventListener('click', () => {
       if (!window.isTracking) return;
       const { href: linkHref } = linkEl;
 
@@ -50,7 +50,7 @@ function listHandler(relationListEl, currentKeyword) {
 
     // 제목 옆에 네이버뉴스 로 클릭 시
     const naverLinkEl = listEl.querySelector('a.sub_txt');
-    naverLinkEl.addEventListener('click', () => {
+    naverLinkEl?.addEventListener('click', () => {
       if (!window.isTracking) return;
       const { href: naverLinkHref } = linkEl;
 
