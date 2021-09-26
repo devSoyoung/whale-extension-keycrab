@@ -1,14 +1,15 @@
+import { getResultForm } from '../common';
+
 export default function shoppingElementEventBinder(
   origin,
   searchResultEl,
   currentKeyword
 ) {
-  const titleEl = searchResultEl.querySelector('.detail .tit');
-  const thumbnailEl = searchResultEl.querySelector('.thumb_area') || undefined;
+  const titleEl = searchResultEl.querySelector('.product_info a.title');
+  const thumbnailEl = searchResultEl.querySelector('.thumb') || undefined;
 
-  const title =
-    titleEl.querySelector('a').title || titleEl.querySelector('a').innerText;
-  const { href } = titleEl.querySelector('a');
+  const title = titleEl.innerText;
+  const { href } = titleEl;
   const result = getResultForm(origin, title, href);
 
   function onClickItem() {

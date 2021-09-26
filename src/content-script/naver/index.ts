@@ -2,7 +2,7 @@ import elementEventBinder from './naver-blog-cafe.js';
 import kinElementEventBinder from './naver-kin.js';
 import newsElementEventBinder from './naver-news';
 import postElementEventBinder from './naver-post.js';
-import shoppingElementEventBinder from './naver-shopping.js';
+import shoppingElementEventBinder from './naver-shopping';
 import videoElementEventBinder from './naver-video.js';
 
 // sp_nshop : 네이버 쇼핑
@@ -29,7 +29,6 @@ import videoElementEventBinder from './naver-video.js';
     searchResultEls.forEach((searchResultEl: HTMLLIElement) => {
       newsElementEventBinder(searchResultEl, currentKeyword);
     });
-    return;
   }
 
   // // 웹사이트
@@ -104,11 +103,13 @@ import videoElementEventBinder from './naver-video.js';
   //   blogResultEls.forEach(searchResultEl => {
   //     elementEventBinder('blog',searchResultEl, currentKeyword);
   //   });
-  //   // 쇼핑
-  //   const shoppingResultEls = document.querySelectorAll(`div.sp_shop_default.section .group_guide ul>li`);
-  //   shoppingResultEls.forEach(searchResultEl => {
-  //     shoppingElementEventBinder('shopping', searchResultEl, currentKeyword);
-  //   });
+  // 쇼핑
+  const shoppingResultEls = document.querySelectorAll(`section.sp_nshop ul li`);
+  console.log('selected shopping');
+  shoppingResultEls?.forEach((searchResultEl) => {
+    shoppingElementEventBinder('shopping', searchResultEl, currentKeyword);
+  });
+
   //   // 웹사이트
   //   const webResultEls = document.querySelectorAll(`div.sp_website.section ul.type01>li`);
   //   webResultEls.forEach(searchResultEl => {
