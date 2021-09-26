@@ -29,7 +29,6 @@
       ],
       "css": ["css/button.css"],
       "js": [
-        "content-script/common.js",
         "content-script/naver.js"
       ]
     },
