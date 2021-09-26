@@ -40,6 +40,15 @@ export default () => {
     [dispatch, keywords]
   );
 
+  const removeKeyword = useCallback(
+    ({ keyword }) => {
+      const newKeywords = { ...keywords };
+      delete newKeywords[keyword];
+      dispatch(actions.setKeywordList(newKeywords));
+    },
+    [dispatch, keywords]
+  );
+
   const removeLink = useCallback(
     (payload: RemoveLinkPayload) => {
       const { keyword, url: targetUrl } = payload;
@@ -75,6 +84,7 @@ export default () => {
     fetchKeywordList,
     toggleFollowKeyword,
     toggleFoldKeyword,
+    removeKeyword,
 
     removeLink,
     togglePinLink,

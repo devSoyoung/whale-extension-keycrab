@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { Keyword } from '../../type/keywords';
 import Link from './Link';
 import useKeywords from '../../hooks/useKeywords';
+import Dropdown from './Dropdown';
 
 const BELL_OFF_IMAGE = 'images/icons/bell_off.png';
 const BELL_ON_IMAGE = 'images/icons/bell_on.png';
@@ -65,6 +66,7 @@ const KeywordListItem = (props: KeywordProps & Keyword) => {
             </button>
             <button className="card--header__discard">
               <img src={MENU_IMAGE} alt="메뉴 더 보기" />
+              <Dropdown keyword={title} />
             </button>
           </div>
         </div>
