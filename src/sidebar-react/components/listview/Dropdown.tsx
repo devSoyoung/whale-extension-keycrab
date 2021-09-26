@@ -12,9 +12,13 @@ const RemoveButton = ({ keyword }) => {
     removeKeyword({ keyword });
   };
   return (
-    <button onClick={handleClick} className="dropdown-button--remove-link">
+    <div
+      onClick={handleClick}
+      className="dropdown-button--remove-link"
+      role="button"
+    >
       링크 삭제
-    </button>
+    </div>
   );
 };
 

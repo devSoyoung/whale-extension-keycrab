@@ -197,13 +197,13 @@ main {
             // min-height: 200px;
             background: white;
             z-index: 10;
-            box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.1);
             display: none;
             flex-direction: column;
             align-items: center;
 
             h1 {
-              margin: 4px 0;
+              margin: 16px 0 10px 0
             }
 
             .dropdown--menu {
@@ -226,6 +226,9 @@ main {
               border: 1px solid #FF3333;
               border-radius: 4px;
               margin: 16px 0;
+              display: flex;
+              align-items: center;
+              justify-content: center;
 
               width: 62px;
               height: 24px;
