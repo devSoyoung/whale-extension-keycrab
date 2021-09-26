@@ -15,9 +15,7 @@ const setKeyword = (keywords: Keywords) => {
 };
 
 function* getKeywordSaga() {
-  console.log('Keyword Fetch is Called');
   const keywords = yield call(getKeywordFromStorage);
-  console.log('in Saga, keywords are ', keywords);
 
   yield put({
     type: KeywordActions.SET_KEYWORD_LIST,
