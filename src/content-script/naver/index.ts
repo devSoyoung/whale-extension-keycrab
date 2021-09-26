@@ -1,5 +1,5 @@
 import elementEventBinder from './naver-blog-cafe';
-import kinElementEventBinder from './naver-kin.js';
+import kinElementEventBinder from './naver-kin';
 import newsElementEventBinder from './naver-news';
 import postElementEventBinder from './naver-post.js';
 import shoppingElementEventBinder from './naver-shopping';
@@ -110,10 +110,10 @@ import videoElementEventBinder from './naver-video';
   //     elementEventBinder('cafe', searchResultEl, currentKeyword);
   //   });
   //   // 지식인
-  //   const kinResultEls = document.querySelectorAll(`div.kinn.section ul.type01>li`);
-  //   kinResultEls.forEach(searchResultEl => {
-  //     kinElementEventBinder('kin', searchResultEl, currentKeyword);
-  //   });
+  const kinResultEls = document.querySelectorAll(`section.sp_nkin ul li`);
+  kinResultEls.forEach((searchResultEl) => {
+    kinElementEventBinder('kin', searchResultEl, currentKeyword);
+  });
   //   // 포스트
   //   const postResultEls = document.querySelectorAll(`div.sp_post.section ul.type01>li`);
   //   postResultEls.forEach(searchResultEl => {
