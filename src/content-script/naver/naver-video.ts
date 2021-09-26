@@ -1,14 +1,15 @@
+import { getResultForm } from '../common';
+
 export default function videoElementEventBinder(
   origin,
   searchResultEl,
   currentKeyword
 ) {
-  const titleEl = searchResultEl.querySelector('dt');
-  const thumbnailEl = searchResultEl.querySelector('.video_thum') || undefined;
+  const titleEl = searchResultEl.querySelector('a.info_title');
+  const thumbnailEl = searchResultEl.querySelector('.thumb_area') || undefined;
 
-  const title =
-    titleEl.querySelector('a').title || titleEl.querySelector('a').innerText;
-  const { href } = titleEl.querySelector('a');
+  const title = titleEl?.querySelector('span').innerText;
+  const { href } = titleEl;
   const result = getResultForm(origin, title, href);
 
   function onClickItem() {

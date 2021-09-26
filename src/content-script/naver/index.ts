@@ -3,7 +3,7 @@ import kinElementEventBinder from './naver-kin.js';
 import newsElementEventBinder from './naver-news';
 import postElementEventBinder from './naver-post.js';
 import shoppingElementEventBinder from './naver-shopping';
-import videoElementEventBinder from './naver-video.js';
+import videoElementEventBinder from './naver-video';
 
 // sp_nshop : 네이버 쇼핑
 // sp_nnews : 네이버 뉴스
@@ -14,6 +14,7 @@ import videoElementEventBinder from './naver-video.js';
 // sp_ntotal : 네이버 전체 검색결과???
 // sp_nbook : 네이버 책
 // sp_nsite : ??
+// sp_nvideo : 비디오
 
 (function () {
   const classList = [...document.body.classList];
@@ -42,15 +43,11 @@ import videoElementEventBinder from './naver-video.js';
   //   return;
   // }
   //
-  // // 비디오
-  // if (classList.includes('tabsch_video')) {
-  //   const currentKeyword = document.querySelector('#nx_query').value;
-  //   const videoResultEls = document.querySelectorAll(`div.sp_video.section ul>li`);
-  //   videoResultEls.forEach(searchResultEl => {
-  //     videoElementEventBinder('video',searchResultEl, currentKeyword);
-  //   });
-  //   return;
-  // }
+  // 비디오
+  const videoResultEls = document.querySelectorAll(`section.sp_nvideo ul li`);
+  videoResultEls?.forEach((searchResultEl) => {
+    videoElementEventBinder('video', searchResultEl, currentKeyword);
+  });
   //
   // // 이미지
   // if (classList.includes('tabsch_image')) {
