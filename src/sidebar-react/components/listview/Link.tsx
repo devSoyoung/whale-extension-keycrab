@@ -14,6 +14,7 @@ const OriginMap = {
   news: '뉴스',
   website: '사이트',
   google: '구글',
+  view: 'VIEW',
 };
 
 const DEFAULT_ORIGIN = '네이버';
