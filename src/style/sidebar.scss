@@ -168,6 +168,10 @@ main {
         .card--header__title {
           font-size: 16px;
 
+          em {
+            color: #f94e3f;
+          }
+
           .card--header__bell img{
             width: 24px;
             height: 24px;

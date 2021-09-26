@@ -3,6 +3,7 @@ import { Keyword } from '../../type/keywords';
 import Link from './Link';
 import useKeywords from '../../hooks/useKeywords';
 import Dropdown from './Dropdown';
+import useSearch from '../../hooks/useSearch';
 
 const BELL_OFF_IMAGE = 'images/icons/bell_off.png';
 const BELL_ON_IMAGE = 'images/icons/bell_on.png';
@@ -41,6 +42,23 @@ const FollowButton = ({ tracking, title }: FollowButtonProps) => {
   );
 };
 
+const Title = ({ title }: KeywordProps) => {
+  const { input } = useSearch();
+  if (input.length === 0) {
+    return <>{title}</>;
+  }
+
+  const [left, ...rest] = title.split(input);
+
+  return (
+    <>
+      {left}
+      <em>{input}</em>
+      {rest.join(input)}
+    </>
+  );
+};
+
 const KeywordListItem = (props: KeywordProps & Keyword) => {
   const { title, tracking, link, fold = false } = props;
   const { toggleFoldKeyword } = useKeywords();
@@ -55,7 +73,7 @@ const KeywordListItem = (props: KeywordProps & Keyword) => {
         <div className="card--header__row">
           <div className="card--header__title bold">
             <FollowButton tracking={tracking} title={title} />
-            {title}
+            <Title title={title} />
           </div>
           <div className="card--header__icons">
             <button
