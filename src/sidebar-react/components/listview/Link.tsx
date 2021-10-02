@@ -1,6 +1,7 @@
 import React from 'react';
-import { Link as LinkProps } from '../../type/keywords';
+import { LinkProps } from '../../type/keywords';
 import LinkDelete from '../icons/LinkDelete';
+import useKeywords from '../../hooks/useKeywords';
 
 const OriginMap = {
   total: '통합검색',
@@ -13,18 +14,28 @@ const OriginMap = {
   news: '뉴스',
   website: '사이트',
   google: '구글',
+  view: 'VIEW',
 };
 
 const DEFAULT_ORIGIN = '네이버';
 
-const PIN_IMAGE = 'images/icons/pin_fixed2.png';
-const UNPIN_IMAGE = 'images/icons/pin_unfixed.png';
+const PIN_IMAGE = 'images/icons/jjim-on.svg';
+const UNPIN_IMAGE = 'images/icons/jjim-off.svg';
 // 임시, x 표 아이콘 생성 필요
 
-const Link = ({ favorite, origin, title, url }: LinkProps) => {
+const Link = ({ favorite, origin, title, url, ownKeyword }: LinkProps) => {
+  const { removeLink, togglePinLink } = useKeywords();
+  const handleClickRemove = () => {
+    removeLink({ url, keyword: ownKeyword });
+  };
+
+  const handleClickPin = () => {
+    togglePinLink({ url, keyword: ownKeyword, favorite });
+  };
+
   return (
     <div className="card--main__link">
-      <button className="card--main__pin">
+      <button className="card--main__pin" onClick={handleClickPin}>
         <img src={favorite ? PIN_IMAGE : UNPIN_IMAGE} alt="고정하기" />
       </button>
       <div className="card--main__origin">
@@ -35,7 +46,7 @@ const Link = ({ favorite, origin, title, url }: LinkProps) => {
           {title}
         </a>
       </div>
-      <button className="card--main__remove">
+      <button className="card--main__remove" onClick={handleClickRemove}>
         <LinkDelete />
       </button>
     </div>

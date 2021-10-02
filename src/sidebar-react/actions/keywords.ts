@@ -18,6 +18,22 @@ export interface SetFollowKeywordPayload {
   keyword: string;
 }
 
+export interface SetFoldKeywordPayload {
+  fold: boolean;
+  keyword: string;
+}
+
+export interface RemoveLinkPayload {
+  url: string;
+  keyword: string;
+}
+
+export interface PinLinkPayload {
+  url: string;
+  keyword: string;
+  favorite: boolean;
+}
+
 export default {
   fetchKeywordList: (): Action<Record<string, never>> => ({
     type: Actions.FETCH_KEYWORD_LIST,

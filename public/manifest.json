@@ -29,17 +29,17 @@
       ],
       "css": ["css/button.css"],
       "js": [
-        "content-script/common.js",
         "content-script/naver.js"
       ]
     },
     {
       "matches": [
-        "https://www.google.com/search?*"
+        "https://www.google.com/search?*",
+        "https://www.google.co.kr/search?*"
       ],
       "css": ["css/button.css"],
       "js": [
-        "content-script/common.js", 
+        "content-script/common.js",
         "content-script/google.js"
       ]
     }

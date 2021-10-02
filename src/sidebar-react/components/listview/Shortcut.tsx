@@ -6,7 +6,7 @@ interface ShortCutProps {
 
 const Shortcut: React.FC<ShortCutProps> = ({ keyword }) => {
   return (
-    <ul className="card--header__shortcuts">
+    <ul className="dropdown--menu">
       <a
         href={`https://search.naver.com/search.naver?query=${keyword}`}
         target="_blank"

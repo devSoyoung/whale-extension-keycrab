@@ -1,13 +1,14 @@
 import React, { useMemo, useState } from 'react';
 import { Keyword } from '../../type/keywords';
-import Shortcut from './Shortcut';
 import Link from './Link';
 import useKeywords from '../../hooks/useKeywords';
+import Dropdown from './Dropdown';
+import useSearch from '../../hooks/useSearch';
 
 const BELL_OFF_IMAGE = 'images/icons/bell_off.png';
 const BELL_ON_IMAGE = 'images/icons/bell_on.png';
-const GARBAGE_IMAGE = 'images/icons/garbage.png';
-const FOLD_IMAGE = 'images/icons/fold.png';
+const MENU_IMAGE = 'images/icons/kebob-menu.svg';
+const FOLD_IMAGE = 'images/icons/fold.svg';
 
 interface FollowButtonProps {
   tracking: boolean;
@@ -41,28 +42,54 @@ const FollowButton = ({ tracking, title }: FollowButtonProps) => {
   );
 };
 
-const KeywordCard = (props: KeywordProps & Keyword) => {
-  const { title, tracking, link } = props;
+const Title = ({ title }: KeywordProps) => {
+  const { input } = useSearch();
+  if (input.length === 0) {
+    return <>{title}</>;
+  }
+
+  const [left, ...rest] = title.split(input);
+
   return (
-    <div className="card">
+    <>
+      {left}
+      <em>{input}</em>
+      {rest.join(input)}
+    </>
+  );
+};
+
+const KeywordListItem = (props: KeywordProps & Keyword) => {
+  const { title, tracking, link, fold = false } = props;
+  const { toggleFoldKeyword } = useKeywords();
+
+  const handleClick = () => {
+    toggleFoldKeyword({ fold, keyword: title });
+  };
+
+  return (
+    <div className="list-item">
       <div className="card--header">
         <div className="card--header__row">
-          <div className="card--header__title">
+          <div className="card--header__title bold">
             <FollowButton tracking={tracking} title={title} />
-            {title}
+            <Title title={title} />
           </div>
           <div className="card--header__icons">
-            <button className="card--header__discard">
-              <img src={GARBAGE_IMAGE} alt="키워드 삭제 아이콘" />
-            </button>
-            <button className="card--header__fold">
+            <button
+              className={`card--header__fold ${fold ? 'folded' : ''}`}
+              onClick={handleClick}
+            >
               <img src={FOLD_IMAGE} alt="키워드 접기 아이콘" />
+            </button>
+            <button className="card--header__discard">
+              <img src={MENU_IMAGE} alt="메뉴 더 보기" />
+              <Dropdown keyword={title} />
             </button>
           </div>
         </div>
-        <Shortcut keyword={title} />
       </div>
-      <div className="card--main">
+      <div className={`card--main ${fold ? 'hidden' : ''}`}>
         {link?.map((item, index) => (
           <Link key={index} ownKeyword={title} {...item} />
         ))}
@@ -71,4 +98,4 @@ const KeywordCard = (props: KeywordProps & Keyword) => {
   );
 };
 
-export default KeywordCard;
+export default KeywordListItem;

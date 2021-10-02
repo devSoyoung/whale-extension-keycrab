@@ -1,9 +1,5 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import {
-  Action,
-  Actions as KeywordActions,
-  SetFollowKeywordPayload,
-} from '../actions/keywords';
+import { Action, Actions as KeywordActions } from '../actions/keywords';
 import { Keywords } from '../type/keywords';
 
 const getKeywordFromStorage = () => {
@@ -15,19 +11,11 @@ const getKeywordFromStorage = () => {
 };
 
 const setKeyword = (keywords: Keywords) => {
-  whale.storage.sync.set({ ...keywords });
-  // console.log('trying,,', keywords);
-  // return new Promise(function (resolve, reject) {
-  //   whale.storage.sync.set(keywords, () => {
-  //     resolve({ success: true });
-  //   });
-  // });
+  whale.storage.sync.set({ keywords });
 };
 
 function* getKeywordSaga() {
-  console.log('Keyword Fetch is Called');
   const keywords = yield call(getKeywordFromStorage);
-  console.log('in Saga, keywords are ', keywords);
 
   yield put({
     type: KeywordActions.SET_KEYWORD_LIST,
@@ -35,18 +23,12 @@ function* getKeywordSaga() {
   });
 }
 
-function* setKeywordFollow(action: Action<SetFollowKeywordPayload>) {
-  console.log('setKeywordFollow is Called', action);
+function* setKeywords(action: Action<Keywords>) {
   const { payload } = action;
-  const { keyword, tracking } = payload;
-  const keywords = yield call(getKeywordFromStorage);
-  keywords[keyword].tracking = !tracking;
-  console.log(keywords);
-
-  yield call(setKeyword, keywords);
+  yield call(setKeyword, payload);
 }
 
 export default function* rootSaga() {
   yield takeLatest(KeywordActions.FETCH_KEYWORD_LIST, getKeywordSaga);
-  yield takeLatest(KeywordActions.SET_FOLLOW_KEYWORD, setKeywordFollow);
+  yield takeLatest(KeywordActions.SET_KEYWORD_LIST, setKeywords);
 }

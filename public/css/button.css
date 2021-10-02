@@ -24,8 +24,8 @@
 }
 
 .tracking-btn-naver {
-    left: 700px;
-    top: 39px;
+    left: 734px;
+    top: 18px;
 }
 
 .tracking-btn-google {
@@ -51,7 +51,7 @@
 
 .crab-naver {
     position: absolute;
-    left: 656px;
+    left: 682px;
     top: 10px;
     transform: rotate(-20deg);
 }
